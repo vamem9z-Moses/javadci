@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Domain Suite" parallel="none">
+  <test name="Account Domain Test">
+    <classes>
+      <class name="test.dci.domains.AccountDomainTest"/>
+    </classes>
+  </test> <!-- Account Domain Test -->
+</suite> <!-- Domain Suite -->
+<suite name="Context Suit" parellel="none">
+	<test name="Transfer Context Test">
+		<classes>
+			<clase name="test.dci.contexts.TransferMoneyContextTest"/>
+		</classes>
+	</test>
+	<test name="Withdraw Context Test">
+		<classes>
+			<clase name="test.dci.contexts.AccountWithdrawContextTest"/>
+		</classes>
+	</test>
+	<test name="Deposit Context Test">
+		<classes>
+			<clase name="test.dci.contexts.AccountDepositContextTest"/>
+		</classes>
+	</test>
+</suite>
