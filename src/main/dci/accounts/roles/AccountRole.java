@@ -1,6 +1,6 @@
 package main.dci.accounts.roles;
 
-import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import main.dci.accounts.contexts.AccountDepositContext;
 import main.dci.accounts.contexts.AccountWithDrawContext;
@@ -9,7 +9,7 @@ import main.dci.domains.AccountDomain.TRANSACTIONTYPES;
 
 public interface AccountRole extends BasicAccountRole {
 	
-	default ArrayList<ContextResult> deposit(AccountDepositContext ctx) {
+	default Stream<ContextResult> deposit(AccountDepositContext ctx) {
 		TRANSACTIONTYPES transType = null;
 		
 		switch (ctx.getAccount().getAccountInfo().getAccountType()) {
@@ -27,7 +27,7 @@ public interface AccountRole extends BasicAccountRole {
 		
 	}
 	
-	default ArrayList<ContextResult> withDraw(AccountWithDrawContext ctx) {
+	default Stream<ContextResult> withDraw(AccountWithDrawContext ctx) {
 		TRANSACTIONTYPES transType = null;
 		
 		switch (ctx.getAccount().getAccountInfo().getAccountType()) {

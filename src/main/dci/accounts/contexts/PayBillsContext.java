@@ -1,6 +1,7 @@
 package main.dci.accounts.contexts;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,13 +20,13 @@ public class PayBillsContext implements Contexter {
 	@Getter private ArrayList<AccountRole> creditors;
 	@Getter private double amount;
 	
-	public void initialize(TransferMoneySourceRole sourceAccount, 
+	public PayBillsContext(TransferMoneySourceRole sourceAccount, 
 			ArrayList<AccountRole> creditors) {
 		this.sourceAccount = sourceAccount;
 		this.creditors = creditors;
 	}
 	
-	public ArrayList<ContextResult> execute() {
+	public Stream<ContextResult> execute() {
 		return this.sourceAccount.payBills(this);
 	}
 }

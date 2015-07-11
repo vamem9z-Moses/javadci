@@ -1,6 +1,6 @@
 package main.dci.accounts.contexts;
 
-import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +24,7 @@ public class TransferMoneyContext implements Contexter {
 		this.amount = amount;
 	}
 	
-	public ArrayList<ContextResult> execute() {
+	public Stream<ContextResult> execute() {
 		return execute(this, ctx -> this.sourceAccount.transfer((TransferMoneyContext)ctx)) ;
 	}
 }

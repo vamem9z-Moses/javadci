@@ -33,7 +33,7 @@ public class PayBillsContextTest {
 	private static AccountDomain vendorAccount2 = new AccountDomain("Vendor 2", 131, 
 	        12, 122.12, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
 	
-	private static PayBillsContext ctx = new PayBillsContext();
+	private static PayBillsContext ctx;
 	
 	private ArrayList<AccountRole> getCreditors() {
 		this.creditors = new ArrayList<AccountRole>();
@@ -53,7 +53,7 @@ public class PayBillsContextTest {
 	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, 
 			 double sourceExpected, double vendor1Expected, double vendor2Expected, String testMsg ) {
 		double sourceBalance, vendor1Balance, vendor2Balance;
-		ctx.initialize(sourceAccount, creditors);
+		ctx = new PayBillsContext(sourceAccount, creditors);
 		ctx.execute();
 		sourceBalance = sourceAccount.getAccountDomain().getBalance();
 		vendor1Balance = creditors.get(0).getAccountDomain().getBalance();

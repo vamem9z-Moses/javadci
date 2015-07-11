@@ -1,14 +1,15 @@
 package main.dci.accounts.contexts;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.rules.AccountProtectionRule;
-import main.dci.contexts.Contexter;
 import main.dci.contexts.ContextResult;
+import main.dci.contexts.Contexter;
 import main.dci.rules.Ruler;
 
 @ToString(includeFieldNames=true)
@@ -27,7 +28,7 @@ public class AccountWithDrawContext implements Contexter {
 		rules.add(new AccountProtectionRule());
 	}
 	
-	public ArrayList<ContextResult>execute(){
+	public Stream<ContextResult>execute(){
 		return execute(this, ctx -> this.account.withDraw((AccountWithDrawContext)ctx), this.rules);
 	}
 }

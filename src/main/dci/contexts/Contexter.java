@@ -2,38 +2,38 @@ package main.dci.contexts;
 
 import java.util.ArrayList;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import main.dci.rules.Ruler;
 
 public interface Contexter {
 
-	static boolean isSuccess(ArrayList<ContextResult> results) {
-		if(results.stream().allMatch(r -> r == ContextResult.SUCCESS))
+	static boolean isSuccess(Stream<ContextResult> results) {
+		if(results.allMatch(r -> r == ContextResult.SUCCESS))
 				return true;
 		return false;	
 	}
 	
-	static ArrayList<ContextResult> getErrors(ArrayList<ContextResult> results) {
-		return results.stream().filter(r -> r != ContextResult.SUCCESS).collect(Collectors.toCollection(ArrayList::new));
+	static Stream<ContextResult> getErrors(Stream<ContextResult> results) {
+		return results.filter(r -> r != ContextResult.SUCCESS);
 	}
 	
-	default ArrayList<ContextResult> applyRules(ArrayList<Ruler> rules) {
-		return rules.stream().map(r->r.action(this)).collect(Collectors.toCollection(ArrayList::new));
+	default Stream<ContextResult> applyRules(ArrayList<Ruler> rules) {
+		return rules.stream().map(r->r.action(this));
 	}
 	
-	default ArrayList<ContextResult> execute(Contexter ctx, Function<Contexter, ArrayList<ContextResult>> roleAction) {
+	default Stream<ContextResult> execute(Contexter ctx, Function<Contexter, Stream<ContextResult>> roleAction) {
 		return roleAction.apply(ctx);
 
 	}
 	
-	default ArrayList<ContextResult> execute(Contexter ctx, Function<Contexter, ArrayList<ContextResult>> roleAction, ArrayList<Ruler> rules) {
-		ArrayList<ContextResult> errors = this.applyRules(rules);
+	default Stream<ContextResult> execute(Contexter ctx, Function<Contexter, Stream<ContextResult>> roleAction, ArrayList<Ruler> rules) {
+		Stream<ContextResult> errors = this.applyRules(rules);
 		if(isSuccess(errors)) {
 			return this.execute(ctx, roleAction);
 		}
 		return getErrors(errors);
 	}
 	
-	ArrayList<ContextResult> execute();
+	Stream<ContextResult> execute();
 }

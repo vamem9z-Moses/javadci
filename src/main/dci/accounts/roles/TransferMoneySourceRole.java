@@ -1,6 +1,8 @@
 package main.dci.accounts.roles;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import main.dci.accounts.contexts.AccountDepositContext;
 import main.dci.accounts.contexts.AccountWithDrawContext;
@@ -10,7 +12,7 @@ import main.dci.contexts.ContextResult;
 
 public interface TransferMoneySourceRole extends BasicAccountRole {	
 	
-	default ArrayList<ContextResult> transfer(TransferMoneyContext ctx) {
+	default Stream<ContextResult> transfer(TransferMoneyContext ctx) {
 		
 		String withDrawMsg = String.format("Transfer Out %d to Transfer %d", 
 				ctx.getSourceAccount().getAccountInfo().getAccountID(),
@@ -32,22 +34,19 @@ public interface TransferMoneySourceRole extends BasicAccountRole {
 		return returnResults(ContextResult.SUCCESS);
 	}
 	
-	default ArrayList<ContextResult> payBill(TransferMoneySourceRole source, 
+	default Stream<ContextResult> payBill(TransferMoneySourceRole source, 
 			AccountRole creditor) {
 		TransferMoneyContext tmctx = new TransferMoneyContext(
 				source, creditor, creditor.getBalance());	
 		return tmctx.execute();
 	}
 	
-	default ArrayList<ContextResult> payBills(PayBillsContext ctx) {
-	
-		ArrayList<ContextResult> errors = new ArrayList<ContextResult>();
-
-		ctx.getCreditors().stream().
-			map(creditor ->  {return payBill(ctx.getSourceAccount(), creditor);}).
-			forEach(errs -> errors.addAll(errs));
+	default Stream<ContextResult> payBills(PayBillsContext ctx) {
 		
-		return errors;
+		ArrayList<ContextResult> errors = ctx.getCreditors().stream().
+			map(creditor ->  payBill(ctx.getSourceAccount(), creditor))
+			.flatMap(x ->x).collect(Collectors.toCollection(ArrayList::new));
+		return errors.stream();
 	}
 }	
 	
