@@ -23,6 +23,6 @@ public class TransferMoneyContext implements Contexter {
 	}
 	
 	public Stream<ContextResult> execute() {
-		return execute(this, ctx -> this.sourceAccount.transfer((TransferMoneyContext)ctx)) ;
+		return this.sourceAccount.transfer(this);
 	}
 }
