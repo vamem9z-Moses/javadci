@@ -3,6 +3,7 @@ package test.dci.accounts.contexts;
 import static org.testng.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import lombok.ToString;
 import main.dci.accounts.contexts.PayBillsContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
+import main.dci.contexts.ContextResult;
 import main.dci.domains.AccountDomain;
 import main.dci.domains.AccountDomain.ACCOUNTTYPES;
 import main.dci.domains.AccountDomain.PRODUCTTYPES;
@@ -45,21 +47,23 @@ public class PayBillsContextTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			{checkingAccount, this.creditors, 483.92, 0, 0, "2 liability accounts"},
+			{checkingAccount, this.creditors, ContextResult.SUCCESS, 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		
 	@Test(dataProvider="testData")
-	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, 
+	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, ContextResult expectedResult,
 			 double sourceExpected, double vendor1Expected, double vendor2Expected, String testMsg ) {
 		double sourceBalance, vendor1Balance, vendor2Balance;
 		ctx = new PayBillsContext(sourceAccount, creditors);
-		ctx.execute();
+		ArrayList<ContextResult> errors = ctx.execute().collect(Collectors.toCollection(ArrayList::new));
 		sourceBalance = sourceAccount.getAccountDomain().getBalance();
 		vendor1Balance = creditors.get(0).getAccountDomain().getBalance();
 		vendor2Balance = creditors.get(1).getAccountDomain().getBalance();
 		assertEquals(sourceBalance, sourceExpected, 0, testMsg);
 		assertEquals(vendor1Balance, vendor1Expected, 0, testMsg);	
 		assertEquals(vendor2Balance, vendor2Expected, 0, testMsg);
+		assertEquals(errors.size(), creditors.size());
+		errors.stream().forEach(err -> assertEquals(err, expectedResult));
 	}
 }

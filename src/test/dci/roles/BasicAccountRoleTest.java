@@ -1,4 +1,4 @@
-package test.dci.domains;
+package test.dci.roles;
 
 import static org.testng.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ import main.dci.domains.EntryItem;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class AccountDomainTest {
+public class BasicAccountRoleTest {
 
 	private static EntryItem creditEntryItem = new EntryItem(123, "Test Credit transaction", 
 			200.00, TRANSACTIONTYPES.CREDIT);
@@ -33,7 +33,7 @@ public class AccountDomainTest {
 	}
 
 	@Test(dataProvider="account test data")
-	public void test(EntryItem entryItem, double expected, String testMessage) {
+	public void testGetBalance(EntryItem entryItem, double expected, String testMessage) {
 		AccountDomain accountDomain =  new AccountDomain("Moses", 123, 12, 100.23, 
 				ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
 		accountDomain.getEntries().add(entryItem);

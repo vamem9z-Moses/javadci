@@ -2,6 +2,10 @@ package test.dci.accounts.contexts;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -37,11 +41,14 @@ public class AccountWithDrawContextTest {
     }
 
     @Test(dataProvider="account test data")
-	public void test(AccountRole account, ContextResult result, double amount, double expected, String msg) {
+	public void test(AccountRole account, ContextResult expectedResult, double amount, double expected, String msg) {
 		double balance;
 		ctx = new AccountWithDrawContext(account, amount, msg);
-		ctx.execute();
+		Stream<ContextResult> results = ctx.execute();
+		ArrayList<ContextResult> errors = results.collect(Collectors.toCollection(ArrayList::new));
 		balance = account.getAccountDomain().getBalance();
-		assertEquals(expected, balance, 0.00, msg);	
+		assertEquals(balance, expected, 0.00, msg);
+		assertEquals(errors.size(),1);
+		assertEquals(errors.get(0), expectedResult);
 	}
 }
