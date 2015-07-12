@@ -1,6 +1,7 @@
 package test.dci.roles;
 
 import static org.testng.Assert.assertEquals;
+import static test.dci.accounts.TestAccountHelpers.makeSavingsAccount;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,9 +32,8 @@ public class BasicAccountRoleTest {
 
 	@Test(dataProvider="account test data")
 	public void testGetBalance(EntryItem entryItem, double expected, String testMessage) {
-		SavingsAccount acct =  new SavingsAccount("Moses", 123, 12, 100.23);
+		SavingsAccount acct = makeSavingsAccount(100.23);
 		acct.getEntries().add(entryItem);
-		double balance = acct.getBalance();
-		assertEquals(balance, expected, 0.00, testMessage);
+		assertEquals(acct.getBalance(), expected, 0.00, testMessage);
 	}
 }
