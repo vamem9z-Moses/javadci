@@ -23,8 +23,7 @@ public interface TransferMoneySourceRole extends BasicAccountRole {
 				ctx.getSourceAccount().getAccountInfo().getAccountID());
 		
 		AccountWithDrawContext accWithCtx  = new AccountWithDrawContext(
-				ctx.getSourceAccount().getAccountDomain(), 
-				ctx.getAmount(), withDrawMsg);
+				(AccountRole)ctx.getSourceAccount(), ctx.getAmount(), withDrawMsg);
 		accWithCtx.execute();
 				
 		AccountDepositContext accDepCtx = new AccountDepositContext(

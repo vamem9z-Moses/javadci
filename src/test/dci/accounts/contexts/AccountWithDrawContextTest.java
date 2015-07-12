@@ -15,20 +15,20 @@ import lombok.ToString;
 import main.dci.accounts.contexts.AccountWithDrawContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.contexts.ContextResult;
-import main.dci.domains.AccountDomain;
-import main.dci.domains.AccountDomain.ACCOUNTTYPES;
-import main.dci.domains.AccountDomain.PRODUCTTYPES;
+import main.dci.domains.accounts.Account;
+import main.dci.domains.products.CheckingAccount;
+import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class AccountWithDrawContextTest {
 		
-	private static AccountDomain creditAccount = new AccountDomain("Moses", 123, 
-			12, 1000.34, ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account creditAccount = new CheckingAccount("Moses", 123, 
+			12, 1000.34);
 	
-    private static AccountDomain debitAccount = new AccountDomain("Moses", 123, 
-                12, 1000.34, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+    private static Account debitAccount = new VendorAccount("Moses", 123, 
+                12, 1000.34);
     
     private AccountWithDrawContext ctx;
 
@@ -46,7 +46,7 @@ public class AccountWithDrawContextTest {
 		ctx = new AccountWithDrawContext(account, amount, msg);
 		Stream<ContextResult> results = ctx.execute();
 		ArrayList<ContextResult> errors = results.collect(Collectors.toCollection(ArrayList::new));
-		balance = account.getAccountDomain().getBalance();
+		balance = account.getBasicAccount().getBalance();
 		assertEquals(balance, expected, 0.00, msg);
 		assertEquals(errors.size(),1);
 		assertEquals(errors.get(0), expectedResult);

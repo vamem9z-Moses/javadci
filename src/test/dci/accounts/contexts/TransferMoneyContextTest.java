@@ -15,26 +15,27 @@ import main.dci.accounts.contexts.TransferMoneyContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
 import main.dci.contexts.ContextResult;
-import main.dci.domains.AccountDomain;
-import main.dci.domains.AccountDomain.ACCOUNTTYPES;
-import main.dci.domains.AccountDomain.PRODUCTTYPES;
+import main.dci.domains.accounts.Account;
+import main.dci.domains.products.CheckingAccount;
+import main.dci.domains.products.SavingsAccount;
+import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class TransferMoneyContextTest {
 	
-	private static AccountDomain checkingAccount = new AccountDomain("Moses", 123, 
-			12, 1000.34, ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account checkingAccount = new CheckingAccount("Moses", 123, 
+			12, 1000.34);
 	
-	private static AccountDomain savingsAccount = new AccountDomain("Moses", 124, 
-			12, 921.23, ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account savingsAccount = new SavingsAccount("Moses", 124, 
+			12, 921.23);
 	
-	private static AccountDomain vendorAccount1 = new AccountDomain("Vendor 1", 131, 
-	            12, 394.30, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account vendorAccount1 = new VendorAccount("Vendor 1", 131, 
+	            12, 394.30);
 	
-	private static AccountDomain vendorAccount2 = new AccountDomain("Vendor 2", 131, 
-	        12, 122.12, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account vendorAccount2 = new VendorAccount("Vendor 2", 131, 
+	        12, 122.12);
 	
 	private static TransferMoneyContext ctx;
 	
@@ -53,8 +54,8 @@ public class TransferMoneyContextTest {
 		double sourceBalance, destBalance;
 		ctx = new TransferMoneyContext(sourceAccount, destAccount, amount);
 		ArrayList<ContextResult> errors = ctx.execute().collect(Collectors.toCollection(ArrayList::new));
-		sourceBalance = sourceAccount.getAccountDomain().getBalance();
-		destBalance = destAccount.getAccountDomain().getBalance();
+		sourceBalance = sourceAccount.getBasicAccount().getBalance();
+		destBalance = destAccount.getBasicAccount().getBalance();
 		assertEquals(sourceBalance, sourceExpected, 0, testMsg);
 		assertEquals(destBalance, destExpected, 0, testMsg);
 		assertEquals(errors.size(), 1);

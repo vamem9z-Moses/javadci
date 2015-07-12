@@ -8,21 +8,20 @@ import org.testng.annotations.Test;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import main.dci.domains.AccountDomain;
-import main.dci.domains.AccountDomain.ACCOUNTTYPES;
-import main.dci.domains.AccountDomain.PRODUCTTYPES;
-import main.dci.domains.AccountDomain.TRANSACTIONTYPES;
-import main.dci.domains.EntryItem;
+import main.dci.domains.entries.CreditEntryItem;
+import main.dci.domains.entries.DebitEntryItem;
+import main.dci.domains.entries.EntryItem;
+import main.dci.domains.products.SavingsAccount;
 
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class BasicAccountRoleTest {
 
-	private static EntryItem creditEntryItem = new EntryItem(123, "Test Credit transaction", 
-			200.00, TRANSACTIONTYPES.CREDIT);
-	private static EntryItem debitEntryItem = new EntryItem(123, "Test Debit transaction", 
-			243.23, TRANSACTIONTYPES.DEBIT);
+	private static CreditEntryItem creditEntryItem = new CreditEntryItem(123, "Test Credit transaction", 
+			200.00);
+	private static DebitEntryItem debitEntryItem = new DebitEntryItem(123, "Test Debit transaction", 
+			243.23);
 	
 	@DataProvider(name="account test data")
 	public Object[][] data(){
@@ -34,10 +33,9 @@ public class BasicAccountRoleTest {
 
 	@Test(dataProvider="account test data")
 	public void testGetBalance(EntryItem entryItem, double expected, String testMessage) {
-		AccountDomain accountDomain =  new AccountDomain("Moses", 123, 12, 100.23, 
-				ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
-		accountDomain.getEntries().add(entryItem);
-		double balance = accountDomain.getBalance();
+		SavingsAccount acct =  new SavingsAccount("Moses", 123, 12, 100.23);
+		acct.getEntries().add(entryItem);
+		double balance = acct.getBalance();
 		assertEquals(balance, expected, 0.00, testMessage);
 	}
 }

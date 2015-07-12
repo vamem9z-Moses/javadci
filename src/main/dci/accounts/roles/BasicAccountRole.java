@@ -3,19 +3,18 @@ package main.dci.accounts.roles;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import main.dci.domains.AccountDomain;
-import main.dci.domains.AccountDomain.TRANSACTIONTYPES;
-import main.dci.domains.AccountInfo;
-import main.dci.domains.EntryItem;
+import main.dci.domains.accounts.AccountActions;
+import main.dci.domains.accounts.AccountInfo;
+import main.dci.domains.entries.EntryItem;
 import main.dci.roles.Roler;
 
 public interface BasicAccountRole extends Roler {
 	AccountInfo getAccountInfo();
 	ArrayList<EntryItem> getEntries();
-	void recordTransaction(double amount, String msg, TRANSACTIONTYPES transType);
+	void recordTransaction(double amount, String msg, AccountActions actions);
 	
-	default AccountDomain getAccountDomain() {
-		return (AccountDomain)this;
+	default BasicAccountRole getBasicAccount() {
+		return this;
 	}
 	
 	default double getBalance() {

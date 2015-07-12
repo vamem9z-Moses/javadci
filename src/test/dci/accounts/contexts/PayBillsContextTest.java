@@ -15,9 +15,9 @@ import main.dci.accounts.contexts.PayBillsContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
 import main.dci.contexts.ContextResult;
-import main.dci.domains.AccountDomain;
-import main.dci.domains.AccountDomain.ACCOUNTTYPES;
-import main.dci.domains.AccountDomain.PRODUCTTYPES;
+import main.dci.domains.accounts.Account;
+import main.dci.domains.products.CheckingAccount;
+import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
 @ToString
@@ -26,21 +26,21 @@ public class PayBillsContextTest {
 	
 	private ArrayList<AccountRole> creditors;
 	
-	private static AccountDomain checkingAccount = new AccountDomain("Moses", 123, 
-			12, 1000.34, ACCOUNTTYPES.ASSETACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account checkingAccount = new CheckingAccount("Moses", 123, 
+			12, 1000.34);
 	
-	private static AccountDomain vendorAccount1 = new AccountDomain("Vendor 1", 131, 
-	            12, 394.30, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account vendorAccount1 = new VendorAccount("Vendor 1", 131, 
+	            12, 394.30);
 	
-	private static AccountDomain vendorAccount2 = new AccountDomain("Vendor 2", 131, 
-	        12, 122.12, ACCOUNTTYPES.LIABILITYACCOUNT, PRODUCTTYPES.CHECKINGACCOUNT);
+	private static Account vendorAccount2 = new VendorAccount("Vendor 2", 131, 
+	        12, 122.12);
 	
 	private static PayBillsContext ctx;
 	
 	private ArrayList<AccountRole> getCreditors() {
 		this.creditors = new ArrayList<AccountRole>();
-		creditors.add(vendorAccount1);
-		creditors.add(vendorAccount2);
+		creditors.add((AccountRole) vendorAccount1);
+		creditors.add((AccountRole) vendorAccount2);
 		return creditors;
 	}
 	
@@ -57,9 +57,9 @@ public class PayBillsContextTest {
 		double sourceBalance, vendor1Balance, vendor2Balance;
 		ctx = new PayBillsContext(sourceAccount, creditors);
 		ArrayList<ContextResult> errors = ctx.execute().collect(Collectors.toCollection(ArrayList::new));
-		sourceBalance = sourceAccount.getAccountDomain().getBalance();
-		vendor1Balance = creditors.get(0).getAccountDomain().getBalance();
-		vendor2Balance = creditors.get(1).getAccountDomain().getBalance();
+		sourceBalance = sourceAccount.getBasicAccount().getBalance();
+		vendor1Balance = creditors.get(0).getBasicAccount().getBalance();
+		vendor2Balance = creditors.get(1).getBasicAccount().getBalance();
 		assertEquals(sourceBalance, sourceExpected, 0, testMsg);
 		assertEquals(vendor1Balance, vendor1Expected, 0, testMsg);	
 		assertEquals(vendor2Balance, vendor2Expected, 0, testMsg);
