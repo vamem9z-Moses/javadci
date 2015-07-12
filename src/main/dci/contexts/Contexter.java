@@ -28,11 +28,11 @@ public interface Contexter {
 	}
 	
 	default Stream<ContextResult> execute(Contexter ctx, Function<Contexter, Stream<ContextResult>> roleAction, ArrayList<Ruler> rules) {
-		Stream<ContextResult> errors = this.applyRules(rules);
-		if(isSuccess(errors)) {
+		Stream<ContextResult> results = this.applyRules(rules);
+		if(isSuccess(results)) {
 			return this.execute(ctx, roleAction);
 		}
-		return getErrors(errors);
+		return getErrors(results);
 	}
 	
 	Stream<ContextResult> execute();
