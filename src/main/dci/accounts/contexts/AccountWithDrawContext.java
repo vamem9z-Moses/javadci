@@ -1,6 +1,7 @@
 package main.dci.accounts.contexts;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import lombok.EqualsAndHashCode;
@@ -25,9 +26,10 @@ public class AccountWithDrawContext implements Contexter {
 		this.account = account;
 		this.amount = amount;
 		this.message = message;
-		this.rules = new ArrayList<Ruler>();
-		rules.add(new NoNegativeAmountsRule());
-		rules.add(new AccountProtectionRule());
+		this.rules = new ArrayList<Ruler>(Arrays.asList(
+				new NoNegativeAmountsRule(), 
+				new AccountProtectionRule()
+				));
 	}
 	
 	public Stream<ContextResult>execute(){
