@@ -54,8 +54,8 @@ public class TransferMoneyContextTest {
 		double sourceBalance, destBalance;
 		ctx = new TransferMoneyContext(sourceAccount, destAccount, amount);
 		ArrayList<ContextResult> errors = ctx.execute().collect(Collectors.toCollection(ArrayList::new));
-		sourceBalance = sourceAccount.getBasicAccount().getBalance();
-		destBalance = destAccount.getBasicAccount().getBalance();
+		sourceBalance = sourceAccount.getBalance();
+		destBalance = destAccount.getBalance();
 		assertEquals(sourceBalance, sourceExpected, 0, testMsg);
 		assertEquals(destBalance, destExpected, 0, testMsg);
 		assertEquals(errors.size(), 1);

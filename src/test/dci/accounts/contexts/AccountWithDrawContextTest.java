@@ -46,7 +46,7 @@ public class AccountWithDrawContextTest {
 		ctx = new AccountWithDrawContext(account, amount, msg);
 		Stream<ContextResult> results = ctx.execute();
 		ArrayList<ContextResult> errors = results.collect(Collectors.toCollection(ArrayList::new));
-		balance = account.getBasicAccount().getBalance();
+		balance = account.getBalance();
 		assertEquals(balance, expected, 0.00, msg);
 		assertEquals(errors.size(),1);
 		assertEquals(errors.get(0), expectedResult);

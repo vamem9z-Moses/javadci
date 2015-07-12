@@ -57,9 +57,9 @@ public class PayBillsContextTest {
 		double sourceBalance, vendor1Balance, vendor2Balance;
 		ctx = new PayBillsContext(sourceAccount, creditors);
 		ArrayList<ContextResult> errors = ctx.execute().collect(Collectors.toCollection(ArrayList::new));
-		sourceBalance = sourceAccount.getBasicAccount().getBalance();
-		vendor1Balance = creditors.get(0).getBasicAccount().getBalance();
-		vendor2Balance = creditors.get(1).getBasicAccount().getBalance();
+		sourceBalance = sourceAccount.getBalance();
+		vendor1Balance = creditors.get(0).getBalance();
+		vendor2Balance = creditors.get(1).getBalance();
 		assertEquals(sourceBalance, sourceExpected, 0, testMsg);
 		assertEquals(vendor1Balance, vendor1Expected, 0, testMsg);	
 		assertEquals(vendor2Balance, vendor2Expected, 0, testMsg);

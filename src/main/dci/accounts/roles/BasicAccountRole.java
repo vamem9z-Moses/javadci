@@ -13,10 +13,6 @@ public interface BasicAccountRole extends Roler {
 	ArrayList<EntryItem> getEntries();
 	void recordTransaction(double amount, String msg, AccountActions actions);
 	
-	default BasicAccountRole getBasicAccount() {
-		return this;
-	}
-	
 	default double getBalance() {
 		double balance = this.getAccountInfo().getStartingBalance();
 		
