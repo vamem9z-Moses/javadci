@@ -24,19 +24,20 @@ import main.dci.domains.products.VendorAccount;
 @ToString
 public class AccountDepositContextTest {
 		
-	private static Account creditAccount = new CheckingAccount("Moses", 123, 
-			12, 1000.34);
-	
-    private static Account debitAccount = new VendorAccount("Moses", 123, 
-                12, 1000.34);
+	private Account creditAccount = new CheckingAccount("Moses", 123, 12, 1000.34);
+	private Account creditAccount1 = new CheckingAccount("Moses", 123, 12, 200.34);
+    private Account debitAccount = new VendorAccount("Moses", 123, 12, 1000.34);   
+    private Account debitAccount1 = new VendorAccount("Moses", 123, 12, 2000.34); 
     
-    private AccountDepositContext ctx;;
+    private AccountDepositContext ctx;
 
     @DataProvider(name="account test data")
     public Object[][] data() {
     	return new Object[][] {
     			{creditAccount, ContextResult.SUCCESS,  400.00, 1400.34, "Credit Account Deposit Test"},
-    			{debitAccount, ContextResult.SUCCESS, 400.00, 600.34, "Deposit Account Deposit Test"}
+    			{debitAccount, ContextResult.SUCCESS, 400.00, 600.34, "Deposit Account Deposit Test"},
+    			{creditAccount1, ContextResult.FAILURE, -200.00, 200.34, "Credit Account Negative Amount"},
+    			{debitAccount1, ContextResult.FAILURE, -400.00, 2000.34, "Deposit Account Deposit Test"}
     	};
     }
 

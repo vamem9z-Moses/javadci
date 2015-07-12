@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.ToString;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.rules.AccountProtectionRule;
+import main.dci.accounts.rules.NoNegativeAmountsRule;
 import main.dci.contexts.ContextResult;
 import main.dci.contexts.Contexter;
 import main.dci.rules.Ruler;
@@ -25,6 +26,7 @@ public class AccountWithDrawContext implements Contexter {
 		this.amount = amount;
 		this.message = message;
 		this.rules = new ArrayList<Ruler>();
+		rules.add(new NoNegativeAmountsRule());
 		rules.add(new AccountProtectionRule());
 	}
 	

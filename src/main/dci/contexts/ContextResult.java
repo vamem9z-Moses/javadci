@@ -1,3 +1,3 @@
 package main.dci.contexts;
 
-public enum ContextResult { SUCCESS }
+public enum ContextResult { SUCCESS, FAILURE }

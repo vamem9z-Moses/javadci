@@ -2,6 +2,7 @@ package main.dci.contexts;
 
 import java.util.ArrayList;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import main.dci.rules.Ruler;
@@ -28,11 +29,12 @@ public interface Contexter {
 	}
 	
 	default Stream<ContextResult> execute(Contexter ctx, Function<Contexter, Stream<ContextResult>> roleAction, ArrayList<Ruler> rules) {
-		Stream<ContextResult> results = this.applyRules(rules);
-		if(isSuccess(results)) {
+		ArrayList<ContextResult> results = this.applyRules(rules).collect(Collectors.toCollection(ArrayList::new));
+
+		if(isSuccess(results.stream())) {
 			return this.execute(ctx, roleAction);
 		}
-		return getErrors(results);
+		return getErrors(results.stream());
 	}
 	
 	Stream<ContextResult> execute();
