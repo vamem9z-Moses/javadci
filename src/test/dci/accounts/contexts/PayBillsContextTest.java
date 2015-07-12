@@ -3,51 +3,41 @@ package test.dci.accounts.contexts;
 import static org.testng.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import main.dci.accounts.contexts.PayBillsContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
 import main.dci.contexts.ContextResult;
-import main.dci.domains.accounts.Account;
 import main.dci.domains.products.CheckingAccount;
 import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class PayBillsContextTest {
 	
-	private ArrayList<AccountRole> creditors;
 	
-	private static Account checkingAccount = new CheckingAccount("Moses", 123, 
+	private static CheckingAccount checkingAccount = new CheckingAccount("Moses", 123, 
 			12, 1000.34);
 	
-	private static Account vendorAccount1 = new VendorAccount("Vendor 1", 131, 
+	private static VendorAccount vendorAccount1 = new VendorAccount("Vendor 1", 131, 
 	            12, 394.30);
 	
-	private static Account vendorAccount2 = new VendorAccount("Vendor 2", 131, 
+	private static VendorAccount vendorAccount2 = new VendorAccount("Vendor 2", 131, 
 	        12, 122.12);
 	
-	private static PayBillsContext ctx;
+	private ArrayList<AccountRole> creditors = new ArrayList<AccountRole>(Arrays.asList(vendorAccount1, vendorAccount2));
 	
-	private ArrayList<AccountRole> getCreditors() {
-		this.creditors = new ArrayList<AccountRole>();
-		creditors.add((AccountRole) vendorAccount1);
-		creditors.add((AccountRole) vendorAccount2);
-		return creditors;
-	}
+	private static PayBillsContext ctx;
 	
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			{checkingAccount, this.creditors, ContextResult.SUCCESS, 483.92, 0, 0, "2 liability accounts"},
+			{checkingAccount, creditors, ContextResult.SUCCESS, 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		

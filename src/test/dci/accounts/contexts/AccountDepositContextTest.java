@@ -9,9 +9,7 @@ import java.util.stream.Stream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import main.dci.accounts.contexts.AccountDepositContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.contexts.ContextResult;
@@ -20,8 +18,6 @@ import main.dci.domains.products.CheckingAccount;
 import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class AccountDepositContextTest {
 		
 	private Account creditAccount = new CheckingAccount("Moses", 123, 12, 1000.34);

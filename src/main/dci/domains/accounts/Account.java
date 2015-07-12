@@ -2,14 +2,12 @@ package main.dci.domains.accounts;
 
 import java.util.ArrayList;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import main.dci.domains.entries.EntryItem;
 import main.dci.domains.products.ProductTypes;
 
 @ToString(includeFieldNames=true)
-@EqualsAndHashCode
 public abstract class Account {
 	
 	@Getter protected AccountInfo accountInfo;

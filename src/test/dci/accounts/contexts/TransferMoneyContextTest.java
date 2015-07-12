@@ -8,9 +8,7 @@ import java.util.stream.Collectors;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import main.dci.accounts.contexts.TransferMoneyContext;
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
@@ -21,8 +19,6 @@ import main.dci.domains.products.SavingsAccount;
 import main.dci.domains.products.VendorAccount;
 
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class TransferMoneyContextTest {
 	
 	private static Account checkingAccount = new CheckingAccount("Moses", 123, 

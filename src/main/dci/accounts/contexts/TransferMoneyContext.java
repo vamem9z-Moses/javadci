@@ -2,7 +2,6 @@ package main.dci.accounts.contexts;
 
 import java.util.stream.Stream;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import main.dci.accounts.roles.AccountRole;
@@ -11,7 +10,6 @@ import main.dci.contexts.ContextResult;
 import main.dci.contexts.Contexter;
 
 @ToString(includeFieldNames=true)
-@EqualsAndHashCode
 public class TransferMoneyContext implements Contexter {
 	@Getter private TransferMoneySourceRole sourceAccount;
 	@Getter private AccountRole destAccount;

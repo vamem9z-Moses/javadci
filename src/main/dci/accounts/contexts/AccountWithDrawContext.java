@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import main.dci.accounts.roles.AccountRole;
@@ -15,7 +14,6 @@ import main.dci.contexts.Contexter;
 import main.dci.rules.Ruler;
 
 @ToString(includeFieldNames=true)
-@EqualsAndHashCode
 public class AccountWithDrawContext implements Contexter {
 	@Getter private AccountRole account;
 	@Getter private double amount;

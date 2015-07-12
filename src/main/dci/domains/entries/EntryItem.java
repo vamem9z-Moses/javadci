@@ -3,17 +3,16 @@ package main.dci.domains.entries;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
-@Data
 @ToString(includeFieldNames=true)
 public abstract class EntryItem {
-	protected int accountID;
-	protected String message;
-	protected ZonedDateTime date;
-	protected double amount;
-	protected TransactionTypes transactionType;
+	@Getter protected int accountID;
+	@Getter protected String message;
+	@Getter protected ZonedDateTime date;
+	@Getter protected double amount;
+	@Getter protected TransactionTypes transactionType;
 	
 	public EntryItem(int accountID, String message, double amount, TransactionTypes transtype) {
 		super();

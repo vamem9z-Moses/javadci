@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import main.dci.domains.entries.CreditEntryItem;
@@ -14,7 +13,6 @@ import main.dci.domains.entries.EntryItem;
 import main.dci.domains.products.SavingsAccount;
 
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 public class BasicAccountRoleTest {
 
