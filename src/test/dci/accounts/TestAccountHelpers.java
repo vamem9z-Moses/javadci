@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 
 import main.dci.contexts.ContextResult;
 import main.dci.contexts.Contexter;
-import main.dci.domains.products.CheckingAccount;
-import main.dci.domains.products.SavingsAccount;
-import main.dci.domains.products.VendorAccount;
+import main.dci.domains.accounts.types.CheckingAccount;
+import main.dci.domains.accounts.types.SavingsAccount;
+import main.dci.domains.accounts.types.VendorAccount;
 
 public class TestAccountHelpers {
 	public static CheckingAccount makeCheckingAccount(double startingBalance){

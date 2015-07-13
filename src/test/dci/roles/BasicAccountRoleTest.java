@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import main.dci.domains.accounts.types.SavingsAccount;
 import main.dci.domains.entries.CreditEntryItem;
 import main.dci.domains.entries.DebitEntryItem;
 import main.dci.domains.entries.EntryItem;
-import main.dci.domains.products.SavingsAccount;
 
 @NoArgsConstructor
 @ToString

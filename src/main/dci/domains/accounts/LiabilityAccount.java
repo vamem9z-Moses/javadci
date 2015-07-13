@@ -2,13 +2,13 @@ package main.dci.domains.accounts;
 
 import main.dci.accounts.roles.AccountRole;
 import main.dci.accounts.roles.TransferMoneySourceRole;
+import main.dci.domains.accounts.types.AccountTypes;
 import main.dci.domains.entries.CreditEntryItem;
 import main.dci.domains.entries.DebitEntryItem;
-import main.dci.domains.products.ProductTypes;
 
 public abstract class LiabilityAccount extends Account implements AccountRole, TransferMoneySourceRole{
 	public LiabilityAccount(String name, int accountID, int userID, 
-			double startingBalance, ProductTypes productCategory) {
+			double startingBalance, AccountTypes productCategory) {
 		super(name, accountID, userID, startingBalance, productCategory);
 	}
 	

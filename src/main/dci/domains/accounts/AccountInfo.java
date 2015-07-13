@@ -4,7 +4,7 @@ package main.dci.domains.accounts;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-import main.dci.domains.products.ProductTypes;
+import main.dci.domains.accounts.types.AccountTypes;
 
 @ToString(includeFieldNames=true)
 @AllArgsConstructor
@@ -13,6 +13,6 @@ public class AccountInfo {
 	@Getter private int accountID;
 	@Getter private int userID;
 	@Getter private double startingBalance;
-	private ProductTypes productCategory;
+	private AccountTypes productCategory;
 }
 	
