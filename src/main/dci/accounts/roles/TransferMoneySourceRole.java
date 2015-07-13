@@ -9,8 +9,10 @@ import main.dci.accounts.contexts.AccountWithDrawContext;
 import main.dci.accounts.contexts.PayBillsContext;
 import main.dci.accounts.contexts.TransferMoneyContext;
 import main.dci.contexts.ContextResult;
+import main.dci.domains.accounts.BasicAccount;
+import main.dci.roles.Roler;
 
-public interface TransferMoneySourceRole extends BasicAccountRole {	
+public interface TransferMoneySourceRole extends Roler, BasicAccount {	
 	
 	default Stream<ContextResult> transfer(TransferMoneyContext ctx) {
 		

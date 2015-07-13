@@ -1,14 +1,11 @@
-package main.dci.accounts.roles;
+package main.dci.domains.accounts;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import main.dci.domains.accounts.AccountActions;
-import main.dci.domains.accounts.AccountInfo;
 import main.dci.domains.entries.EntryItem;
-import main.dci.roles.Roler;
 
-public interface BasicAccountRole extends Roler {
+public interface BasicAccount {
 	AccountInfo getAccountInfo();
 	ArrayList<EntryItem> getEntries();
 	void recordTransaction(double amount, String msg, AccountActions actions);
