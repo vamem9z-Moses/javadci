@@ -30,7 +30,7 @@ public class PayBillsContextTest {
 		};
 	}
 		
-	@Test(dataProvider="testData")
+	@Test(dataProvider="testData", groups={"unit"})
 	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, ContextResult expectedResult,
 			 double sourceExpected, double vendor1Expected, double vendor2Expected, String testMsg ) {
 		

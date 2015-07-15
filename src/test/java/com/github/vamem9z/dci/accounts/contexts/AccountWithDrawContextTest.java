@@ -29,7 +29,7 @@ public class AccountWithDrawContextTest {
     	};
     }
 
-    @Test(dataProvider="account test data")
+    @Test(dataProvider="account test data", groups={"unit"})
 	public void test(AccountRole account, ContextResult expectedResult, 
 			double amount, double expected, String msg) {
     	

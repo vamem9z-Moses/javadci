@@ -28,7 +28,7 @@ public class TransferMoneyContextTest {
 		};
 	}
 		
-	@Test(dataProvider="testData")
+	@Test(dataProvider="testData", groups={"unit"})
 	public void test(TransferMoneySourceRole sourceAccount, AccountRole destAccount, 
 			ContextResult expectedResult,double amount, double sourceExpected, 
 			double destExpected, String testMsg ) {
