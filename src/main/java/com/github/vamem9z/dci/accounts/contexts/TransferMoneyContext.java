@@ -3,13 +3,11 @@ package main.java.com.github.vamem9z.dci.accounts.contexts;
 import java.util.stream.Stream;
 
 import lombok.Getter;
-import lombok.ToString;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
 import main.java.com.github.vamem9z.dci.contexts.Contexter;
 import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 
-@ToString(includeFieldNames=true)
 public class TransferMoneyContext implements Contexter {
 	@Getter private TransferMoneySourceRole sourceAccount;
 	@Getter private AccountRole destAccount;

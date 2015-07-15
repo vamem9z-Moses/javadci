@@ -6,15 +6,11 @@ import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeS
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.SavingsAccount;
 import main.java.com.github.vamem9z.dci.domains.entries.CreditEntryItem;
 import main.java.com.github.vamem9z.dci.domains.entries.DebitEntryItem;
 import main.java.com.github.vamem9z.dci.domains.entries.EntryItem;
 
-@NoArgsConstructor
-@ToString
 public class BasicAccountRoleTest {
 
 	private static CreditEntryItem creditEntryItem = new CreditEntryItem(123, "Test Credit transaction", 
