@@ -3,24 +3,24 @@
 <suite name="Domain Suite" parallel="none">
   <test name="Account Domain Test">
     <classes>
-      <class name="test.dci.domains.AccountDomainTest"/>
+      <class name="test.java.com.github.vamem9z.dci.accounts.roles.BasicAccountRoleTest"/>
     </classes>
   </test> <!-- Account Domain Test -->
 </suite> <!-- Domain Suite -->
 <suite name="Context Suit" parellel="none">
 	<test name="Transfer Context Test">
 		<classes>
-			<clase name="test.dci.contexts.TransferMoneyContextTest"/>
+			<clase name="test.java.com.github.vamem9z.dci.accounts.contexts.TransferMoneyContextTest"/>
 		</classes>
 	</test>
 	<test name="Withdraw Context Test">
 		<classes>
-			<clase name="test.dci.contexts.AccountWithdrawContextTest"/>
+			<clase name="test.java.com.github.vamem9z.dci.accounts.contexts.AccountWithdrawContextTest"/>
 		</classes>
 	</test>
 	<test name="Deposit Context Test">
 		<classes>
-			<clase name="test.dci.contexts.AccountDepositContextTest"/>
+			<clase name="test.java.com.github.vamem9z.dci.accounts.contexts.AccountDepositContextTest"/>
 		</classes>
 	</test>
 </suite>
