@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.contexts.PayBillsContext;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
 
 @NoArgsConstructor
 public class PayBillsContextTest {
@@ -26,7 +27,7 @@ public class PayBillsContextTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			{makeCheckingAccount(1000.34), creditors, ContextResult.SUCCESS, 483.92, 0, 0, "2 liability accounts"},
+			{makeCheckingAccount(1000.34), creditors, new Success(), 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		

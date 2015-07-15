@@ -14,7 +14,9 @@ import org.testng.annotations.Test;
 import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.contexts.AccountWithDrawContext;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
+import main.java.com.github.vamem9z.dci.contexts.results.accounts.NegativeAmountNotAllowed;
 
 @NoArgsConstructor
 public class AccountWithDrawContextTest {
@@ -22,10 +24,10 @@ public class AccountWithDrawContextTest {
     @DataProvider(name="account test data")
     public Object[][] data() {
     	return new Object[][] {
-    			{makeCheckingAccount(1000.34), ContextResult.SUCCESS, 400.00, 600.34, "Credit Account Withdraw Test"},
-    			{makeVendorAccount(1000.34), ContextResult.SUCCESS, 400.00, 1400.34, "Deposit Account Withdraw Test"},
-    			{makeSavingsAccount(1000.34), ContextResult.FAILURE, -400.00, 1000.34, "Negative Amount Credit Account Withdraw Test"},
-    			{makeVendorAccount(1000.34), ContextResult.FAILURE, -400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"}
+    			{makeCheckingAccount(1000.34), new Success(), 400.00, 600.34, "Credit Account Withdraw Test"},
+    			{makeVendorAccount(1000.34), new Success(), 400.00, 1400.34, "Deposit Account Withdraw Test"},
+    			{makeSavingsAccount(1000.34), new NegativeAmountNotAllowed(), -400.00, 1000.34, "Negative Amount Credit Account Withdraw Test"},
+    			{makeVendorAccount(1000.34), new NegativeAmountNotAllowed(), -400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"}
     	};
     }
 

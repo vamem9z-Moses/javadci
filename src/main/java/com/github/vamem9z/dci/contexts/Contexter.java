@@ -5,6 +5,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
 import main.java.com.github.vamem9z.dci.rules.Ruler;
 
 public interface Contexter {
@@ -19,10 +21,10 @@ public interface Contexter {
 		ArrayList<ContextResult> rulesResults = this.applyRules(rules)
 				.collect(Collectors.toCollection(ArrayList::new));
 
-		if(rulesResults.stream().allMatch(r -> r == ContextResult.SUCCESS)) {
+		if(rulesResults.stream().allMatch(r -> r instanceof Success)) {
 			return roleAction.apply(ctx);
 		}
-		return rulesResults.stream().filter(r -> r != ContextResult.SUCCESS);
+		return rulesResults.stream().filter(r -> !(r instanceof Success));
 	}
 	
 	Stream<ContextResult> execute();

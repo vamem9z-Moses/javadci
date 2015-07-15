@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.contexts.TransferMoneyContext;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
 
 @NoArgsConstructor
 public class TransferMoneyContextTest {
@@ -23,8 +24,8 @@ public class TransferMoneyContextTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			{makeCheckingAccount(1000.34), makeSavingsAccount(921.23), ContextResult.SUCCESS, 300.00, 700.34, 1221.23, "asset to asset transfer"},
-			{makeVendorAccount(394.30), makeVendorAccount(122.21), ContextResult.SUCCESS, 300.00, 694.30, -177.79, "reset test"},
+			{makeCheckingAccount(1000.34), makeSavingsAccount(921.23), new Success(), 300.00, 700.34, 1221.23, "asset to asset transfer"},
+			{makeVendorAccount(394.30), makeVendorAccount(122.21), new Success(), 300.00, 694.30, -177.79, "reset test"},
 		};
 	}
 		

@@ -9,12 +9,16 @@ import lombok.ToString;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
 import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
 import main.java.com.github.vamem9z.dci.contexts.Contexter;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.rules.Ruler;
 
 @ToString(includeFieldNames=true)
-public class AccountWithDrawContext implements Contexter {
+public class AccountWithDrawContext implements Contexter, BalanceChangerContexter {
+	/*
+	 * Returns a Stream with following possible ContextResult type SUCCESS and
+	 * NEGATIVEMAOUNTNOTALLOWED.
+	 */
 	@Getter private AccountRole account;
 	@Getter private double amount;
 	@Getter private String message;
@@ -25,9 +29,7 @@ public class AccountWithDrawContext implements Contexter {
 		this.amount = amount;
 		this.message = message;
 		this.rules = new ArrayList<Ruler>(Arrays.asList(
-				new NoNegativeAmountsRule(), 
-				new AccountProtectionRule()
-				));
+				new NoNegativeAmountsRule(), new AccountProtectionRule()));
 	}
 	
 	public Stream<ContextResult>execute(){

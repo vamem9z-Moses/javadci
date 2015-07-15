@@ -8,7 +8,8 @@ import main.java.com.github.vamem9z.dci.accounts.contexts.AccountDepositContext;
 import main.java.com.github.vamem9z.dci.accounts.contexts.AccountWithDrawContext;
 import main.java.com.github.vamem9z.dci.accounts.contexts.PayBillsContext;
 import main.java.com.github.vamem9z.dci.accounts.contexts.TransferMoneyContext;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
 import main.java.com.github.vamem9z.dci.domains.accounts.BasicAccount;
 import main.java.com.github.vamem9z.dci.roles.Roler;
 
@@ -32,7 +33,7 @@ public interface TransferMoneySourceRole extends Roler, BasicAccount {
 				ctx.getDestAccount(), ctx.getAmount(), depositMsg);
 		accDepCtx.execute();
 		
-		return returnResults(ContextResult.SUCCESS);
+		return returnResults(new Success());
 	}
 	
 	default Stream<ContextResult> payBill(TransferMoneySourceRole source, 

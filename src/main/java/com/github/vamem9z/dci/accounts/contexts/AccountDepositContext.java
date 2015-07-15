@@ -8,12 +8,12 @@ import lombok.Getter;
 import lombok.ToString;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
 import main.java.com.github.vamem9z.dci.contexts.Contexter;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.rules.Ruler;
 
 @ToString(includeFieldNames=true)
-public class AccountDepositContext implements Contexter {
+public class AccountDepositContext implements Contexter, BalanceChangerContexter {
 	@Getter private AccountRole account;
 	@Getter private double amount;
 	@Getter private String message;
@@ -28,5 +28,6 @@ public class AccountDepositContext implements Contexter {
 	
 	public Stream<ContextResult> execute() {
 		return execute(this, (Contexter ctx) -> this.account.deposit((AccountDepositContext) ctx), this.rules);
+
 	}
 }

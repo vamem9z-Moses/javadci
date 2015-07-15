@@ -14,7 +14,9 @@ import org.testng.annotations.Test;
 import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.contexts.AccountDepositContext;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
+import main.java.com.github.vamem9z.dci.contexts.results.Success;
+import main.java.com.github.vamem9z.dci.contexts.results.accounts.NegativeAmountNotAllowed;
 
 @NoArgsConstructor
 public class AccountDepositContextTest {
@@ -22,10 +24,10 @@ public class AccountDepositContextTest {
     @DataProvider(name="account test data")
     public Object[][] data() {
     	return new Object[][] {
-    			{makeCheckingAccount(1000.34), ContextResult.SUCCESS,  400.00, 1400.34, "Credit Account Deposit Test"},
-    			{makeVendorAccount(1000.34), ContextResult.SUCCESS, 400.00, 600.34, "Deposit Account Deposit Test"},
-    			{makeSavingsAccount(200.34), ContextResult.FAILURE, -200.00, 200.34, "Credit Account Negative Amount"},
-    			{makeVendorAccount(2000.34), ContextResult.FAILURE, -400.00, 2000.34, "Deposit Account Deposit Test"}
+    			{makeCheckingAccount(1000.34), new Success(), 400.00, 1400.34, "Credit Account Deposit Test"},
+    			{makeVendorAccount(1000.34), new Success(), 400.00, 600.34, "Debit Account Deposit Test"},
+    			{makeSavingsAccount(200.34), new NegativeAmountNotAllowed(), -200.00, 200.34, "Credit Account Negative Amount"},
+    			{makeVendorAccount(2000.34), new NegativeAmountNotAllowed(), -400.00, 2000.34, "DebitAccount Deposit Test"}
     	};
     }
 

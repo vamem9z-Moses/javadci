@@ -3,8 +3,8 @@ package test.java.com.github.vamem9z.dci.accounts;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import main.java.com.github.vamem9z.dci.contexts.ContextResult;
 import main.java.com.github.vamem9z.dci.contexts.Contexter;
+import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.CheckingAccount;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.SavingsAccount;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.VendorAccount;
