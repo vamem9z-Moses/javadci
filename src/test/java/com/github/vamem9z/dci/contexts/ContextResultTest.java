@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.products.contexts.results;
+package test.java.com.github.vamem9z.dci.contexts;
 
 import static org.testng.Assert.assertEquals;
 

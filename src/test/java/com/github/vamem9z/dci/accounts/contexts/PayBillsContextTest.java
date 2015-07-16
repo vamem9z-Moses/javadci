@@ -27,7 +27,7 @@ public class PayBillsContextTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			{makeCheckingAccount(1000.34), creditors, new Success(), 483.92, 0, 0, "2 liability accounts"},
+			new Object[]{makeCheckingAccount(1000.34), creditors, new Success(), 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		
