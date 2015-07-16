@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.roles;
+package test.java.com.github.vamem9z.dci.accounts.roles;
 
 import static org.testng.Assert.assertEquals;
 import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeSavingsAccount;
@@ -21,12 +21,12 @@ public class BasicAccountRoleTest {
 	@DataProvider(name="account test data")
 	public Object[][] data(){
 		return new Object[][] {
-			{creditEntryItem, 300.23, "Credit Test"}, 
-			{debitEntryItem, -143.00, "Debit Test"}
+			new Object[] {creditEntryItem, 300.23, "Credit Test"}, 
+			new Object[] {debitEntryItem, -143.00, "Debit Test"}
 		};
 	}
 
-	@Test(dataProvider="account test data",groups={"unit"})
+	@Test(groups = {"unit"}, dataProvider="account test data")
 	public void testGetBalance(EntryItem entryItem, double expected, String testMessage) {
 		SavingsAccount acct = makeSavingsAccount(100.23);
 		acct.getEntries().add(entryItem);

@@ -24,10 +24,10 @@ public class AccountDepositContextTest {
     @DataProvider(name="account test data")
     public Object[][] data() {
     	return new Object[][] {
-    			{makeCheckingAccount(1000.34), new Success(), 400.00, 1400.34, "Credit Account Deposit Test"},
-    			{makeVendorAccount(1000.34), new Success(), 400.00, 600.34, "Debit Account Deposit Test"},
-    			{makeSavingsAccount(200.34), new NegativeAmountNotAllowed(), -200.00, 200.34, "Credit Account Negative Amount"},
-    			{makeVendorAccount(2000.34), new NegativeAmountNotAllowed(), -400.00, 2000.34, "DebitAccount Deposit Test"}
+    			new Object[] {makeCheckingAccount(1000.34), new Success(), 400.00, 1400.34, "Credit Account Deposit Test"},
+    			new Object[] {makeVendorAccount(1000.34), new Success(), 400.00, 600.34, "Debit Account Deposit Test"},
+    			new Object[] {makeSavingsAccount(200.34), new NegativeAmountNotAllowed(), -200.00, 200.34, "Credit Account Negative Amount"},
+    			new Object[] {makeVendorAccount(2000.34), new NegativeAmountNotAllowed(), -400.00, 2000.34, "DebitAccount Deposit Test"}
     	};
     }
 
