@@ -35,11 +35,11 @@ public class AccountWithDrawContextTest {
 	public void test(AccountRole account, ContextResult expectedResult, 
 			double amount, double expected, String msg) {
     	
-    	ArrayList<ContextResult> errors = runContext(new AccountWithDrawContext(
-    			account,amount, msg));
-    	
-		assertEquals(account.getBalance(), expected, 0.00, msg);
-		assertEquals(errors.size(),1);
-		assertEquals(errors.get(0), expectedResult);
+            ArrayList<ContextResult> errors = runContext(new AccountWithDrawContext(
+                account,amount, msg));
+		
+                assertEquals(errors.get(0), expectedResult);    	
+                assertEquals(account.getBalance(), expected, 0.00, msg);
+                assertEquals(errors.size(),1);
 	}
 }
