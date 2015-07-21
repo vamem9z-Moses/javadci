@@ -23,4 +23,21 @@ public class TransferMoneyContext implements Contexter {
 	public Stream<ContextResult> execute() {
 		return this.sourceAccount.transfer(this);
 	}
+	
+	public AccountWithDrawContext createWithDrawCtx() {
+		return new AccountWithDrawContext((AccountRole)this.sourceAccount, 
+				this.amount, createMsg());
+		
+	}
+	
+	public AccountDepositContext createDepCtx() {
+		return new AccountDepositContext(this.destAccount, this.amount, createMsg());
+		
+	}
+	
+	private String createMsg() {
+		return String.format("Transfer From %s to Transfer %s", 
+				sourceAccount.printAccountID(), destAccount.printAccountID()); 
+	}
+	
 }

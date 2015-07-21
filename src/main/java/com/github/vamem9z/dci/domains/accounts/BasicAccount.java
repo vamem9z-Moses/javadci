@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import main.java.com.github.vamem9z.dci.domains.entries.EntryItem;
 
 public interface BasicAccount {
+	String printAccountID();
 	AccountInfo getAccountInfo();
 	ArrayList<EntryItem> getEntries();
 	void recordTransaction(double amount, String msg, AccountActions actions);
@@ -32,4 +33,5 @@ public interface BasicAccount {
 		
 		return precisionBalance;
 	}
+
 }

@@ -41,7 +41,7 @@ public class PayBillsContextTest {
 		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);
 		assertEquals(creditors.get(0).calcBalance(), vendor1Expected, 0, testMsg);	
 		assertEquals(creditors.get(1).calcBalance(), vendor2Expected, 0, testMsg);
-		assertEquals(errors.size(), creditors.size());
+		assertEquals(errors.size(), 2 * creditors.size());
 		errors.stream().forEach(err -> assertEquals(err, expectedResult));
 	}
 }

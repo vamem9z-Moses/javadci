@@ -39,7 +39,7 @@ public class TransferMoneyContextTest {
 		
 		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);
 		assertEquals(destAccount.calcBalance(), destExpected, 0, testMsg);
-		assertEquals(errors.size(), 1);
-		assertEquals(errors.get(0), expectedResult);
+		assertEquals(errors.size(), 2);
+		errors.stream().forEach(err -> assertEquals(err, expectedResult));
 	}
 }

@@ -23,4 +23,7 @@ public abstract class Account {
 		this.entries = new ArrayList<EntryItem>();
 	}
 	
+	public String printAccountID() {
+		return this.accountInfo.printAccountID();
+	}
 }

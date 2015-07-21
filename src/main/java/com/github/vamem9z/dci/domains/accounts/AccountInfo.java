@@ -14,5 +14,9 @@ public class AccountInfo {
 	@Getter private int userID;
 	@Getter private double startingBalance;
 	private AccountTypes productCategory;
+	
+	public String printAccountID() {
+		return String.valueOf(accountID);
+	}
 }
 	

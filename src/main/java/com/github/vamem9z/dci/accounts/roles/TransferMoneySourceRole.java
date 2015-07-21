@@ -9,7 +9,6 @@ import main.java.com.github.vamem9z.dci.accounts.contexts.AccountWithDrawContext
 import main.java.com.github.vamem9z.dci.accounts.contexts.PayBillsContext;
 import main.java.com.github.vamem9z.dci.accounts.contexts.TransferMoneyContext;
 import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
-import main.java.com.github.vamem9z.dci.contexts.results.Success;
 import main.java.com.github.vamem9z.dci.domains.accounts.BasicAccount;
 import main.java.com.github.vamem9z.dci.roles.Roler;
 
@@ -17,23 +16,13 @@ public interface TransferMoneySourceRole extends Roler, BasicAccount {
 	
 	default Stream<ContextResult> transfer(TransferMoneyContext ctx) {
 		
-		String withDrawMsg = String.format("Transfer Out %d to Transfer %d", 
-				ctx.getSourceAccount().getAccountInfo().getAccountID(),
-				ctx.getDestAccount().getAccountInfo().getAccountID());
+		AccountWithDrawContext accWithCtx = ctx.createWithDrawCtx();
+		Stream<ContextResult> withResult = accWithCtx.execute();
 		
-		String depositMsg = String.format("Transfer Out %d to Transfer %d", 
-				ctx.getDestAccount().getAccountInfo().getAccountID(),
-				ctx.getSourceAccount().getAccountInfo().getAccountID());
+		AccountDepositContext accDepCtx = ctx.createDepCtx();
+		Stream<ContextResult> depResult = accDepCtx.execute();
 		
-		AccountWithDrawContext accWithCtx  = new AccountWithDrawContext(
-				(AccountRole)ctx.getSourceAccount(), ctx.getAmount(), withDrawMsg);
-		accWithCtx.execute();
-				
-		AccountDepositContext accDepCtx = new AccountDepositContext(
-				ctx.getDestAccount(), ctx.getAmount(), depositMsg);
-		accDepCtx.execute();
-		
-		return returnResults(new Success());
+		return Stream.concat(withResult, depResult);
 	}
 	
 	default Stream<ContextResult> payBill(TransferMoneySourceRole source, 
