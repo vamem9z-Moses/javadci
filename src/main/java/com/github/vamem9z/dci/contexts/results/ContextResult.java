@@ -9,4 +9,12 @@ import lombok.NoArgsConstructor;
 public abstract class ContextResult { 
 	@Getter protected String name;
 	@Getter protected int code;
+        @Getter protected String message;
+        
+        public static boolean isFailure(ContextResult ctx) {
+            if (ctx instanceof Failure) {
+                return true;
+            }
+            return false;
+        }
 }
