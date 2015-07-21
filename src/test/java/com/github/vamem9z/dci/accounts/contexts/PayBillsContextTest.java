@@ -38,9 +38,9 @@ public class PayBillsContextTest {
 		ArrayList<ContextResult> errors = runContext(new PayBillsContext(
     			sourceAccount, creditors));
 		
-		assertEquals(sourceAccount.getBalance(), sourceExpected, 0, testMsg);
-		assertEquals(creditors.get(0).getBalance(), vendor1Expected, 0, testMsg);	
-		assertEquals(creditors.get(1).getBalance(), vendor2Expected, 0, testMsg);
+		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);
+		assertEquals(creditors.get(0).calcBalance(), vendor1Expected, 0, testMsg);	
+		assertEquals(creditors.get(1).calcBalance(), vendor2Expected, 0, testMsg);
 		assertEquals(errors.size(), creditors.size());
 		errors.stream().forEach(err -> assertEquals(err, expectedResult));
 	}

@@ -39,7 +39,7 @@ public class AccountWithDrawContextTest {
                 account,amount, msg));
 		
                 assertEquals(errors.get(0), expectedResult);    	
-                assertEquals(account.getBalance(), expected, 0.00, msg);
+                assertEquals(account.calcBalance(), expected, 0.00, msg);
                 assertEquals(errors.size(),1);
 	}
 }

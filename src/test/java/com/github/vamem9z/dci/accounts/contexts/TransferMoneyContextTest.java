@@ -37,8 +37,8 @@ public class TransferMoneyContextTest {
 		ArrayList<ContextResult> errors = runContext(new TransferMoneyContext(
     			sourceAccount, destAccount, amount));
 		
-		assertEquals(sourceAccount.getBalance(), sourceExpected, 0, testMsg);
-		assertEquals(destAccount.getBalance(), destExpected, 0, testMsg);
+		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);
+		assertEquals(destAccount.calcBalance(), destExpected, 0, testMsg);
 		assertEquals(errors.size(), 1);
 		assertEquals(errors.get(0), expectedResult);
 	}

@@ -30,6 +30,6 @@ public class BasicAccountRoleTest {
 	public void testGetBalance(EntryItem entryItem, double expected, String testMessage) {
 		SavingsAccount acct = makeSavingsAccount(100.23);
 		acct.getEntries().add(entryItem);
-		assertEquals(acct.getBalance(), expected, 0.00, testMessage);
+		assertEquals(acct.calcBalance(), expected, 0.00, testMessage);
 	}
 }

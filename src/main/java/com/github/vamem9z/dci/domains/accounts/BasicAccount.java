@@ -10,7 +10,7 @@ public interface BasicAccount {
 	ArrayList<EntryItem> getEntries();
 	void recordTransaction(double amount, String msg, AccountActions actions);
 	
-	default double getBalance() {
+	default double calcBalance() {
 		double balance = this.getAccountInfo().getStartingBalance();
 		
 		balance = this.getEntries().stream().reduce(balance, 

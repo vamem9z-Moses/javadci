@@ -14,7 +14,7 @@ import main.java.com.github.vamem9z.dci.roles.Roler;
 public interface InterestCalculatorRole extends Roler, ProductAccounter {
 	default Stream<ContextResult> calculateInterest(CalculateInterestContext ctx){
 		
-		double interestAmt = ctx.calc.getAccount().getBalance()/(ctx.timePeriod.period);
+		double interestAmt = ctx.calc.getAccount().calcBalance()/(ctx.timePeriod.period);
 		ctx.calc.getAccount().recordTransaction(interestAmt, 
 				String.format("%s Interest", ctx.timePeriod.formattedName), 
 				AccountActions.DEPOSIT);

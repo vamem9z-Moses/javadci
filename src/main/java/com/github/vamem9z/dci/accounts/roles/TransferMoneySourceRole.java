@@ -39,7 +39,7 @@ public interface TransferMoneySourceRole extends Roler, BasicAccount {
 	default Stream<ContextResult> payBill(TransferMoneySourceRole source, 
 			AccountRole creditor) {
 		TransferMoneyContext tmctx = new TransferMoneyContext(
-				source, creditor, creditor.getBalance());	
+				source, creditor, creditor.calcBalance());	
 		return tmctx.execute();
 	}
 	
