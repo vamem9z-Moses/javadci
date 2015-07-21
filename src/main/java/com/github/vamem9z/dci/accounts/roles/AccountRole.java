@@ -12,15 +12,13 @@ import main.java.com.github.vamem9z.dci.roles.Roler;
 
 public interface AccountRole extends Roler, BasicAccount {
 	default Stream<ContextResult> deposit(AccountDepositContext ctx) {
-		ctx.getAccount().recordTransaction(ctx.getAmount(), ctx.getMessage(), 
-				AccountActions.DEPOSIT);
+		ctx.recordTransaction(AccountActions.DEPOSIT);
 		
 		return returnResults(new Success());	
 	}
 	
 	default Stream<ContextResult> withDraw(AccountWithDrawContext ctx) {
-		ctx.getAccount().recordTransaction(ctx.getAmount(), 
-				ctx.getMessage(), AccountActions.WITHDRAWAL);
+		ctx.recordTransaction(AccountActions.WITHDRAWAL);
 		
 		return returnResults(new Success());
 	}
