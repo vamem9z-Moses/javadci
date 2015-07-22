@@ -8,10 +8,10 @@ import main.java.com.github.vamem9z.dci.domains.accounts.types.AccountTypes;
 @ToString(includeFieldNames=true)
 @AllArgsConstructor
 public abstract class AbstractAccountInfo implements AccountInfo {
-	protected int accountId;
-	protected int customerId;
+	private final int accountId;
+	private final int customerId;
 	private final double startingBalance;
-	private AccountTypes productCategory;
+	private final AccountTypes productCategory;
 	
 	public final String printAccountID() {
 		return String.valueOf(this.accountId);

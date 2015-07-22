@@ -1,7 +1,12 @@
 package main.java.com.github.vamem9z.dci.domains.accounts;
 
+import main.java.com.github.vamem9z.dci.domains.entries.EntryItem;
+
 public interface Account {
-	String printAccountID();
-	void recordTransaction(double amount, String msg, AccountActions actions);
-	double calcBalance();
+	public String printAccountID();
+	public int accountId();
+	public void recordTransaction(double amount, String msg, AccountActions actions);
+	public void addEntryItem(EntryItem item);
+	public double calcBalance();
+	
 }

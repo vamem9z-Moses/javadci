@@ -4,8 +4,8 @@ import main.java.com.github.vamem9z.dci.domains.accounts.Account;
 import main.java.com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 
 public abstract class AbstractAccountProduct implements InterestCalculatorRole {
-	public final Account account;
-	public final double interestRate;
+	private final Account account;
+	private final double interestRate;
 	
 	public AbstractAccountProduct(Account account, double interestRate) {
 		super();

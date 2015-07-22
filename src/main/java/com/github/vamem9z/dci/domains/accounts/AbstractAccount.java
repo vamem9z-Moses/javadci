@@ -12,8 +12,8 @@ import main.java.com.github.vamem9z.dci.domains.entries.EntryItem;
 @ToString(includeFieldNames=true)
 public abstract class AbstractAccount implements Account, AccountRole, TransferMoneySourceRole {
 	
-	protected AccountInfo accountInfo;
-	protected ArrayList<EntryItem> entries;
+	private final AccountInfo accountInfo;
+	private final ArrayList<EntryItem> entries;
 
 	public AbstractAccount(AccountInfo acctInfo) {
 		super();	
@@ -40,6 +40,16 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 	@Override
 	public final String printAccountID() {
 		return this.accountInfo.printAccountID();
+	}
+	
+	@Override
+	public final int accountId() {
+		return this.accountInfo.accountId();
+	}
+	
+	@Override
+	public final void addEntryItem(EntryItem item) {
+		this.entries.add(item);
 	}
 	
 	@Override
