@@ -10,26 +10,26 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
-import main.java.com.github.vamem9z.dci.contexts.results.users.FoundUser;
-import main.java.com.github.vamem9z.dci.contexts.results.users.TooManyUsers;
-import main.java.com.github.vamem9z.dci.contexts.results.users.UserNotFound;
 import main.java.com.github.vamem9z.dci.domains.users.User;
+import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.usecases.results.users.FoundUser;
+import main.java.com.github.vamem9z.dci.usecases.results.users.TooManyUsers;
+import main.java.com.github.vamem9z.dci.usecases.results.users.UserNotFound;
 /**
  *
  * @author mmiles
  */
 @NoArgsConstructor
-public class UserDao {
+public final class UserDao {
     private static User Moses = new User(12, "Moses");
     private static User Kathy = new User(13, "Kathy");
     private static User David = new User(14, "David");
     private static User Vendor1 =  new User(15, "Vendor1");
     private static User Vendor2 = new User(16, "Vendor 2");
-    private static ArrayList<User>  users = new ArrayList(Arrays.asList(Moses, 
+    private static ArrayList<User>  users = new ArrayList<User>(Arrays.asList(Moses, 
             Kathy, David, Vendor1, Vendor2));
     
-    public ContextResult findUserByID(int id) {
+    public final UseCaseResult findUserByID(int id) {
         ArrayList<User> foundUsers = users.stream().filter(user -> user.id() == id).collect(Collectors.toCollection(ArrayList::new));
         if (foundUsers.isEmpty()) {
             return new UserNotFound();

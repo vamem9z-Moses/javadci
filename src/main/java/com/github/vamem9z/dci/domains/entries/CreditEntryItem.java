@@ -1,11 +1,11 @@
 package main.java.com.github.vamem9z.dci.domains.entries;
 
-public class CreditEntryItem extends EntryItem implements EntryItemer {
+public final class CreditEntryItem extends AbstractEntryItem implements EntryItem {
 	public CreditEntryItem(int accountID, String message, double amount) {
 		super(accountID, message, amount, TransactionTypes.CREDIT);
 	}
 	
-	public double transactionAmount() {
+	public final double transactionAmount() {
 		return this.amount;
 	}
 }

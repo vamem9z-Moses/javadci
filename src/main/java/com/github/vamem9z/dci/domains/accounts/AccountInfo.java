@@ -7,22 +7,22 @@ import main.java.com.github.vamem9z.dci.domains.accounts.types.AccountTypes;
 
 @ToString(includeFieldNames=true)
 @AllArgsConstructor
-public class AccountInfo {
+public final class AccountInfo {
 	private String name;
 	private int accountId;
 	private int userId;
 	private final double startingBalance;
 	private AccountTypes productCategory;
 	
-	public final String printAccountID() {
+	public String printAccountID() {
 		return String.valueOf(this.accountId);
 	}
 	
-	public final int accountId() {
+	public int accountId() {
 		return this.accountId;
 	}
 	
-	public final double startingBalance() {
+	public double startingBalance() {
 		return this.startingBalance;
 	}
 }

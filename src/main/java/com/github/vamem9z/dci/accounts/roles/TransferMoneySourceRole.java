@@ -4,37 +4,37 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.accounts.contexts.AccountDepositContext;
-import main.java.com.github.vamem9z.dci.accounts.contexts.AccountWithDrawContext;
-import main.java.com.github.vamem9z.dci.accounts.contexts.PayBillsContext;
-import main.java.com.github.vamem9z.dci.accounts.contexts.TransferMoneyContext;
-import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
-import main.java.com.github.vamem9z.dci.domains.accounts.BasicAccount;
-import main.java.com.github.vamem9z.dci.roles.Roler;
+import main.java.com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
+import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
+import main.java.com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
+import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
+import main.java.com.github.vamem9z.dci.domains.accounts.Account;
+import main.java.com.github.vamem9z.dci.roles.Role;
+import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
-public interface TransferMoneySourceRole extends Roler, BasicAccount {	
+public interface TransferMoneySourceRole extends Role, Account {	
 	
-	default Stream<ContextResult> transfer(TransferMoneyContext ctx) {
+	default Stream<UseCaseResult> transfer(TransferMoneyUseCase ctx) {
 		
-		AccountWithDrawContext accWithCtx = ctx.createWithDrawCtx();
-		Stream<ContextResult> withResult = accWithCtx.execute();
+		AccountWithdrawUseCase accWithCtx = ctx.createWithDrawCtx();
+		Stream<UseCaseResult> withResult = accWithCtx.execute();
 		
-		AccountDepositContext accDepCtx = ctx.createDepCtx();
-		Stream<ContextResult> depResult = accDepCtx.execute();
+		AccountDepositUseCase accDepCtx = ctx.createDepCtx();
+		Stream<UseCaseResult> depResult = accDepCtx.execute();
 		
 		return Stream.concat(withResult, depResult);
 	}
 	
-	default Stream<ContextResult> payBill(TransferMoneySourceRole source, 
+	default Stream<UseCaseResult> payBill(TransferMoneySourceRole source, 
 			AccountRole creditor) {
-		TransferMoneyContext tmctx = new TransferMoneyContext(
+		TransferMoneyUseCase tmctx = new TransferMoneyUseCase(
 				source, creditor, creditor.calcBalance());	
 		return tmctx.execute();
 	}
 	
-	default Stream<ContextResult> payBills(PayBillsContext ctx) {
+	default Stream<UseCaseResult> payBills(PayBillUseCase ctx) {
 		
-		ArrayList<ContextResult> errors = ctx.creditors().stream()
+		ArrayList<UseCaseResult> errors = ctx.creditors().stream()
 			.map(creditor ->  payBill(ctx.sourceAccount(), creditor))
 			.flatMap(x ->x).collect(Collectors.toCollection(ArrayList::new));
 		return errors.stream();
