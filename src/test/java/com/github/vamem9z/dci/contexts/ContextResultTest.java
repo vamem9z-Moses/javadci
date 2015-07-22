@@ -22,9 +22,9 @@ import main.java.com.github.vamem9z.dci.domains.users.User;
 public class ContextResultTest {
   @Test(dataProvider = "dp", groups={"unit"})
   public void testContextResults(ContextResult ctxResult, String expectedName, int expectedCode, 
-	  Class ctxResultParent) {
-	  assertEquals(ctxResult.getName(), expectedName);
-	  assertEquals(ctxResult.getCode(), expectedCode);
+	  Class<ContextResult> ctxResultParent) {
+	  assertEquals(ctxResult.name(), expectedName);
+	  assertEquals(ctxResult.code(), expectedCode);
 	  assertTrue(ctxResultParent.isInstance(ctxResult));
   }
   

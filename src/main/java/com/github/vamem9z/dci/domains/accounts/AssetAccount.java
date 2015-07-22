@@ -16,10 +16,10 @@ public abstract class AssetAccount extends Account implements AccountRole, Trans
 	public void recordTransaction(double amount, String msg, AccountActions actions) {
 		switch (actions) {
 			case DEPOSIT:
-				entries.add(new CreditEntryItem(this.accountInfo.getAccountID(), msg, amount));
+				entries.add(new CreditEntryItem(this.accountInfo.accountId(), msg, amount));
 				break;
 			case WITHDRAWAL:
-				entries.add(new DebitEntryItem(this.accountInfo.getAccountID(), msg, amount));
+				entries.add(new DebitEntryItem(this.accountInfo.accountId(), msg, amount));
 				break;
 		}		
 	}

@@ -15,10 +15,10 @@ public abstract class LiabilityAccount extends Account implements AccountRole, T
 	public void recordTransaction(double amount, String msg, AccountActions actions) {
 		switch (actions) {
 			case WITHDRAWAL:
-				entries.add(new CreditEntryItem(this.accountInfo.getAccountID(), msg, amount));
+				entries.add(new CreditEntryItem(this.accountInfo.accountId(), msg, amount));
 				break;
 			case DEPOSIT:
-				entries.add(new DebitEntryItem(this.accountInfo.getAccountID(), msg, amount));
+				entries.add(new DebitEntryItem(this.accountInfo.accountId(), msg, amount));
 				break;
 		}		
 	}
