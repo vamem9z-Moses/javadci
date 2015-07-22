@@ -35,10 +35,12 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 		return execute(this, ctx -> this.account.withDraw((AccountWithdrawUseCase)ctx), this.rules);
 	}
 	
+	@Override
 	public void recordTransaction(AccountActions action) {
 		this.account.recordTransaction(this.amount, this.message, action);
 	}
 	
+	@Override
 	public double transactionAmount() {
 		return this.amount;
 	}

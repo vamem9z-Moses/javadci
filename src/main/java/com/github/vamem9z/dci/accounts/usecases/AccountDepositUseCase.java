@@ -29,10 +29,12 @@ public final class AccountDepositUseCase implements UseCase, ChangeBalanceUseCas
 		return execute(this, (UseCase ctx) -> this.account.deposit((AccountDepositUseCase) ctx), this.rules);
 	}
 	
+	@Override
 	public void recordTransaction(AccountActions action) {
 		this.account.recordTransaction(this.amount, this.message, action);
 	}
 	
+	@Override
 	public double transactionAmount() {
 		return this.amount;
 	}

@@ -22,6 +22,7 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 		this.entries = new ArrayList<EntryItem>();
 	}
 	
+	@Override
 	public final double calcBalance() {
 		double balance = this.accountInfo.startingBalance();
 		
@@ -36,9 +37,11 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 		return precisionBalance;
 	}
 	
+	@Override
 	public final String printAccountID() {
 		return this.accountInfo.printAccountID();
 	}
 	
+	@Override
 	public abstract void recordTransaction(double amount, String msg, AccountActions actions);
 }
