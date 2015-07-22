@@ -15,7 +15,7 @@ public class NoNegativeAmountsRule implements Ruler {
 	@Override
 	public ContextResult action(Contexter ctx) {
 		try {
-			return amountLessThanZero(((BalanceChangerContexter) ctx).getAmount());
+			return amountLessThanZero(((BalanceChangerContexter) ctx).transactionAmount());
 		}
 		catch(ClassCastException e)
 		{

@@ -8,6 +8,7 @@ package main.java.com.github.vamem9z.dci.users;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
 import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.contexts.results.users.FoundUser;
@@ -29,7 +30,7 @@ public class UserDao {
             Kathy, David, Vendor1, Vendor2));
     
     public ContextResult findUserByID(int id) {
-        ArrayList<User> foundUsers = users.stream().filter(user -> user.getId() == id).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<User> foundUsers = users.stream().filter(user -> user.id() == id).collect(Collectors.toCollection(ArrayList::new));
         if (foundUsers.isEmpty()) {
             return new UserNotFound();
         }

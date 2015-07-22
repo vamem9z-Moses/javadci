@@ -1,16 +1,19 @@
 package main.java.com.github.vamem9z.dci.domains.users;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @EqualsAndHashCode
 @AllArgsConstructor
 public class User {
-    @Getter private int id;
-    @Getter private String name;        
+	private int id;
+    private String name;
+    
+    public final int id() {
+    	return this.id;
+    }
 }
 
 

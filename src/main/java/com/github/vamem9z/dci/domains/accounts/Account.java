@@ -9,6 +9,7 @@ import main.java.com.github.vamem9z.dci.domains.entries.EntryItemer;
 
 @ToString(includeFieldNames=true)
 public abstract class Account {
+	
 	protected AccountInfo accountInfo;
 	protected ArrayList<EntryItemer> entries;
 

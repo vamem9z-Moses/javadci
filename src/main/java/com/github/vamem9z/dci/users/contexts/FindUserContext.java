@@ -6,8 +6,8 @@
 package main.java.com.github.vamem9z.dci.users.contexts;
 
 import java.util.stream.Stream;
+
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import main.java.com.github.vamem9z.dci.contexts.Contexter;
 import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
@@ -18,9 +18,13 @@ import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
  */
 @AllArgsConstructor
 public class FindUserContext implements Contexter {
-    @Getter private UnknownUserRole user;
+    private UnknownUserRole user;
     
     public Stream<ContextResult> execute() {
         return user.findUser(this);
+    }
+    
+    public final UnknownUserRole user() {
+    	return this.user();
     }
 }

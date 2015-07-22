@@ -8,23 +8,24 @@ package main.java.com.github.vamem9z.dci.users.roles;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
+
 import main.java.com.github.vamem9z.dci.contexts.results.ContextResult;
 import main.java.com.github.vamem9z.dci.contexts.results.users.UserNotFound;
 import main.java.com.github.vamem9z.dci.roles.Roler;
-import main.java.com.github.vamem9z.dci.users.contexts.FindUserContext;
 import main.java.com.github.vamem9z.dci.users.UserDao;
+import main.java.com.github.vamem9z.dci.users.contexts.FindUserContext;
 
 /**
  *
  * @author mmiles
  */
 public interface UnknownUserRole extends Roler {
-    public int getId();
+    public int id();
     
     public default Stream<ContextResult> findUser(FindUserContext ctx) {
-        if (ctx.getUser().getId() > 0) {
+        if (ctx.user().id() > 0) {
             UserDao userDao = new UserDao();
-            ContextResult result = userDao.findUserByID(ctx.getUser().getId());
+            ContextResult result = userDao.findUserByID(ctx.user().id());
             return new ArrayList<ContextResult>(Arrays.asList(result)).stream();
         }
         return new ArrayList<ContextResult>(Arrays.asList(new UserNotFound())).stream();

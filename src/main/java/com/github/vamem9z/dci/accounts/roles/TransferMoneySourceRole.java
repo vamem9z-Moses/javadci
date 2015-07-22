@@ -34,8 +34,8 @@ public interface TransferMoneySourceRole extends Roler, BasicAccount {
 	
 	default Stream<ContextResult> payBills(PayBillsContext ctx) {
 		
-		ArrayList<ContextResult> errors = ctx.getCreditors().stream()
-			.map(creditor ->  payBill(ctx.getSourceAccount(), creditor))
+		ArrayList<ContextResult> errors = ctx.creditors().stream()
+			.map(creditor ->  payBill(ctx.sourceAccount(), creditor))
 			.flatMap(x ->x).collect(Collectors.toCollection(ArrayList::new));
 		return errors.stream();
 	}

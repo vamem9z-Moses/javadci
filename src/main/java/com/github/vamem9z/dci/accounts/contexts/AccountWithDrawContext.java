@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import lombok.Getter;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
 import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
@@ -18,9 +17,9 @@ public class AccountWithDrawContext implements Contexter, BalanceChangerContexte
 	 * Returns a Stream with following possible ContextResult type SUCCESS and
 	 * NEGATIVEMAOUNTNOTALLOWED.
 	 */
-	@Getter private AccountRole account;
-	@Getter private double amount;
-	@Getter private String message;
+	private AccountRole account;
+	private double amount;
+	private String message;
 	private ArrayList<Ruler> rules;
 	
 	public AccountWithDrawContext(AccountRole account, double amount, String message) {
@@ -35,8 +34,12 @@ public class AccountWithDrawContext implements Contexter, BalanceChangerContexte
 		return execute(this, ctx -> this.account.withDraw((AccountWithDrawContext)ctx), this.rules);
 	}
 	
-	public void recordTransaction(AccountActions action) {
+	public final void recordTransaction(AccountActions action) {
 		this.account.recordTransaction(this.amount, this.message, action);
+	}
+	
+	public final double transactionAmount() {
+		return this.amount;
 	}
 }
 
