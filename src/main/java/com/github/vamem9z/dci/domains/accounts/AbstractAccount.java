@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import lombok.ToString;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import main.java.com.github.vamem9z.dci.domains.accounts.types.AccountTypes;
+import main.java.com.github.vamem9z.dci.domains.accountinfo.AccountInfo;
 import main.java.com.github.vamem9z.dci.domains.entries.EntryItem;
 
 @ToString(includeFieldNames=true)
@@ -15,17 +15,11 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 	protected AccountInfo accountInfo;
 	protected ArrayList<EntryItem> entries;
 
-	public AbstractAccount(String name, int accountID, int userID, 
-			double startingBalance, AccountTypes productCategory) {
+	public AbstractAccount(AccountInfo acctInfo) {
 		super();	
-		this.accountInfo = new AccountInfo(name, accountID, userID, 
-				startingBalance, productCategory);
+		this.accountInfo = acctInfo;
 		
 		this.entries = new ArrayList<EntryItem>();
-	}
-	
-	public final String printAccountID() {
-		return this.accountInfo.printAccountID();
 	}
 	
 	public final double calcBalance() {
@@ -40,6 +34,10 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 				setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		
 		return precisionBalance;
+	}
+	
+	public final String printAccountID() {
+		return this.accountInfo.printAccountID();
 	}
 	
 	public abstract void recordTransaction(double amount, String msg, AccountActions actions);

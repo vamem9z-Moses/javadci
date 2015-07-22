@@ -1,13 +1,12 @@
 package main.java.com.github.vamem9z.dci.domains.accounts;
 
-import main.java.com.github.vamem9z.dci.domains.accounts.types.AccountTypes;
+import main.java.com.github.vamem9z.dci.domains.accountinfo.AccountInfo;
 import main.java.com.github.vamem9z.dci.domains.entries.CreditEntryItem;
 import main.java.com.github.vamem9z.dci.domains.entries.DebitEntryItem;
 
 public abstract class AbstractLiabilityAccount extends AbstractAccount {
-	public AbstractLiabilityAccount(String name, int accountID, int userID, 
-			double startingBalance, AccountTypes productCategory) {
-		super(name, accountID, userID, startingBalance, productCategory);
+	public AbstractLiabilityAccount(AccountInfo acctInfo) {
+		super(acctInfo);
 	}
 	
 	@Override

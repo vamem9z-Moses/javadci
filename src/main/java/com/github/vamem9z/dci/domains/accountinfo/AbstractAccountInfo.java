@@ -1,4 +1,4 @@
-package main.java.com.github.vamem9z.dci.domains.accounts;
+package main.java.com.github.vamem9z.dci.domains.accountinfo;
 
 
 import lombok.AllArgsConstructor;
@@ -7,22 +7,21 @@ import main.java.com.github.vamem9z.dci.domains.accounts.types.AccountTypes;
 
 @ToString(includeFieldNames=true)
 @AllArgsConstructor
-public final class AccountInfo {
-	private String name;
-	private int accountId;
-	private int userId;
+public abstract class AbstractAccountInfo implements AccountInfo {
+	protected int accountId;
+	protected int customerId;
 	private final double startingBalance;
 	private AccountTypes productCategory;
 	
-	public String printAccountID() {
+	public final String printAccountID() {
 		return String.valueOf(this.accountId);
 	}
 	
-	public int accountId() {
+	public final int accountId() {
 		return this.accountId;
 	}
 	
-	public double startingBalance() {
+	public final double startingBalance() {
 		return this.startingBalance;
 	}
 }
