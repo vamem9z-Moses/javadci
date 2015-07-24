@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
 import main.java.com.github.vamem9z.dci.usecases.results.accounts.NegativeAmountNotAllowed;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 
 @NoArgsConstructor
 public class AccountWithdrawUseCaseTest {
@@ -24,8 +24,8 @@ public class AccountWithdrawUseCaseTest {
     @DataProvider(name="account test data")
     public Object[][] data() {
     	return new Object[][] {
-    			new Object[] {makeCheckingAccount(1000.34), new Success(), 400.00, 600.34, "Credit Account Withdraw Test"},
-    			new Object[] {makeVendorAccount(1000.34), new Success(), 400.00, 1400.34, "Deposit Account Withdraw Test"},
+    			new Object[] {makeCheckingAccount(1000.34), new Successful(), 400.00, 600.34, "Credit Account Withdraw Test"},
+    			new Object[] {makeVendorAccount(1000.34), new Successful(), 400.00, 1400.34, "Deposit Account Withdraw Test"},
     			new Object[] {makeSavingsAccount(1000.34), new NegativeAmountNotAllowed(), -400.00, 1000.34, "Negative Amount Credit Account Withdraw Test"},
     			new Object[] {makeVendorAccount(1000.34), new NegativeAmountNotAllowed(), -400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"}
     	};

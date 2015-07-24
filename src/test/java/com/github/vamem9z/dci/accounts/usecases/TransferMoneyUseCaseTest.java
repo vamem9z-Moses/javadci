@@ -16,7 +16,7 @@ import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 
 @NoArgsConstructor
 public class TransferMoneyUseCaseTest {
@@ -24,8 +24,8 @@ public class TransferMoneyUseCaseTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			new Object[]{makeCheckingAccount(1000.34), makeSavingsAccount(921.23), new Success(), 300.00, 700.34, 1221.23, "asset to asset transfer"},
-			new Object[]{makeVendorAccount(394.30), makeVendorAccount(122.21), new Success(), 300.00, 694.30, -177.79, "reset test"},
+			new Object[]{makeCheckingAccount(1000.34), makeSavingsAccount(921.23), new Successful(), 300.00, 700.34, 1221.23, "asset to asset transfer"},
+			new Object[]{makeVendorAccount(394.30), makeVendorAccount(122.21), new Successful(), 300.00, 694.30, -177.79, "reset test"},
 		};
 	}
 		

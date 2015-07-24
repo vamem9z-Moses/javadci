@@ -4,8 +4,8 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
 import main.java.com.github.vamem9z.dci.rules.Rule;
 import main.java.com.github.vamem9z.dci.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 
 @NoArgsConstructor
 public final class AccountProtectionRule implements Rule {
@@ -14,6 +14,6 @@ public final class AccountProtectionRule implements Rule {
 		if (ctx instanceof AccountWithdrawUseCase) {
 			
 		}
-		return new Success();
+		return new Successful();
 	}
 }

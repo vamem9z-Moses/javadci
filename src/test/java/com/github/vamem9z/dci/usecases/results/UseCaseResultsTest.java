@@ -10,23 +10,28 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import main.java.com.github.vamem9z.dci.domains.users.User;
-import main.java.com.github.vamem9z.dci.usecases.results.Failure;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.WrongContext;
+import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResultTypes;
+import main.java.com.github.vamem9z.dci.usecases.results.accounts.AccountResult;
 import main.java.com.github.vamem9z.dci.usecases.results.accounts.NegativeAmountNotAllowed;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Failed;
+import main.java.com.github.vamem9z.dci.usecases.results.general.GeneralResult;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
+import main.java.com.github.vamem9z.dci.usecases.results.general.WrongContext;
 import main.java.com.github.vamem9z.dci.usecases.results.products.CalculatedInterest;
+import main.java.com.github.vamem9z.dci.usecases.results.products.ProductResult;
 import main.java.com.github.vamem9z.dci.usecases.results.users.FoundUser;
 import main.java.com.github.vamem9z.dci.usecases.results.users.TooManyUsers;
 import main.java.com.github.vamem9z.dci.usecases.results.users.UserNotFound;
+import main.java.com.github.vamem9z.dci.usecases.results.users.UserResult;
 
 public class UseCaseResultsTest {
   @Test(dataProvider = "dp", groups={"unit"})
-  public void testContextResults(UseCaseResult ctxResult, String expectedName, int expectedCode, 
-	  Class<UseCaseResult> ctxResultParent) {
-	  assertEquals(ctxResult.name(), expectedName);
-	  assertEquals(ctxResult.code(), expectedCode);
-	  assertTrue(ctxResultParent.isInstance(ctxResult));
+  public void testContextResults(UseCaseResult ucResult, String expectedName, 
+		  UseCaseResultTypes expectedType, Class<UseCaseResult> ucResultParent) {
+	  assertEquals(ucResult.name(), expectedName);
+	  assertEquals(ucResult.resultType(), expectedType);
+	  assertTrue(ucResultParent.isInstance(ucResult));
   }
   
   @DataProvider
@@ -41,29 +46,29 @@ public class UseCaseResultsTest {
 
   public Object[][] generalContextRulesDp() {
     return new Object[][] {
-    	new Object[] {new Success(), "Success", 1, UseCaseResult.class},
-    	new Object[] {new Failure(), "Failure", 0, UseCaseResult.class},
-    	new Object[] {new WrongContext(), "Wrong Context", 100, Failure.class}
+    	new Object[] {new Successful(), "Successful", UseCaseResultTypes.SUCCESS, GeneralResult.class},
+    	new Object[] {new Failed(), "Failed", UseCaseResultTypes.FAILURE, GeneralResult.class},
+    	new Object[] {new WrongContext(), "Wrong Context", UseCaseResultTypes.FAILURE, GeneralResult.class}
     };
   }
   
   public Object[][] accountContextRulesDp() {
 	  return new Object[][] {
-		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", 301, Failure.class}
+		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", UseCaseResultTypes.FAILURE, AccountResult.class}
 	  };
   }
   
   public Object[][] userContextResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new UserNotFound(), "User Not Found", 501, Failure.class},
-		  new Object[] { new TooManyUsers(), "Too Many Users", 502, Failure.class},
-		  new Object[] { new FoundUser(new User()), "Found User", 503, Success.class}
+		  new Object[] { new UserNotFound(), "User Not Found", UseCaseResultTypes.FAILURE, UserResult.class},
+		  new Object[] { new TooManyUsers(), "Too Many Users", UseCaseResultTypes.FAILURE, UserResult.class},
+		  new Object[] { new FoundUser(new User()), "Found User", UseCaseResultTypes.SUCCESS, UserResult.class}
 	  };
   }
   
   public Object[][] productUseCaseResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest", 701, Success.class}
+		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest",UseCaseResultTypes.SUCCESS, ProductResult.class}
 	  };
   }
 }

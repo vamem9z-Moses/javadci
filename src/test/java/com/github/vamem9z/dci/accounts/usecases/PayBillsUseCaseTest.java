@@ -16,7 +16,7 @@ import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 
 @NoArgsConstructor
 public class PayBillsUseCaseTest {
@@ -27,7 +27,7 @@ public class PayBillsUseCaseTest {
 	@DataProvider(name="testData")
 	public Object[][] testData() {
 		return new Object[][] {
-			new Object[]{makeCheckingAccount(1000.34), creditors, new Success(), 483.92, 0, 0, "2 liability accounts"},
+			new Object[]{makeCheckingAccount(1000.34), creditors, new Successful(), 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		

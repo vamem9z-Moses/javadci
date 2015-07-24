@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import main.java.com.github.vamem9z.dci.rules.Rule;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 
 public interface UseCase {
 	
@@ -21,10 +21,10 @@ public interface UseCase {
 		ArrayList<UseCaseResult> rulesResults = this.applyRules(rules)
 				.collect(Collectors.toCollection(ArrayList::new));
 
-		if(rulesResults.stream().allMatch(r -> r instanceof Success)) {
+		if(rulesResults.stream().allMatch(r -> r instanceof Successful)) {
 			return roleAction.apply(ctx);
 		}
-		return rulesResults.stream().filter(r -> !(r instanceof Success));
+		return rulesResults.stream().filter(r -> !(r instanceof Successful));
 	}
 	
 	Stream<UseCaseResult> execute();

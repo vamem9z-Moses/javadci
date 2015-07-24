@@ -1,29 +1,31 @@
 package main.java.com.github.vamem9z.dci.usecases.results;
 
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @ToString
-@NoArgsConstructor
 @EqualsAndHashCode
 public abstract class UseCaseResult { 
-	protected String name;
-	protected int code;
+	private String name;
+	private UseCaseResultTypes type;
         
-    public static boolean isFailure(UseCaseResult ctx) {
-        if (ctx instanceof Failure) {
-            return true;
+	public UseCaseResult(String name, UseCaseResultTypes type) {
+		this.name = name;
+		this.type = type;
+	}
+	
+    public boolean isFailure() {
+        if (this.type == UseCaseResultTypes.FAILURE) {
+        	return true;
         }
         return false;
     }
     
     public final String name() {
     	return this.name;
+    }  
+    
+    public final UseCaseResultTypes resultType() {
+    	return this.type;
     }
-
-    public final int code() {
-    	return this.code;
-    }
-       
 }

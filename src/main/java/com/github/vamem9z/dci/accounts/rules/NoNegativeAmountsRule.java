@@ -4,10 +4,10 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.usecases.ChangeBalanceUseCase;
 import main.java.com.github.vamem9z.dci.rules.Rule;
 import main.java.com.github.vamem9z.dci.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.Success;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.WrongContext;
 import main.java.com.github.vamem9z.dci.usecases.results.accounts.NegativeAmountNotAllowed;
+import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
+import main.java.com.github.vamem9z.dci.usecases.results.general.WrongContext;
 
 @NoArgsConstructor
 public class NoNegativeAmountsRule implements Rule {
@@ -25,7 +25,7 @@ public class NoNegativeAmountsRule implements Rule {
 	
 	private UseCaseResult amountLessThanZero(double amount) {
 		if(amount >= 0) {
-			return new Success();
+			return new Successful();
 		}
 		return new NegativeAmountNotAllowed();
 	}
