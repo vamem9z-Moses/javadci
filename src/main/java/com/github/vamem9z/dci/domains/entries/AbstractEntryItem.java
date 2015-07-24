@@ -4,9 +4,12 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 import lombok.ToString;
+import main.java.com.github.vamem9z.dci.data.models.Model;
+import main.java.com.github.vamem9z.dci.data.models.entries.EntryItemModel;
+import main.java.com.github.vamem9z.dci.domains.Persister;
 
 @ToString(includeFieldNames=true)
-public abstract class AbstractEntryItem implements EntryItem {
+public abstract class AbstractEntryItem implements Persister, EntryItem {
 	private final int accountID;
 	private final String message;
 	private final ZonedDateTime date;
@@ -22,9 +25,14 @@ public abstract class AbstractEntryItem implements EntryItem {
 		this.transactionType = transtype;
 	}
 	
-	public abstract double transactionAmount();
-	
 	protected final double amount() {
 		return this.amount;
 	}
+	
+	public final Model createModel() {
+		return new EntryItemModel(this.accountID, this.message, this.date, 
+				this.amount, this.transactionType);
+	}
+	
+	public abstract double transactionAmount();
 }
