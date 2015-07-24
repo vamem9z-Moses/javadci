@@ -1,5 +1,6 @@
 package main.java.com.github.vamem9z.dci.products.usecases;
 
+import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 import main.java.com.github.vamem9z.dci.domains.accounts.AccountActions;
@@ -11,10 +12,12 @@ import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 public final class CalculateInterestUseCase implements UseCase {
 	private InterestCalculatorRole calc;
 	private InterestRateTimePeriod timePeriod;
+	private int amountOfTime;
 	
-	public CalculateInterestUseCase(InterestCalculatorRole ap, InterestRateTimePeriod timePeriod) {
+	public CalculateInterestUseCase(InterestCalculatorRole ap,  int amountOfTime, InterestRateTimePeriod timePeriod) {
 		this.calc = ap;
 		this.timePeriod = timePeriod;
+		this.amountOfTime = amountOfTime;
 	}
 	
 	public Stream<UseCaseResult> execute() {
@@ -22,12 +25,30 @@ public final class CalculateInterestUseCase implements UseCase {
 	}
 	
 	public void recordTransaction(double amount, AccountActions action) {
-		this.calc.account().recordTransaction(amount, 
+		this.calc.recordTransaction(amount, 
 				String.format("%s Interest", timePeriod.formattedName), 
 				AccountActions.DEPOSIT);
 	}
 	
-	public double calculateInterest() {
-		return this.calc.account().calcBalance() / timePeriod.period;
+	public double calculateInterestEarned() {
+		double acctBalance = this.calc.calcBalance();
+		double rate = calc.accountInterestRate()/100;
+		
+		Double precisionRate = new BigDecimal(new Double(rate)).
+				setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		
+		double time = amountOfTime / timePeriod.period;
+		Double precisionTime = new BigDecimal(new Double(time)).
+				setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		
+		double interest = acctBalance * (precisionRate * precisionTime);
+		Double precisionInterest = new BigDecimal(new Double(interest))
+				.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		
+		return precisionInterest;
+	}
+	
+	public double calcBalance() {
+		return this.calc.calcBalance();
 	}
 }

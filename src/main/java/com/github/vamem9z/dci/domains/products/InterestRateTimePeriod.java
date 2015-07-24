@@ -1,7 +1,7 @@
 package main.java.com.github.vamem9z.dci.domains.products;
 
 public enum InterestRateTimePeriod {
-	Daily(365, "Daily"), MONTHLY(12, "Monthly"), WEEKLY(52, "Weekly");
+	DAYS(365, "Days"), MONTHS(12, "Months"), WEEKS(52, "Weeks"), QUARTERS(4, "Quarters"), YEARS(1, "Years");
 	
 	public final double period;
 	public final String formattedName;

@@ -2,7 +2,9 @@ package main.java.com.github.vamem9z.dci.usecases.results;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @NoArgsConstructor
 @EqualsAndHashCode
 public abstract class UseCaseResult { 

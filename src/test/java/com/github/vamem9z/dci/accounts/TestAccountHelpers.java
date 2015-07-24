@@ -9,6 +9,7 @@ import main.java.com.github.vamem9z.dci.domains.accountinfo.types.VendorAccountI
 import main.java.com.github.vamem9z.dci.domains.accounts.types.CheckingAccount;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.SavingsAccount;
 import main.java.com.github.vamem9z.dci.domains.accounts.types.VendorAccount;
+import main.java.com.github.vamem9z.dci.domains.products.checking.HighInterestCheckingAccount;
 import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
@@ -30,5 +31,9 @@ public class TestAccountHelpers {
 	
 	public static ArrayList<UseCaseResult> runContext(UseCase ctx) {
 		return ctx.execute().collect(Collectors.toCollection(ArrayList::new));
+	}
+	
+	public static HighInterestCheckingAccount makeHighInterestCheckingAccount(double startingBalance, double interestRate) {
+		return new HighInterestCheckingAccount(makeCheckingAccount(startingBalance), interestRate); 
 	}
 }
