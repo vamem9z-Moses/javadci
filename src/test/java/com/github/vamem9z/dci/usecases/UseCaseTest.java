@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.usecases.results;
+package test.java.com.github.vamem9z.dci.usecases;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

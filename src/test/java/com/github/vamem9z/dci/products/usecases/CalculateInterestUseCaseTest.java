@@ -14,7 +14,7 @@ import main.java.com.github.vamem9z.dci.products.usecases.CalculateInterestUseCa
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.products.CalculatedInterest;
 import test.java.com.github.vamem9z.dci.products.ProductTest;
-import test.java.com.github.vamem9z.dci.usecases.results.UseCaseTest;
+import test.java.com.github.vamem9z.dci.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {

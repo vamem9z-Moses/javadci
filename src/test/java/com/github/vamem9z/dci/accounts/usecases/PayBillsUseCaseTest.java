@@ -15,7 +15,7 @@ import main.java.com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 import test.java.com.github.vamem9z.dci.accounts.AccountTest;
-import test.java.com.github.vamem9z.dci.usecases.results.UseCaseTest;
+import test.java.com.github.vamem9z.dci.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class PayBillsUseCaseTest implements UseCaseTest, AccountTest {
