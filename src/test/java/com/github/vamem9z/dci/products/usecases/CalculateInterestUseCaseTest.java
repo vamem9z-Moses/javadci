@@ -1,11 +1,8 @@
 package test.java.com.github.vamem9z.dci.products.usecases;
 
 import static org.testng.Assert.assertEquals;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeHighInterestCheckingAccount;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,9 +13,11 @@ import main.java.com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 import main.java.com.github.vamem9z.dci.products.usecases.CalculateInterestUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.products.CalculatedInterest;
+import test.java.com.github.vamem9z.dci.products.ProductTest;
+import test.java.com.github.vamem9z.dci.usecases.results.UseCaseTest;
 
 @NoArgsConstructor
-public class CalculateInterestUseCaseTest {
+public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {
 	
 	@Test(dataProvider="dp", groups={"unit"})
 	public void interestTest(InterestCalculatorRole calc, int amountOfTime,
@@ -27,13 +26,12 @@ public class CalculateInterestUseCaseTest {
 
 			CalculateInterestUseCase uc = new CalculateInterestUseCase(calc, 
 					amountOfTime, period);
-			Stream<UseCaseResult> results = uc.execute();
-			ArrayList<UseCaseResult> res = results.collect(Collectors.toCollection(ArrayList::new));
+			ArrayList<UseCaseResult> results = runContext(uc);
 			
-			assertEquals(res.size(), 1);
-			assertEquals(((CalculatedInterest)res.get(0)).calculatedInterest(),	expectedInterest);
+			assertEquals(results.size(), 1);
+			assertEquals(((CalculatedInterest)results.get(0)).calculatedInterest(),	expectedInterest);
 			assertEquals(calc.calcBalance(), expectedBalance);
-			assertEquals(res.get(0), expectedResult);		
+			assertEquals(results.get(0), expectedResult);		
 	}
 	
 	@DataProvider

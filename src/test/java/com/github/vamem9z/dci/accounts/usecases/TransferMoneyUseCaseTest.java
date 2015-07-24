@@ -1,10 +1,6 @@
 package test.java.com.github.vamem9z.dci.accounts.usecases;
 
 import static org.testng.Assert.assertEquals;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeCheckingAccount;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeSavingsAccount;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeVendorAccount;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.runContext;
 
 import java.util.ArrayList;
 
@@ -17,9 +13,11 @@ import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
+import test.java.com.github.vamem9z.dci.accounts.AccountTest;
+import test.java.com.github.vamem9z.dci.usecases.results.UseCaseTest;
 
 @NoArgsConstructor
-public class TransferMoneyUseCaseTest {
+public class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {
 	
 	@DataProvider(name="testData")
 	public Object[][] testData() {

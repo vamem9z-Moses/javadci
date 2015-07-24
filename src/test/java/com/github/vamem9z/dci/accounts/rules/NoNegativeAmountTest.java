@@ -1,7 +1,6 @@
 package test.java.com.github.vamem9z.dci.accounts.rules;
 
 import static org.testng.Assert.assertEquals;
-import static test.java.com.github.vamem9z.dci.accounts.TestAccountHelpers.makeCheckingAccount;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +17,9 @@ import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.accounts.NegativeAmountNotAllowed;
 import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 import main.java.com.github.vamem9z.dci.usecases.results.general.WrongContext;
+import test.java.com.github.vamem9z.dci.accounts.AccountTest;
 
-public class NoNegativeAmountTest {
+public class NoNegativeAmountTest implements AccountTest {
   @Test(groups = {"unit"}, dataProvider = "dp")
   public void f(UseCase ctx, UseCaseResult expectedResult, String msg) {
 	  NoNegativeAmountsRule rule = new NoNegativeAmountsRule();
