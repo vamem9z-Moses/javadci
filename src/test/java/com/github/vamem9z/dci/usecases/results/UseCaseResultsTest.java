@@ -28,10 +28,14 @@ import main.java.com.github.vamem9z.dci.usecases.results.users.UserResult;
 public class UseCaseResultsTest {
   @Test(dataProvider = "dp", groups={"unit"})
   public void testContextResults(UseCaseResult ucResult, String expectedName, 
-		  UseCaseResultTypes expectedType, Class<UseCaseResult> ucResultParent) {
+		  UseCaseResultTypes expectedType, Class<UseCaseResult> ucResultParent, 
+		  boolean expectedFailure) {
+	  
 	  assertEquals(ucResult.name(), expectedName);
 	  assertEquals(ucResult.resultType(), expectedType);
 	  assertTrue(ucResultParent.isInstance(ucResult));
+	  assertEquals(ucResult.isFailure(), expectedFailure);
+	  
   }
   
   @DataProvider
@@ -46,29 +50,29 @@ public class UseCaseResultsTest {
 
   public Object[][] generalContextRulesDp() {
     return new Object[][] {
-    	new Object[] {new Successful(), "Successful", UseCaseResultTypes.SUCCESS, GeneralResult.class},
-    	new Object[] {new Failed(), "Failed", UseCaseResultTypes.FAILURE, GeneralResult.class},
-    	new Object[] {new WrongContext(), "Wrong Context", UseCaseResultTypes.FAILURE, GeneralResult.class}
+    	new Object[] {new Successful(), "Successful", UseCaseResultTypes.SUCCESS, GeneralResult.class, false},
+    	new Object[] {new Failed(), "Failed", UseCaseResultTypes.FAILURE, GeneralResult.class, true},
+    	new Object[] {new WrongContext(), "Wrong Context", UseCaseResultTypes.FAILURE, GeneralResult.class, true}
     };
   }
   
   public Object[][] accountContextRulesDp() {
 	  return new Object[][] {
-		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", UseCaseResultTypes.FAILURE, AccountResult.class}
+		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", UseCaseResultTypes.FAILURE, AccountResult.class, true}
 	  };
   }
   
   public Object[][] userContextResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new UserNotFound(), "User Not Found", UseCaseResultTypes.FAILURE, UserResult.class},
-		  new Object[] { new TooManyUsers(), "Too Many Users", UseCaseResultTypes.FAILURE, UserResult.class},
-		  new Object[] { new FoundUser(new User()), "Found User", UseCaseResultTypes.SUCCESS, UserResult.class}
+		  new Object[] { new UserNotFound(), "User Not Found", UseCaseResultTypes.FAILURE, UserResult.class, true},
+		  new Object[] { new TooManyUsers(), "Too Many Users", UseCaseResultTypes.FAILURE, UserResult.class, true},
+		  new Object[] { new FoundUser(new User()), "Found User", UseCaseResultTypes.SUCCESS, UserResult.class, false}
 	  };
   }
   
   public Object[][] productUseCaseResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest",UseCaseResultTypes.SUCCESS, ProductResult.class}
+		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest",UseCaseResultTypes.SUCCESS, ProductResult.class, false}
 	  };
   }
 }
