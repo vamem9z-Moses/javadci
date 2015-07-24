@@ -32,7 +32,7 @@ public final class CalculateInterestUseCase implements UseCase {
 	
 	public double calculateInterestEarned() {
 		double acctBalance = this.calc.calcBalance();
-		double rate = calc.accountInterestRate()/100;
+		double rate = this.calc.accountInterestRate()/100;
 		
 		Double precisionRate = new BigDecimal(new Double(rate)).
 				setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
@@ -46,9 +46,5 @@ public final class CalculateInterestUseCase implements UseCase {
 				.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		
 		return precisionInterest;
-	}
-	
-	public double calcBalance() {
-		return this.calc.calcBalance();
 	}
 }
