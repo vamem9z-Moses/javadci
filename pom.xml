@@ -12,6 +12,11 @@
         <jacoco.version>0.7.5.201505241946</jacoco.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <lombok.version>1.16.4</lombok.version>
+        <testng.version>6.9.4</testng.version>
+        <reportng.version>1.1.4</reportng.version>
+        <guice.version>3.0</guice.version>
+        <velocity-dep.version>1.4</velocity-dep.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -23,13 +28,13 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.4</version>
+            <version>${testng.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.uncommons</groupId>
             <artifactId>reportng</artifactId>
-            <version>1.1.4</version>
+            <version>${reportng.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -41,13 +46,13 @@
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-            <version>3.0</version>
+            <version>${guice.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>velocity</groupId>
             <artifactId>velocity-dep</artifactId>
-            <version>1.4</version>
+            <version>${velocity-dep.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -56,7 +61,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
