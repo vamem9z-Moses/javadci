@@ -10,3 +10,4 @@ nb-configuration.xml
 .classpath
 dci.iml
 .idea/
+.DS_Store
