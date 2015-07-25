@@ -4,6 +4,9 @@
   <artifactId>dci</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>dci</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
