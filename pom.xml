@@ -10,12 +10,14 @@
         <java.version>1.8</java.version>
         <surefire.version>2.18.1</surefire.version>
         <jacoco.version>0.7.5.201505241946</jacoco.version>
+        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+        <lombok.version>1.16.4</lombok.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.4</version>
+            <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -66,42 +68,8 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <argLine>${argLine}</argLine>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng-unittest.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <configuration>
                     <excludes>
-                        <exclude>**/test/**</exclude>
                     </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default-prepare-agent</id>
-                        <goals><goal>prepare-agent</goal></goals>
-                    </execution>
-                    <execution>
-                        <id>default-report</id>
-                        <phase>prepare-package</phase>
-                        <goals><goal>report</goal></goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <argLine>${argLine}</argLine>
                     <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
                     <properties>
                         <property>
@@ -114,8 +82,50 @@
                                 org.uncommons.reportng.JUnitXMLReporter</value>
                         </property>
                     </properties>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng-all.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <workingDirectory>target/</workingDirectory>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <skip>${maven.test.skip}</skip>
+                    <output>file</output>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.8</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -126,6 +136,11 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>test/java/**/*.class</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>

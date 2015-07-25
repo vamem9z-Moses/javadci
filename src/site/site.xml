@@ -1,0 +1,16 @@
+<project name="${project.name}" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
+  <bannerLeft>
+    <name>${project.name}</name>
+  </bannerLeft>
+  <body>
+    <links>
+      <item name="${project.name}" href="${project.url}"/>
+    </links>
+    <menu ref="parent" />
+    <menu ref="modules" />
+    <menu ref="reports" />
+    <menu name="Custom Reports">
+            <item name="ReportNG Report" href="../../target/surefire-reports/html/index.html"/>
+    </menu>
+  </body>
+</project>
