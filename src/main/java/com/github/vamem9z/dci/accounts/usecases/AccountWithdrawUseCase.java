@@ -17,10 +17,10 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 	 * Returns a Stream with following possible ContextResult type SUCCESS and
 	 * NEGATIVEMAOUNTNOTALLOWED.
 	 */
-	private AccountRole account;
-	private double amount;
-	private String message;
-	private ArrayList<Rule> rules;
+	private final AccountRole account;
+	private final double amount;
+	private final String message;
+	private final ArrayList<Rule> rules;
 	
 	public AccountWithdrawUseCase(AccountRole account, double amount, String message) {
 		this.account = account;

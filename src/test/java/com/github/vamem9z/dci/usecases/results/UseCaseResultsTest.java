@@ -69,7 +69,7 @@ public class UseCaseResultsTest {
 	  return new Object[][] {
 		  new Object[] { new UserNotFound(), "User Not Found", UseCaseResultTypes.FAILURE, UserResult.class, true},
 		  new Object[] { new TooManyUsers(), "Too Many Users", UseCaseResultTypes.FAILURE, UserResult.class, true},
-		  new Object[] { new FoundUser(new User()), "Found User", UseCaseResultTypes.SUCCESS, UserResult.class, false}
+		  new Object[] { new FoundUser(new User(2, "Test")), "Found User", UseCaseResultTypes.SUCCESS, UserResult.class, false}
 	  };
   }
   

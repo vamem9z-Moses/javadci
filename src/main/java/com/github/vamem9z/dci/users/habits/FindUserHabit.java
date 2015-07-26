@@ -7,7 +7,7 @@ package main.java.com.github.vamem9z.dci.users.habits;
 
 import java.util.stream.Stream;
 
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
@@ -16,7 +16,7 @@ import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
  *
  * @author mmiles
  */
-@AllArgsConstructor
+@NoArgsConstructor
 public final class FindUserHabit implements UseCase {
     private UnknownUserRole user;
     

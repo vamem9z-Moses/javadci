@@ -8,9 +8,9 @@ import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public final class TransferMoneyUseCase implements UseCase {
-	private TransferMoneySourceRole sourceAccount;
-	private AccountRole destAccount;
-	private double amount;
+	private final TransferMoneySourceRole sourceAccount;
+	private final AccountRole destAccount;
+	private final double amount;
 	
 	public TransferMoneyUseCase(TransferMoneySourceRole sourceAccount, 
 			AccountRole destAccount, double amount) {

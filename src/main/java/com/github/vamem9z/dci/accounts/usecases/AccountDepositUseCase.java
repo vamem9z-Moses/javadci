@@ -12,10 +12,10 @@ import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public final class AccountDepositUseCase implements UseCase, ChangeBalanceUseCase {
-	private AccountRole account;
-	private double amount;
-	private String message;
-	private ArrayList<Rule> rules;
+	private final AccountRole account;
+	private final double amount;
+	private final String message;
+	private final ArrayList<Rule> rules;
 	
 	public AccountDepositUseCase(AccountRole account, double amount, String message) {
 		this.account = account;

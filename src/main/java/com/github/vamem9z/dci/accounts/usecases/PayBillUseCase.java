@@ -9,8 +9,8 @@ import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public final class PayBillUseCase implements UseCase {
-	private TransferMoneySourceRole sourceAccount;
-	private ArrayList<AccountRole> creditors;
+	private final TransferMoneySourceRole sourceAccount;
+	private final ArrayList<AccountRole> creditors;
 
 	public PayBillUseCase(TransferMoneySourceRole sourceAccount, 
 			ArrayList<AccountRole> creditors) {

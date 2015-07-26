@@ -10,9 +10,9 @@ import main.java.com.github.vamem9z.dci.usecases.UseCase;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public final class CalculateInterestUseCase implements UseCase {
-	private InterestCalculatorRole calc;
-	private InterestRateTimePeriod timePeriod;
-	private int amountOfTime;
+	private final InterestCalculatorRole calc;
+	private final InterestRateTimePeriod timePeriod;
+	private final int amountOfTime;
 	
 	public CalculateInterestUseCase(InterestCalculatorRole ap,  int amountOfTime, InterestRateTimePeriod timePeriod) {
 		this.calc = ap;
