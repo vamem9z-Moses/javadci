@@ -27,34 +27,34 @@ public class AbstractFieldTest {
 		}
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testEqualityofDifferentObjectsWithSameValues() {
 		AbstractFieldTest.TestObject testObj = new AbstractFieldTest.TestObject(1, "Test");
 		AbstractFieldTest.TestObject testObj1 = new AbstractFieldTest.TestObject(1, "Test");
 		assertTrue(testObj.equals(testObj1));  
 	}
 
-	@Test
+	@Test(groups={"unit"})
 	public void testEqualityofDifferentObjectsWithDifferentValues() {
 		AbstractFieldTest.TestObject testObj = new AbstractFieldTest.TestObject(1, "Test");
 		AbstractFieldTest.TestObject testObj1 = new AbstractFieldTest.TestObject(2, "Another test");
 		assertFalse(testObj.equals(testObj1));
 	}
   
-	@Test
+	@Test(groups={"unit"})
 	public void testEqualityReflectivity() {
 		AbstractFieldTest.TestObject testObj = new AbstractFieldTest.TestObject(1, "Test");
 		assertTrue(testObj.equals(testObj));	
 	}
   
-	@Test
+	@Test(groups={"unit"})
 	public void testHashCodeEqualityObjectsWithSameValues() {
 		AbstractFieldTest.TestObject testObj = new AbstractFieldTest.TestObject(1, "Test");
 		AbstractFieldTest.TestObject testObj1 = new AbstractFieldTest.TestObject(1, "Test");
 		assertEquals(testObj.hashCode(), testObj1.hashCode());
 	}
 	
-	@Test
+	@Test(groups={"unit"})
 	public void testtoStringOutput() {
 		AbstractFieldTest.TestObject testObj = new AbstractFieldTest.TestObject(1, "Test");
 		String expectedString = "TestObject [1, Test]";

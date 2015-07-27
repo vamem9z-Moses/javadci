@@ -49,7 +49,7 @@ public class EntryItemsTest implements EntryItemTest {
 		};
 	}
 	
-	@Test(dataProvider="fieldsDp")
+	@Test(dataProvider="fieldsDp", groups={"unit"})
 	public void testFields(AbstractEntryItem item, ArrayList<Object> expectedObj) {
 		assertTrue(Objects.deepEquals(item.fields(), expectedObj));
 	} 
@@ -70,7 +70,7 @@ public class EntryItemsTest implements EntryItemTest {
 		};
 	}
 	
-	@Test(dataProvider="createModelDp")
+	@Test(dataProvider="createModelDp", groups={"unit"})
 	public void testCreateModel(AbstractEntryItem item, EntryItemModel model) {
 		assertTrue(item.createModel().equals(model));
 	}
