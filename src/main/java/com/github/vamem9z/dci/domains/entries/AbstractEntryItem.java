@@ -47,6 +47,8 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	
 	/**
 	 * Provides subclasses access to the transaction amount.
+	 * <p>
+	 * @return abs of the transaction amount
 	 */
 	
 	protected final double amount() {
@@ -54,7 +56,9 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	}
 	
 	/**
-	 * Overrides AbstractFields fields() method to create an ArrayList<Object> of the key fields in this object.
+	 * Overrides AbstractFields fields() method to create an ArrayList of the key fields in this object.
+	 * <p>
+	 * @return  all the field values in this object
 	 * @see main.java.com.github.vamem9z.dci.domains.AbstractFields#fields()
 	 */
 	public final ArrayList<Object> fields() {
@@ -75,6 +79,8 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 
 	/**
 	 * Provides the "real world" amount either -/+ to allow accounts to calculate their balances.
+	 * <p>
+	 * @return "real world" transaction amount
 	 */
 	public abstract double transactionAmount();
 }

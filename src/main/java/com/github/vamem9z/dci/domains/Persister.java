@@ -6,6 +6,8 @@ import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 public interface Persister {
 	/**
 	 * Gives domain objects the ability to persist and retrieve themselves from the data store.
+	 * <p>
+	 * @return the model for this object cast as a Model
 	 */
 	Model createModel();
 	

@@ -17,11 +17,14 @@ public abstract class AbstractFields {
 	 * Provides a list of the relevant fields of an object. 
 	 * <p> 
 	 * These fields are those used to determine equality between objects of the same type.
+	 * @return ArrayList of the field values cast as Object
 	 */
 	public abstract ArrayList<Object> fields();
 	
 	/**
-	 * Uses the fields() method to generate a hash of the object.
+	 * Generates a hash of the object.
+	 * <p>
+	 * @return a hash of the object using the fields() method
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -30,7 +33,9 @@ public abstract class AbstractFields {
 	}
 	
 	/**
-	 * Uses the fields() method to determine the equality of objects of the same type.
+	 * Determine the equality of objects of the same type.
+	 * <p>
+	 * @return true if object are equal/false if now
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -41,7 +46,9 @@ public abstract class AbstractFields {
 	}
 	
 	/**
-	 * Uses the fields method to print the string representation of the object.
+	 * Creates string representation of the object.
+	 * <p>
+	 * @return a string of the object using the fields method.
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
