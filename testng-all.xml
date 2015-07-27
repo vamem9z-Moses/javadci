@@ -13,6 +13,7 @@
 			<package name="test.java.com.github.vamem9z.dci.usecases.results" />
 			<package name="test.java.com.github.vamem9z.dci.products.usecases" />
 			<package name="test.java.com.github.vamem9z.dci.domains" />
+			<package name="test.java.com.github.vamem9z.dci.entries" />
 		</packages>
 	</test>
 </suite>
