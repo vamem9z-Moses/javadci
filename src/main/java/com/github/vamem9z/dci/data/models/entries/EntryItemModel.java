@@ -7,9 +7,11 @@ import java.util.Arrays;
 import main.java.com.github.vamem9z.dci.data.daos.entries.EntryItemDao;
 import main.java.com.github.vamem9z.dci.data.daos.entries.FakeEntryItemDao;
 import main.java.com.github.vamem9z.dci.data.models.Model;
+import main.java.com.github.vamem9z.dci.data.daos.Dao;
 import main.java.com.github.vamem9z.dci.domains.AbstractFields;
 import main.java.com.github.vamem9z.dci.domains.entries.TransactionTypes;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.usecases.results.general.WrongDao;
 
 public final class EntryItemModel extends AbstractFields implements Model{
 	private final int id;
@@ -34,10 +36,18 @@ public final class EntryItemModel extends AbstractFields implements Model{
 		this.transactionType = transtype;
 		this.dao = dao;
 	}
-	
+		
 	@Override
 	public UseCaseResult save() {
-		return dao.save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
+		return this.dao.save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
+	}
+	
+	@Override
+	public UseCaseResult save(final Dao dao, final String simpleClassName) {
+		if (this.isCorrectDao(dao, simpleClassName)) {
+			return new WrongDao();
+		}
+		return ((EntryItemDao)dao).save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
 	}
 	
 	@Override

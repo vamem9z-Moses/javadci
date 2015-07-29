@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import main.java.com.github.vamem9z.dci.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.domains.users.User;
+import main.java.com.github.vamem9z.dci.domains.users.User; 
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResultTypes;
 import main.java.com.github.vamem9z.dci.usecases.results.accounts.AccountResult;
@@ -20,6 +20,7 @@ import main.java.com.github.vamem9z.dci.usecases.results.general.Failed;
 import main.java.com.github.vamem9z.dci.usecases.results.general.GeneralResult;
 import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
 import main.java.com.github.vamem9z.dci.usecases.results.general.WrongContext;
+import main.java.com.github.vamem9z.dci.usecases.results.general.WrongDao;
 import main.java.com.github.vamem9z.dci.usecases.results.products.CalculatedInterest;
 import main.java.com.github.vamem9z.dci.usecases.results.products.ProductResult;
 import main.java.com.github.vamem9z.dci.usecases.results.users.FoundUser;
@@ -54,7 +55,8 @@ public class UseCaseResultsTest {
     return new Object[][] {
     	new Object[] {new Successful(), "Successful", UseCaseResultTypes.SUCCESS, GeneralResult.class, false},
     	new Object[] {new Failed(), "Failed", UseCaseResultTypes.FAILURE, GeneralResult.class, true},
-    	new Object[] {new WrongContext(), "Wrong Context", UseCaseResultTypes.FAILURE, GeneralResult.class, true}
+    	new Object[] {new WrongContext(), "Wrong Context", UseCaseResultTypes.FAILURE, GeneralResult.class, true},
+    	new Object[] {new WrongDao(), "Wrong Dao", UseCaseResultTypes.FAILURE, GeneralResult.class, true}
     };
   }
   

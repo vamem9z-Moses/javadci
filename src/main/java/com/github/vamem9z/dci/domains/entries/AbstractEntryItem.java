@@ -21,6 +21,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	private final ZonedDateTime date;
 	private final double amount;
 	private final TransactionTypes transactionType;
+	protected static final int DEFAULT_ENTRY_ID = 0;
 	
 	/**
 	 * Constructor

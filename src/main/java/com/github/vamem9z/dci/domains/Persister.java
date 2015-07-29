@@ -1,6 +1,7 @@
 package main.java.com.github.vamem9z.dci.domains;
 
 import main.java.com.github.vamem9z.dci.data.models.Model;
+import main.java.com.github.vamem9z.dci.data.daos.Dao;
 import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public interface Persister {
@@ -11,13 +12,22 @@ public interface Persister {
 	 */
 	Model createModel();
 	
+	/**
+	 * Saves the model (current state) version of the domain object.
+	 * <p>
+	 * @return the Saved Domain Name UseCaseResult, or Failed UseCaseResult if save operation is aborted.
+	 */
 	default UseCaseResult save() {
-		/**
-		 * Saves the model (current state) version of the domain object.
-		 * <p>
-		 * @return the Saved<DomainName> UseCaseResult, or Failed UseCaseResult if save operation aborted.
-		 */
 		Model model = createModel();
 		return model.save();
+	}
+	
+	/**
+	 * Saves the model (current state) version of the domain object with a specific dao.
+	 * @return the Saved Domain Name UseCaseResult, or Failed UseCaseResult if the save operation is aborted.
+	 */
+	default UseCaseResult save(final Dao dao, final String simpleClassName) {
+		Model model = createModel();
+		return model.save(dao, simpleClassName);
 	}
 }

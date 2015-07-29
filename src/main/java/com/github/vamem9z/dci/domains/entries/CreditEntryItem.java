@@ -9,7 +9,7 @@ public final class CreditEntryItem extends AbstractEntryItem {
 	}
 	
 	public CreditEntryItem(int accountID, String message, double amount) {
-		this(0, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
+		this(DEFAULT_ENTRY_ID, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
 	}
 	
 	@Override

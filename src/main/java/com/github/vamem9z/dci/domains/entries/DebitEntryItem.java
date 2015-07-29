@@ -9,7 +9,7 @@ public final class DebitEntryItem extends AbstractEntryItem {
 	}
 	
 	public DebitEntryItem(int accountID, String message, double amount) {
-		this(0, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
+		this(DEFAULT_ENTRY_ID, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
 	}
 
 	@Override
