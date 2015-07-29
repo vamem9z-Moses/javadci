@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.github.vamem9z.dci.users;
+package main.java.com.github.vamem9z.dci.core.data.daos.users;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,12 +15,10 @@ import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
 import main.java.com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
 import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
-/**
- *
- * @author mmiles
- */
+import main.java.com.github.vamem9z.dci.core.data.daos.Dao;
+
 @NoArgsConstructor
-public final class UserDao {
+public final class FakeUserDao implements Dao {
     private static User Moses = new User(12, "Moses");
     private static User Kathy = new User(13, "Kathy");
     private static User David = new User(14, "David");

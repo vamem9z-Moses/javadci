@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import main.java.com.github.vamem9z.dci.core.data.daos.users.FakeUserDao;
 import main.java.com.github.vamem9z.dci.core.roles.Role;
 import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
-import main.java.com.github.vamem9z.dci.users.UserDao;
 import main.java.com.github.vamem9z.dci.users.habits.FindUserHabit;
 
 /**
@@ -24,7 +24,7 @@ public interface UnknownUserRole extends Role {
     
     default Stream<UseCaseResult> findUser(FindUserHabit ctx) {
         if (ctx.user().id() > 0) {
-            UserDao userDao = new UserDao();
+            FakeUserDao userDao = new FakeUserDao();
             UseCaseResult result = userDao.findUserByID(ctx.user().id());
             return new ArrayList<UseCaseResult>(Arrays.asList(result)).stream();
         }
