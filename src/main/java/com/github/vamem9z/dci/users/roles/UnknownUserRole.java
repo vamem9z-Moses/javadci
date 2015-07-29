@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.roles.Role;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.users.UserNotFound;
+import main.java.com.github.vamem9z.dci.core.roles.Role;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
 import main.java.com.github.vamem9z.dci.users.UserDao;
 import main.java.com.github.vamem9z.dci.users.habits.FindUserHabit;
 

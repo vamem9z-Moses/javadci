@@ -8,8 +8,8 @@ package main.java.com.github.vamem9z.dci.users.habits;
 import java.util.stream.Stream;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
 
 /**

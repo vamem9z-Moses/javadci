@@ -8,13 +8,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.domains.products.InterestRateTimePeriod;
+import main.java.com.github.vamem9z.dci.core.domains.products.InterestRateTimePeriod;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.results.products.CalculatedInterest;
 import main.java.com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 import main.java.com.github.vamem9z.dci.products.usecases.CalculateInterestUseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.products.CalculatedInterest;
+import test.java.com.github.vamem9z.dci.core.usecases.UseCaseTest;
 import test.java.com.github.vamem9z.dci.products.ProductTest;
-import test.java.com.github.vamem9z.dci.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {

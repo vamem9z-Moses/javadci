@@ -5,8 +5,8 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.domains.accounts.types.SavingsAccount;
+import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import main.java.com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
 import test.java.com.github.vamem9z.dci.accounts.AccountTest;
 
 public class BasicAccountRoleTest implements AccountTest {

@@ -7,10 +7,10 @@ import java.util.stream.Stream;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
 import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
-import main.java.com.github.vamem9z.dci.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.rules.Rule;
-import main.java.com.github.vamem9z.dci.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import main.java.com.github.vamem9z.dci.core.rules.Rule;
+import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCase {
 	/*

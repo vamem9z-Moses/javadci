@@ -8,9 +8,9 @@ import main.java.com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
 import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
 import main.java.com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
 import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
-import main.java.com.github.vamem9z.dci.domains.accounts.Account;
-import main.java.com.github.vamem9z.dci.roles.Role;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.domains.accounts.Account;
+import main.java.com.github.vamem9z.dci.core.roles.Role;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public interface TransferMoneySourceRole extends Role, Account {	
 	

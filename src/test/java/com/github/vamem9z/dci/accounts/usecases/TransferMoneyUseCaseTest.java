@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
 import test.java.com.github.vamem9z.dci.accounts.AccountTest;
-import test.java.com.github.vamem9z.dci.usecases.UseCaseTest;
+import test.java.com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {

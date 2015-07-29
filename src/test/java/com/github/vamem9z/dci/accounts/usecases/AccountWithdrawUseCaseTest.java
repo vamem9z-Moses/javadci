@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
 import lombok.NoArgsConstructor;
 import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
 import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.accounts.NegativeAmountNotAllowed;
-import main.java.com.github.vamem9z.dci.usecases.results.general.Successful;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
+import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
 import test.java.com.github.vamem9z.dci.accounts.AccountTest;
-import test.java.com.github.vamem9z.dci.usecases.UseCaseTest;
+import test.java.com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTest {

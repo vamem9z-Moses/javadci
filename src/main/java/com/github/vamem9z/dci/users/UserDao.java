@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.domains.users.User;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.usecases.results.users.FoundUser;
-import main.java.com.github.vamem9z.dci.usecases.results.users.TooManyUsers;
-import main.java.com.github.vamem9z.dci.usecases.results.users.UserNotFound;
+import main.java.com.github.vamem9z.dci.core.domains.users.User;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import main.java.com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
+import main.java.com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
+import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
 /**
  *
  * @author mmiles

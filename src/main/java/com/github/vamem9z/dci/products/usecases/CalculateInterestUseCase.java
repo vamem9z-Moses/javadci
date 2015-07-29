@@ -3,11 +3,11 @@ package main.java.com.github.vamem9z.dci.products.usecases;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.domains.products.InterestRateTimePeriod;
+import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import main.java.com.github.vamem9z.dci.core.domains.products.InterestRateTimePeriod;
+import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
+import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import main.java.com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
-import main.java.com.github.vamem9z.dci.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.usecases.results.UseCaseResult;
 
 public final class CalculateInterestUseCase implements UseCase {
 	private final InterestCalculatorRole calc;
