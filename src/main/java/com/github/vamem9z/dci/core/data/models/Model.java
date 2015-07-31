@@ -20,21 +20,21 @@ public interface Model {
 	/**
 	 * Uses parameter injected by the save method to save the model
 	 * <p>
-	 * @param dao - dao object to use to save the model
-	 * @param simpleClassName - simple String representation of the 
+	 * @param dao dao object to use to save the model
+	 * @param objClassName - simple String representation of the 
 	 * @return a UseCaseResult type from a dao save method
 	 */
-	UseCaseResult save(final Dao dao, final String simpleClassName);
+	UseCaseResult save(final Dao dao, final Class<Dao> objClassName);
 	
 	/**
 	 * Utility function to check to see if dao is of the same class as the name passed in
 	 * <p>
-	 * @param dao - dao object to check
-	 * @param simpleClassName - expected simple name of the dao object
+	 * @param dao dao object to check
+	 * @param objClassName expected class name of the dao object
 	 * @return true if dao simpleName equals simpleClassName
 	 */
-	default boolean isCorrectDao(final Dao dao, final String simpleClassName) {
-		if (dao.getClass().getSimpleName() == simpleClassName) {
+	default boolean isCorrectDao(final Dao dao, final Class<Dao> objClassName) {
+		if (dao.getClass() == objClassName) {
 			return true;
 		}
 		return false;

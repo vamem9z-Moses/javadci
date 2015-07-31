@@ -18,8 +18,18 @@ import main.java.com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
 import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
 import main.java.com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
 
-public class EntryItemsTest implements EntryItemTest {
-
+/**
+ * Tests all of EntryItem domain objects
+ */
+public final class EntryItemsTest implements EntryItemTest {
+	
+	public EntryItemsTest() {}
+	
+	/**
+	 * Creates the test data needed to test EntryItem transactionAmount()
+	 * <p>
+	 * @return an array of Object arrays each containing an EntryItem to test and the expected transaction amount.
+	 */
 	@DataProvider
 	public Object[][] amountDp() {
 		return new Object[][] {
@@ -28,11 +38,22 @@ public class EntryItemsTest implements EntryItemTest {
 		};
 	}
 	
+	/**
+	 * Tests EntryItem transactionAmount()
+	 * <p>
+	 * @param item EntryItem currently under test
+	 * @param expectedAmt amount expected to return from item transactionAmount()
+	 */
 	@Test(dataProvider="amountDp", groups={"unit"})
 	public void testEntryItemTransactionAmounts(EntryItem item, double expectedAmt) {
 		assertEquals(item.transactionAmount(), expectedAmt);
 	}
-	
+
+	/**
+	 * Creates the test data need to test EntryItem fields()
+	 * <p>
+	 * @return an array of Object arrays each containing an EntryItem and an array with the same field values as an EntryItem 
+	 */
 	@DataProvider
 	public Object[][] fieldsDp() {
 		return new Object[][] {
@@ -48,12 +69,23 @@ public class EntryItemsTest implements EntryItemTest {
 					TransactionTypes.DEBIT))},
 		};
 	}
-	
+
+	/**
+	 *  Tests the equality of AbstractEntryItem subclasses
+	 *  <p>
+	 * @param item EntryItem under test
+	 * @param expectedObj comparison object under test
+	 */
 	@Test(dataProvider="fieldsDp", groups={"unit"})
 	public void testFields(AbstractEntryItem item, ArrayList<Object> expectedObj) {
 		assertTrue(Objects.deepEquals(item.fields(), expectedObj));
 	} 
 	
+	/**
+	 * Creates the test data for testCreateModel
+	 * <p>
+	 * @return an array of object arrays containing an EntryItem to test and its comparison object
+	 */
 	@DataProvider
 	public Object[][] createModelDp() {
 		return new Object[][] {
@@ -70,10 +102,15 @@ public class EntryItemsTest implements EntryItemTest {
 		};
 	}
 	
+	/**
+	 * Tests the createModel() for EntryItems
+	 * <p>
+	 * @param item an AbstractEntryItem under test
+	 * @param model the model created by the item
+	 */
+	
 	@Test(dataProvider="createModelDp", groups={"unit"})
 	public void testCreateModel(AbstractEntryItem item, EntryItemModel model) {
 		assertTrue(item.createModel().equals(model));
 	}
 }
-
-

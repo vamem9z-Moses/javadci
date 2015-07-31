@@ -43,8 +43,8 @@ public final class EntryItemModel extends AbstractFields implements Model{
 	}
 	
 	@Override
-	public UseCaseResult save(final Dao dao, final String simpleClassName) {
-		if (this.isCorrectDao(dao, simpleClassName)) {
+	public UseCaseResult save(final Dao dao, final Class<Dao> objClassName) {
+		if (this.isCorrectDao(dao, objClassName)) {
 			return new WrongDao();
 		}
 		return ((EntryItemDao)dao).save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);

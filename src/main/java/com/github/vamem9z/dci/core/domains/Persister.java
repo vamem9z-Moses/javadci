@@ -26,8 +26,8 @@ public interface Persister {
 	 * Saves the model (current state) version of the domain object with a specific dao.
 	 * @return the Saved Domain Name UseCaseResult, or Failed UseCaseResult if the save operation is aborted.
 	 */
-	default UseCaseResult save(final Dao dao, final String simpleClassName) {
+	default UseCaseResult save(final Dao dao, final Class<Dao> objClassName) {
 		Model model = createModel();
-		return model.save(dao, simpleClassName);
+		return model.save(dao, objClassName);
 	}
 }
