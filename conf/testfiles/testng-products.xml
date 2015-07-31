@@ -3,7 +3,7 @@
 <suite name="productsModule" verbose="1">
 	<test name="usecases">	
 		<packages>
-            <package name="test.java.com.github.vamem9z.dci.products.usecases" />
+            <package name="com.github.vamem9z.dci.products.usecases" />
 		</packages>
 	</test>
 </suite>

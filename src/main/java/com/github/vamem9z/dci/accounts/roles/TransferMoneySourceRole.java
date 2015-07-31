@@ -1,16 +1,16 @@
-package main.java.com.github.vamem9z.dci.accounts.roles;
+package com.github.vamem9z.dci.accounts.roles;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
-import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
-import main.java.com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
-import main.java.com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.Account;
-import main.java.com.github.vamem9z.dci.core.roles.Role;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
+import com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
+import com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
+import com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
+import com.github.vamem9z.dci.core.domains.accounts.Account;
+import com.github.vamem9z.dci.core.roles.Role;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public interface TransferMoneySourceRole extends Role, Account {	
 	

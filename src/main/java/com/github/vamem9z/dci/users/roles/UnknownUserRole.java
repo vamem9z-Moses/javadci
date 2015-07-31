@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.github.vamem9z.dci.users.roles;
+package com.github.vamem9z.dci.users.roles;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.core.data.daos.users.FakeUserDao;
-import main.java.com.github.vamem9z.dci.core.roles.Role;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
-import main.java.com.github.vamem9z.dci.users.habits.FindUserHabit;
+import com.github.vamem9z.dci.core.data.daos.users.FakeUserDao;
+import com.github.vamem9z.dci.core.roles.Role;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
+import com.github.vamem9z.dci.users.habits.FindUserHabit;
 
 /**
  *

@@ -1,8 +1,8 @@
-package main.java.com.github.vamem9z.dci.core.domains.accounts;
+package com.github.vamem9z.dci.core.domains.accounts;
 
-import main.java.com.github.vamem9z.dci.core.domains.accountinfo.AccountInfo;
-import main.java.com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
+import com.github.vamem9z.dci.core.domains.accountinfo.AccountInfo;
+import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
+import com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
 
 public abstract class AbstractLiabilityAccount extends AbstractAccount {
 	public AbstractLiabilityAccount(AccountInfo acctInfo) {

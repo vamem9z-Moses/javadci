@@ -1,7 +1,7 @@
-package main.java.com.github.vamem9z.dci.core.rules;
+package com.github.vamem9z.dci.core.rules;
 
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 @FunctionalInterface
 public interface Rule {

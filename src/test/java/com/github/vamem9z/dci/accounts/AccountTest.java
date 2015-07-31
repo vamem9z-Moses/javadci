@@ -1,11 +1,11 @@
-package test.java.com.github.vamem9z.dci.accounts;
+package com.github.vamem9z.dci.accounts;
 
-import main.java.com.github.vamem9z.dci.core.domains.accountinfo.types.CheckingAccountInfo;
-import main.java.com.github.vamem9z.dci.core.domains.accountinfo.types.SavingsAccountInfo;
-import main.java.com.github.vamem9z.dci.core.domains.accountinfo.types.VendorAccountInfo;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.types.CheckingAccount;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.types.VendorAccount;
+import com.github.vamem9z.dci.core.domains.accountinfo.types.CheckingAccountInfo;
+import com.github.vamem9z.dci.core.domains.accountinfo.types.SavingsAccountInfo;
+import com.github.vamem9z.dci.core.domains.accountinfo.types.VendorAccountInfo;
+import com.github.vamem9z.dci.core.domains.accounts.types.CheckingAccount;
+import com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
+import com.github.vamem9z.dci.core.domains.accounts.types.VendorAccount;
 
 /**
  * Provides utility methods for creating account test data

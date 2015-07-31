@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.github.vamem9z.dci.core.data.daos.users;
+package com.github.vamem9z.dci.core.data.daos.users;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.core.domains.users.User;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
-import main.java.com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.domains.users.User;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
+import com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
+import com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
 
 @NoArgsConstructor
 public final class FakeUserDao implements Dao {

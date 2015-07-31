@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.core.usecases.results;
+package com.github.vamem9z.dci.core.usecases.results;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -9,24 +9,22 @@ import java.util.Arrays;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.users.User;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.AccountResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.SavedEntryItem;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Failed;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.GeneralResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
-import main.java.com.github.vamem9z.dci.core.usecases.results.products.CalculatedInterest;
-import main.java.com.github.vamem9z.dci.core.usecases.results.products.ProductResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
-import main.java.com.github.vamem9z.dci.core.usecases.results.users.UserResult;
+import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
+import com.github.vamem9z.dci.core.domains.users.User;
+import com.github.vamem9z.dci.core.usecases.results.accounts.AccountResult;
+import com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
+import com.github.vamem9z.dci.core.usecases.results.accounts.SavedEntryItem;
+import com.github.vamem9z.dci.core.usecases.results.general.Failed;
+import com.github.vamem9z.dci.core.usecases.results.general.GeneralResult;
+import com.github.vamem9z.dci.core.usecases.results.general.Successful;
+import com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
+import com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
+import com.github.vamem9z.dci.core.usecases.results.products.CalculatedInterest;
+import com.github.vamem9z.dci.core.usecases.results.products.ProductResult;
+import com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
+import com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
+import com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
+import com.github.vamem9z.dci.core.usecases.results.users.UserResult;
 
 public class UseCaseResultsTest {
   @Test(dataProvider = "dp", groups={"unit"})

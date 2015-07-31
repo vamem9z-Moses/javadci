@@ -1,4 +1,4 @@
-package main.java.com.github.vamem9z.dci.core.usecases.results;
+package com.github.vamem9z.dci.core.usecases.results;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

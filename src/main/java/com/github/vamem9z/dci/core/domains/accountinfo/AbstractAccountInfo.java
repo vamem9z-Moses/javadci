@@ -1,9 +1,9 @@
-package main.java.com.github.vamem9z.dci.core.domains.accountinfo;
+package com.github.vamem9z.dci.core.domains.accountinfo;
 
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.types.AccountTypes;
+import com.github.vamem9z.dci.core.domains.accounts.types.AccountTypes;
 
 @ToString(includeFieldNames=true)
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.core.domains;
+package com.github.vamem9z.dci.core.domains;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.core.domains.AbstractFields;
+import com.github.vamem9z.dci.core.domains.AbstractFields;
 
 public class AbstractFieldTest {
 	

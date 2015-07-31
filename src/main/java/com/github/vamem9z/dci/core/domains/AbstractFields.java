@@ -1,4 +1,4 @@
-package main.java.com.github.vamem9z.dci.core.domains;
+package com.github.vamem9z.dci.core.domains;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -1,13 +1,13 @@
-package main.java.com.github.vamem9z.dci.core.usecases;
+package com.github.vamem9z.dci.core.usecases;
 
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.core.rules.Rule;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
+import com.github.vamem9z.dci.core.rules.Rule;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.general.Successful;
 
 public interface UseCase {
 	

@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.accounts.usecases;
+package com.github.vamem9z.dci.accounts.usecases;
 
 import static org.testng.Assert.assertEquals;
 
@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.github.vamem9z.dci.accounts.AccountTest;
+import com.github.vamem9z.dci.accounts.roles.AccountRole;
+import com.github.vamem9z.dci.core.usecases.UseCaseTest;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
+import com.github.vamem9z.dci.core.usecases.results.general.Successful;
+
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
-import test.java.com.github.vamem9z.dci.accounts.AccountTest;
-import test.java.com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
 @NoArgsConstructor
 public class AccountDepositUseCaseTest implements UseCaseTest, AccountTest{

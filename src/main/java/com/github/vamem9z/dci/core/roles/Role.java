@@ -1,9 +1,9 @@
-package main.java.com.github.vamem9z.dci.core.roles;
+package com.github.vamem9z.dci.core.roles;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public interface Role {
 	default Stream<UseCaseResult> returnResults(UseCaseResult cr) {

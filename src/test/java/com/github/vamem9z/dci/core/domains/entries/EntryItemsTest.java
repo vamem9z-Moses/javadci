@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.core.domains.entries;
+package com.github.vamem9z.dci.core.domains.entries;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -11,12 +11,7 @@ import java.util.Objects;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
-import main.java.com.github.vamem9z.dci.core.domains.entries.AbstractEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
+import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
 
 /**
  * Tests all of EntryItem domain objects

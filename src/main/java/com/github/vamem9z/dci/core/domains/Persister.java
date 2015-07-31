@@ -1,8 +1,8 @@
-package main.java.com.github.vamem9z.dci.core.domains;
+package com.github.vamem9z.dci.core.domains;
 
-import main.java.com.github.vamem9z.dci.core.data.daos.Dao;
-import main.java.com.github.vamem9z.dci.core.data.models.Model;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.data.models.Model;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public interface Persister {
 	/**

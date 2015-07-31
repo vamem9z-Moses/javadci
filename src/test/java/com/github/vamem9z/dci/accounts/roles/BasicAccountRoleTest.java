@@ -1,13 +1,13 @@
-package test.java.com.github.vamem9z.dci.accounts.roles;
+package com.github.vamem9z.dci.accounts.roles;
 
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
-import test.java.com.github.vamem9z.dci.accounts.AccountTest;
+import com.github.vamem9z.dci.accounts.AccountTest;
+import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
 
 public class BasicAccountRoleTest implements AccountTest {
 	

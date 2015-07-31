@@ -1,16 +1,16 @@
-package main.java.com.github.vamem9z.dci.accounts.usecases;
+package com.github.vamem9z.dci.accounts.usecases;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
-import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.core.rules.Rule;
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.accounts.roles.AccountRole;
+import com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
+import com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
+import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import com.github.vamem9z.dci.core.rules.Rule;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCase {
 	/*

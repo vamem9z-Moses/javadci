@@ -1,15 +1,15 @@
-package main.java.com.github.vamem9z.dci.core.data.daos.entries;
+package com.github.vamem9z.dci.core.data.daos.entries;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
-import main.java.com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.SavedEntryItem;
+import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
+import com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
+import com.github.vamem9z.dci.core.domains.entries.EntryItem;
+import com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.accounts.SavedEntryItem;
 
 public final class FakeEntryItemDao implements EntryItemDao {
 	final private ArrayList<EntryItem> entryItems;

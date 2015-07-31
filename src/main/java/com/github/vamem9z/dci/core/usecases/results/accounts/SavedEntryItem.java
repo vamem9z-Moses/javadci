@@ -1,7 +1,7 @@
-package main.java.com.github.vamem9z.dci.core.usecases.results.accounts;
+package com.github.vamem9z.dci.core.usecases.results.accounts;
 
-import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
+import com.github.vamem9z.dci.core.domains.entries.EntryItem;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
 
 public final class SavedEntryItem extends AccountResult {
 	final private EntryItem savedEntryItem;

@@ -1,13 +1,13 @@
-package main.java.com.github.vamem9z.dci.core.domains.accounts;
+package com.github.vamem9z.dci.core.domains.accounts;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import lombok.ToString;
-import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import main.java.com.github.vamem9z.dci.core.domains.accountinfo.AccountInfo;
-import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
+import com.github.vamem9z.dci.accounts.roles.AccountRole;
+import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
+import com.github.vamem9z.dci.core.domains.accountinfo.AccountInfo;
+import com.github.vamem9z.dci.core.domains.entries.EntryItem;
 
 @ToString(includeFieldNames=true)
 public abstract class AbstractAccount implements Account, AccountRole, TransferMoneySourceRole {

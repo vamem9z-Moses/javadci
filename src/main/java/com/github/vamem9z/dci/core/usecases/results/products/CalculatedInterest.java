@@ -1,8 +1,8 @@
-package main.java.com.github.vamem9z.dci.core.usecases.results.products;
+package com.github.vamem9z.dci.core.usecases.results.products;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
 
 @ToString
 @EqualsAndHashCode(callSuper=false)

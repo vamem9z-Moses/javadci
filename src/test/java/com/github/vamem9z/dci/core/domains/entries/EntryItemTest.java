@@ -1,7 +1,4 @@
-package test.java.com.github.vamem9z.dci.core.domains.entries;
-
-import main.java.com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import main.java.com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
+package com.github.vamem9z.dci.core.domains.entries;
 
 /**
  * Provides utility test methods to assist in testing EntryItems

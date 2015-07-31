@@ -1,17 +1,17 @@
-package main.java.com.github.vamem9z.dci.core.data.models.entries;
+package com.github.vamem9z.dci.core.data.models.entries;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import main.java.com.github.vamem9z.dci.core.data.daos.Dao;
-import main.java.com.github.vamem9z.dci.core.data.daos.entries.EntryItemDao;
-import main.java.com.github.vamem9z.dci.core.data.daos.entries.FakeEntryItemDao;
-import main.java.com.github.vamem9z.dci.core.data.models.Model;
-import main.java.com.github.vamem9z.dci.core.domains.AbstractFields;
-import main.java.com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
+import com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.data.daos.entries.EntryItemDao;
+import com.github.vamem9z.dci.core.data.daos.entries.FakeEntryItemDao;
+import com.github.vamem9z.dci.core.data.models.Model;
+import com.github.vamem9z.dci.core.domains.AbstractFields;
+import com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
 
 public final class EntryItemModel extends AbstractFields implements Model{
 	private final int id;

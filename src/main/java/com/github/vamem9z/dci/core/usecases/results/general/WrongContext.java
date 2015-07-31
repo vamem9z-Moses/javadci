@@ -1,6 +1,6 @@
-package main.java.com.github.vamem9z.dci.core.usecases.results.general;
+package com.github.vamem9z.dci.core.usecases.results.general;
 
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
 
 public final class WrongContext extends  GeneralResult {
 	public WrongContext() {

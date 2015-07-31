@@ -1,7 +1,7 @@
-package main.java.com.github.vamem9z.dci.core.data.models;
+package com.github.vamem9z.dci.core.data.models;
 
-import main.java.com.github.vamem9z.dci.core.data.daos.Dao;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public interface Model {
 	/**

@@ -1,8 +1,8 @@
-package main.java.com.github.vamem9z.dci.core.domains.products;
+package com.github.vamem9z.dci.core.domains.products;
 
-import main.java.com.github.vamem9z.dci.core.domains.accounts.Account;
-import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
-import main.java.com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
+import com.github.vamem9z.dci.core.domains.accounts.Account;
+import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 
 public abstract class AbstractAccountProduct implements InterestCalculatorRole {
 	private final Account account;

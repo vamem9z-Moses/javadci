@@ -1,6 +1,6 @@
-package main.java.com.github.vamem9z.dci.core.domains.accounts;
+package com.github.vamem9z.dci.core.domains.accounts;
 
-import main.java.com.github.vamem9z.dci.core.domains.entries.EntryItem;
+import com.github.vamem9z.dci.core.domains.entries.EntryItem;
 
 public interface Account {
 	public String printAccountID();

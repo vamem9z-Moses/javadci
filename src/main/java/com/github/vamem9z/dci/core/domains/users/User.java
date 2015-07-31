@@ -1,4 +1,4 @@
-package main.java.com.github.vamem9z.dci.core.domains.users;
+package com.github.vamem9z.dci.core.domains.users;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

@@ -1,12 +1,12 @@
-package main.java.com.github.vamem9z.dci.accounts.usecases;
+package com.github.vamem9z.dci.accounts.usecases;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import main.java.com.github.vamem9z.dci.accounts.roles.AccountRole;
-import main.java.com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.accounts.roles.AccountRole;
+import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public final class PayBillUseCase implements UseCase {
 	private final TransferMoneySourceRole sourceAccount;

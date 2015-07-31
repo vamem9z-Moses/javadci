@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.com.github.vamem9z.dci.users.habits;
+package com.github.vamem9z.dci.users.habits;
 
 import java.util.stream.Stream;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.users.roles.UnknownUserRole;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.users.roles.UnknownUserRole;
 
 /**
  *

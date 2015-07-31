@@ -1,4 +1,4 @@
-package main.java.com.github.vamem9z.dci.core.data.daos;
+package com.github.vamem9z.dci.core.data.daos;
 
 import java.util.Random;
 

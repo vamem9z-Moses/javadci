@@ -1,13 +1,13 @@
-package main.java.com.github.vamem9z.dci.accounts.rules;
+package com.github.vamem9z.dci.accounts.rules;
 
 import lombok.NoArgsConstructor;
-import main.java.com.github.vamem9z.dci.accounts.usecases.ChangeBalanceUseCase;
-import main.java.com.github.vamem9z.dci.core.rules.Rule;
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
+import com.github.vamem9z.dci.accounts.usecases.ChangeBalanceUseCase;
+import com.github.vamem9z.dci.core.rules.Rule;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
+import com.github.vamem9z.dci.core.usecases.results.general.Successful;
+import com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
 
 @NoArgsConstructor
 public class NoNegativeAmountsRule implements Rule {

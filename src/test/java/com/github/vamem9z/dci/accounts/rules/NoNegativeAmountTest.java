@@ -1,4 +1,4 @@
-package test.java.com.github.vamem9z.dci.accounts.rules;
+package com.github.vamem9z.dci.accounts.rules;
 
 import static org.testng.Assert.assertEquals;
 
@@ -9,15 +9,14 @@ import java.util.stream.Stream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import main.java.com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
-import main.java.com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
-import main.java.com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.UseCase;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import main.java.com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.Successful;
-import main.java.com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
-import test.java.com.github.vamem9z.dci.accounts.AccountTest;
+import com.github.vamem9z.dci.accounts.AccountTest;
+import com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
+import com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
+import com.github.vamem9z.dci.core.usecases.UseCase;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
+import com.github.vamem9z.dci.core.usecases.results.general.Successful;
+import com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
 
 public class NoNegativeAmountTest implements AccountTest {
   @Test(groups = {"unit"}, dataProvider = "dp")

@@ -1,14 +1,14 @@
-package main.java.com.github.vamem9z.dci.core.domains.entries;
+package com.github.vamem9z.dci.core.domains.entries;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-import main.java.com.github.vamem9z.dci.core.data.models.Model;
-import main.java.com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
-import main.java.com.github.vamem9z.dci.core.domains.AbstractFields;
-import main.java.com.github.vamem9z.dci.core.domains.Persister;
+import com.github.vamem9z.dci.core.data.models.Model;
+import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
+import com.github.vamem9z.dci.core.domains.AbstractFields;
+import com.github.vamem9z.dci.core.domains.Persister;
 
 /**
  * Provides the base implementation of the EntryItem Interface.
@@ -60,7 +60,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * Overrides AbstractFields fields() method to create an ArrayList of the key fields in this object.
 	 * <p>
 	 * @return  all the field values in this object
-	 * @see main.java.com.github.vamem9z.dci.core.domains.AbstractFields#fields()
+	 * @see com.github.vamem9z.dci.core.domains.AbstractFields#fields()
 	 */
 	public final ArrayList<Object> fields() {
 		return new ArrayList<Object>(Arrays.asList(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType));
@@ -70,7 +70,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * Overrides Persister Interface createModel() method to create an EntryItem value object that can be persisted.
 	 * <p>
 	 * @return EntryItemModel populated with all of this object's data fields.
-	 * @see main.java.com.github.vamem9z.dci.core.domains.Persister#createModel()
+	 * @see com.github.vamem9z.dci.core.domains.Persister#createModel()
 	 */
 	@Override
 	public final Model createModel() {

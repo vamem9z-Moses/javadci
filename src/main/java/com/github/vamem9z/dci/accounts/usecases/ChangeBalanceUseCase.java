@@ -1,6 +1,6 @@
-package main.java.com.github.vamem9z.dci.accounts.usecases;
+package com.github.vamem9z.dci.accounts.usecases;
 
-import main.java.com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
 
 public interface ChangeBalanceUseCase {
 	double transactionAmount();

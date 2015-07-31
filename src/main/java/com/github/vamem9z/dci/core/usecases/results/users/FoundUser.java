@@ -1,7 +1,7 @@
-package main.java.com.github.vamem9z.dci.core.usecases.results.users;
+package com.github.vamem9z.dci.core.usecases.results.users;
 
-import main.java.com.github.vamem9z.dci.core.domains.users.User;
-import main.java.com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
+import com.github.vamem9z.dci.core.domains.users.User;
+import com.github.vamem9z.dci.core.usecases.results.UseCaseResultTypes;
 
 public final class FoundUser extends UserResult {
     private User user;
