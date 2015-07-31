@@ -86,7 +86,7 @@
                         <property>
                             <name>listener</name>
                             <value>org.uncommons.reportng.HTMLReporter,
-                                org.uncommons.reportng.JUnitXMLReporter</value>
+                                org.uncommons.reportng.JUnitXMLReporter, org.testng.reporters.XMLReporter</value>
                         </property>
                     </properties>
                     <suiteXmlFiles>
@@ -182,7 +182,7 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>test/java/**/*.class</exclude>
+                        <exclude>**/test/java/**/*.class</exclude>
                     </excludes>
                 </configuration>
             </plugin>

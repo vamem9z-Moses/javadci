@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "testng-1.0.dtd" >
 <suite name="coreModule" verbose="1">
-	<listeners>
-	      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-	      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-	</listeners>
 	<test name="usecases">
 		<packages>
 			<package name="test.java.com.github.vamem9z.dci.core.usecases.results" />
