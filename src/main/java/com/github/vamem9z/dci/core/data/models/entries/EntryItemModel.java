@@ -13,6 +13,12 @@ import com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
 import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
 
+/**
+ * Model used by EntryItem Domains persist and export data from the system
+ * <p>
+ * @author mmiles
+ *
+ */
 public final class EntryItemModel extends AbstractFields implements Model{
 	private final int id;
 	private final int accountID;
@@ -22,10 +28,34 @@ public final class EntryItemModel extends AbstractFields implements Model{
 	private final TransactionTypes transactionType;
 	private final EntryItemDao dao;
 	
+	/**
+	 * Secondary Constructor 
+	 * By default it uses the the FakeEntryItemDao.
+	 * <p>
+	 * @param id unique identifier from the data store
+	 * @param accountID unique identifier for the related account
+	 * @param message describes the transaction
+	 * @param time when the transaction occurred
+	 * @param amount amount of the transaction
+	 * @param transtype type of the transaction
+	 */
+	
 	public EntryItemModel(int id, int accountID, String message, ZonedDateTime time, double amount, TransactionTypes transtype) {
 		this(id, accountID, message, time, amount, transtype, new FakeEntryItemDao());
 	}
 	
+	/**
+	 * Secondary Constructor 
+	 * By default it uses the the FakeEntryItemDao.
+	 * <p>
+	 * @param id unique identifier from the data store
+	 * @param accountID unique identifier for the related account
+	 * @param message describes the transaction
+	 * @param time when the transaction occurred
+	 * @param amount amount of the transaction
+	 * @param transtype type of the transaction
+	 * @param dao default dao to be used with this
+	 */
 	public EntryItemModel(int id, int accountID, String message, ZonedDateTime time, double amount, TransactionTypes transtype, EntryItemDao dao) {
 		super();
 		this.id = id;
@@ -37,11 +67,20 @@ public final class EntryItemModel extends AbstractFields implements Model{
 		this.dao = dao;
 	}
 		
+	/**
+	 * Uses the default dao to persist this to the data store
+	 */
 	@Override
 	public UseCaseResult save() {
 		return this.dao.save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
 	}
 	
+	/**
+	 * Uses the user defined dao to persist this to the data store
+	 * <p>
+	 * @param dao the dao to be used with this method
+	 * @param class the class name of the dao passed in
+	 */
 	@Override
 	public UseCaseResult save(final Dao dao, final Class<Dao> objClassName) {
 		if (this.isCorrectDao(dao, objClassName)) {
@@ -50,11 +89,17 @@ public final class EntryItemModel extends AbstractFields implements Model{
 		return ((EntryItemDao)dao).save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
 	}
 	
+	/**
+	 * Unique identifier of this
+	 */
 	@Override
 	public int id() {
 		return this.id;
 	}
 	
+	/**
+	 * The fields used to determine equality and this hashcode
+	 */
 	@Override
 	public ArrayList<Object> fields() {
 		return new ArrayList<Object>(Arrays.asList(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType));
