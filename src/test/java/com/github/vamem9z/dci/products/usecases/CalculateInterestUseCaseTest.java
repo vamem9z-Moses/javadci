@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import lombok.NoArgsConstructor;
 import com.github.vamem9z.dci.core.domains.products.InterestRateTimePeriod;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import com.github.vamem9z.dci.core.usecases.results.products.CalculatedInterest;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.products.CalculatedInterest;
 import com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 import com.github.vamem9z.dci.products.usecases.CalculateInterestUseCase;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
@@ -22,11 +22,11 @@ public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {
 	@Test(dataProvider="dp", groups={"unit"})
 	public void interestTest(InterestCalculatorRole calc, int amountOfTime,
 			InterestRateTimePeriod period, double expectedInterest, 
-			double expectedBalance, UseCaseResult expectedResult, String testMsg) {
+			double expectedBalance, AbstractResult expectedResult, String testMsg) {
 
 			CalculateInterestUseCase uc = new CalculateInterestUseCase(calc, 
 					amountOfTime, period);
-			ArrayList<UseCaseResult> results = runContext(uc);
+			ArrayList<AbstractResult> results = runContext(uc);
 			
 			assertEquals(results.size(), 1);
 			assertEquals(((CalculatedInterest)results.get(0)).calculatedInterest(),	expectedInterest);

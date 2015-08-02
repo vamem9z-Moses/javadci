@@ -5,8 +5,8 @@ import java.util.stream.Stream;
 
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
 import com.github.vamem9z.dci.core.usecases.UseCase;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public final class PayBillUseCase implements UseCase {
 	private final TransferMoneySourceRole sourceAccount;
@@ -19,7 +19,7 @@ public final class PayBillUseCase implements UseCase {
 	}
 	
 	@Override
-	public Stream<UseCaseResult> execute() {
+	public Stream<AbstractResult> execute() {
 		return this.sourceAccount.payBills(this);
 	}
 	

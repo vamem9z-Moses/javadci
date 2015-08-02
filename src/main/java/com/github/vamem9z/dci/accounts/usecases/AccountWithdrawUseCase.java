@@ -8,9 +8,9 @@ import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.rules.AccountProtectionRule;
 import com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
 import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
 import com.github.vamem9z.dci.core.rules.Rule;
 import com.github.vamem9z.dci.core.usecases.UseCase;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 
 public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCase {
 	/*
@@ -31,7 +31,7 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 	}
 	
 	@Override
-	public Stream<UseCaseResult>execute(){
+	public Stream<AbstractResult>execute(){
 		return execute(this, ctx -> this.account.withDraw((AccountWithdrawUseCase)ctx), this.rules);
 	}
 	

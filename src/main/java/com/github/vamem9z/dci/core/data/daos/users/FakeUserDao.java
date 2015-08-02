@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import com.github.vamem9z.dci.core.data.daos.Dao;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.users.FoundUser;
+import com.github.vamem9z.dci.core.domains.results.users.TooManyUsers;
+import com.github.vamem9z.dci.core.domains.results.users.UserNotFound;
 import com.github.vamem9z.dci.core.domains.users.User;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
-import com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
-import com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
 
 public final class FakeUserDao implements Dao {
     private static User Moses = new User(12, "Moses");
@@ -27,7 +27,7 @@ public final class FakeUserDao implements Dao {
     
     public FakeUserDao() {}
     
-    public final UseCaseResult findUserByID(int id) {
+    public final AbstractResult findUserByID(int id) {
         ArrayList<User> foundUsers = users.stream().filter(user -> user.id() == id).collect(Collectors.toCollection(ArrayList::new));
         if (foundUsers.isEmpty()) {
             return new UserNotFound();

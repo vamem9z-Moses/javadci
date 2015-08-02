@@ -12,17 +12,17 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
 import com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
+import com.github.vamem9z.dci.core.domains.results.general.Successful;
+import com.github.vamem9z.dci.core.domains.results.general.WrongContext;
 import com.github.vamem9z.dci.core.usecases.UseCase;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import com.github.vamem9z.dci.core.usecases.results.accounts.NegativeAmountNotAllowed;
-import com.github.vamem9z.dci.core.usecases.results.general.Successful;
-import com.github.vamem9z.dci.core.usecases.results.general.WrongContext;
 
 public class NoNegativeAmountTest implements AccountTest {
   @Test(groups = {"unit"}, dataProvider = "dp")
-  public void f(UseCase ctx, UseCaseResult expectedResult, String msg) {
+  public void f(UseCase ctx, AbstractResult expectedResult, String msg) {
 	  NoNegativeAmountsRule rule = new NoNegativeAmountsRule();
-	  UseCaseResult result = rule.action(ctx);
+	  AbstractResult result = rule.action(ctx);
 	  assertEquals(result, expectedResult, msg);
   }
 
@@ -41,8 +41,8 @@ public class NoNegativeAmountTest implements AccountTest {
   
  private class EmptyTestContext implements UseCase {
 	  public EmptyTestContext() {}
-	  public Stream<UseCaseResult>execute()  {
-		  ArrayList<UseCaseResult> result = new ArrayList<UseCaseResult>(Arrays.asList(new Successful()));
+	  public Stream<AbstractResult>execute()  {
+		  ArrayList<AbstractResult> result = new ArrayList<AbstractResult>(Arrays.asList(new Successful()));
 		  return result.stream();
 	  }
   }

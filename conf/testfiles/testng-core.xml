@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "testng-1.0.dtd" >
 <suite name="coreModule" verbose="1">
-	<test name="usecases">
-		<packages>
-			<package name="com.github.vamem9z.dci.core.usecases.results" />
-        </packages>
-    </test>
     <test name="domains">
           <packages>
+         	<package name="com.github.vamem9z.dci.core.domains.results" />
             <package name="com.github.vamem9z.dci.core.domains" />
             <package name="com.github.vamem9z.dci.core.domains.entries" />
         </packages>

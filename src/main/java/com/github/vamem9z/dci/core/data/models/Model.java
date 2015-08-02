@@ -1,7 +1,7 @@
 package com.github.vamem9z.dci.core.data.models;
 
 import com.github.vamem9z.dci.core.data.daos.Dao;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
 
 public interface Model {
 	/**
@@ -15,7 +15,7 @@ public interface Model {
 	 * <p>
 	 * @return a UseCaseResult type from a dao save method
 	 */
-	UseCaseResult save();
+	AbstractResult save();
 	
 	/**
 	 * Uses parameter injected by the save method to save the model
@@ -24,7 +24,7 @@ public interface Model {
 	 * @param objClassName - simple String representation of the 
 	 * @return a UseCaseResult type from a dao save method
 	 */
-	UseCaseResult save(final Dao dao, final Class<Dao> objClassName);
+	AbstractResult save(final Dao dao, final Class<Dao> objClassName);
 	
 	/**
 	 * Utility function to check to see if dao is of the same class as the name passed in

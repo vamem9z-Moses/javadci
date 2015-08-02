@@ -7,8 +7,8 @@ package com.github.vamem9z.dci.users.habits;
 
 import java.util.stream.Stream;
 
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
 import com.github.vamem9z.dci.core.usecases.UseCase;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import com.github.vamem9z.dci.users.roles.UnknownUserRole;
 
 /**
@@ -22,7 +22,7 @@ public final class FindUserHabit implements UseCase {
 	
     private UnknownUserRole user;
     
-    public Stream<UseCaseResult> execute() {
+    public Stream<AbstractResult> execute() {
         return user.findUser(this);
     }
     

@@ -10,8 +10,8 @@ import com.github.vamem9z.dci.core.data.daos.entries.FakeEntryItemDao;
 import com.github.vamem9z.dci.core.data.models.Model;
 import com.github.vamem9z.dci.core.domains.AbstractFields;
 import com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
-import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
-import com.github.vamem9z.dci.core.usecases.results.general.WrongDao;
+import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.general.WrongDao;
 
 /**
  * Model used by EntryItem Domains persist and export data from the system
@@ -71,7 +71,7 @@ public final class EntryItemModel extends AbstractFields implements Model{
 	 * Uses the default dao to persist this to the data store
 	 */
 	@Override
-	public UseCaseResult save() {
+	public AbstractResult save() {
 		return this.dao.save(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType);
 	}
 	
@@ -82,7 +82,7 @@ public final class EntryItemModel extends AbstractFields implements Model{
 	 * @param class the class name of the dao passed in
 	 */
 	@Override
-	public UseCaseResult save(final Dao dao, final Class<Dao> objClassName) {
+	public AbstractResult save(final Dao dao, final Class<Dao> objClassName) {
 		if (this.isCorrectDao(dao, objClassName)) {
 			return new WrongDao();
 		}
