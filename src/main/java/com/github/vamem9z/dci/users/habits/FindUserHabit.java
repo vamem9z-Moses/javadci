@@ -7,7 +7,6 @@ package com.github.vamem9z.dci.users.habits;
 
 import java.util.stream.Stream;
 
-import lombok.NoArgsConstructor;
 import com.github.vamem9z.dci.core.usecases.UseCase;
 import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
 import com.github.vamem9z.dci.users.roles.UnknownUserRole;
@@ -16,8 +15,11 @@ import com.github.vamem9z.dci.users.roles.UnknownUserRole;
  *
  * @author mmiles
  */
-@NoArgsConstructor
+
 public final class FindUserHabit implements UseCase {
+	
+	public FindUserHabit() {}
+	
     private UnknownUserRole user;
     
     public Stream<UseCaseResult> execute() {
