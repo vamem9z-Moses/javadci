@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import lombok.NoArgsConstructor;
 import com.github.vamem9z.dci.core.data.daos.Dao;
 import com.github.vamem9z.dci.core.domains.users.User;
 import com.github.vamem9z.dci.core.usecases.results.UseCaseResult;
@@ -17,7 +16,6 @@ import com.github.vamem9z.dci.core.usecases.results.users.FoundUser;
 import com.github.vamem9z.dci.core.usecases.results.users.TooManyUsers;
 import com.github.vamem9z.dci.core.usecases.results.users.UserNotFound;
 
-@NoArgsConstructor
 public final class FakeUserDao implements Dao {
     private static User Moses = new User(12, "Moses");
     private static User Kathy = new User(13, "Kathy");
@@ -26,6 +24,8 @@ public final class FakeUserDao implements Dao {
     private static User Vendor2 = new User(16, "Vendor 2");
     private static ArrayList<User>  users = new ArrayList<User>(Arrays.asList(Moses, 
             Kathy, David, Vendor1, Vendor2));
+    
+    public FakeUserDao() {}
     
     public final UseCaseResult findUserByID(int id) {
         ArrayList<User> foundUsers = users.stream().filter(user -> user.id() == id).collect(Collectors.toCollection(ArrayList::new));
