@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import com.github.vamem9z.dci.core.domains.AbstractFields;
 
-public abstract class AbstractResult extends AbstractFields { 
+public abstract class AbstractResult extends AbstractFields implements Result { 
 	private String name;
 	private ResultTypes type;
         
@@ -14,7 +14,7 @@ public abstract class AbstractResult extends AbstractFields {
 		this.type = type;
 	}
 	
-    public boolean isFailure() {
+    public final boolean isFailure() {
         if (this.type == ResultTypes.FAILURE) {
         	return true;
         }

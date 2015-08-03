@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.rules.NoNegativeAmountsRule;
 import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.rules.Rule;
 import com.github.vamem9z.dci.core.usecases.UseCase;
 
@@ -25,7 +25,7 @@ public final class AccountDepositUseCase implements UseCase, ChangeBalanceUseCas
 	}
 	
 	@Override
-	public Stream<AbstractResult> execute() {
+	public Stream<Result> execute() {
 		return execute(this, (UseCase ctx) -> this.account.deposit((AccountDepositUseCase) ctx), this.rules);
 	}
 	

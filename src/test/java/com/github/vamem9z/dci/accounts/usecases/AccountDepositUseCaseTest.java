@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
@@ -30,10 +30,10 @@ public class AccountDepositUseCaseTest implements UseCaseTest, AccountTest{
     }
 
     @Test(dataProvider="account test data", groups={"unit"})
-	public void test(AccountRole account, AbstractResult expectedResult, 
+	public void test(AccountRole account, Result expectedResult, 
 			double amount, double expected, String msg) {
     	
-            ArrayList<AbstractResult> errors = runContext(new AccountDepositUseCase(
+            ArrayList<Result> errors = runContext(new AccountDepositUseCase(
                     account,amount, msg));
         
             assertEquals(errors.get(0), expectedResult);

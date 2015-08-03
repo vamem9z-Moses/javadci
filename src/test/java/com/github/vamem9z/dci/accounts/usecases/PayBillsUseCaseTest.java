@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
@@ -31,10 +31,10 @@ public class PayBillsUseCaseTest implements UseCaseTest, AccountTest {
 	}
 		
 	@Test(dataProvider="testData", groups={"unit"})
-	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, AbstractResult expectedResult,
+	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, Result expectedResult,
 			 double sourceExpected, double vendor1Expected, double vendor2Expected, String testMsg ) {
 		
-		ArrayList<AbstractResult> errors = runContext(new PayBillUseCase(
+		ArrayList<Result> errors = runContext(new PayBillUseCase(
     			sourceAccount, creditors));
 		
 		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);

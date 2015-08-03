@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
@@ -29,10 +29,10 @@ public class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {
 		
 	@Test(dataProvider="testData", groups={"unit"})
 	public void test(TransferMoneySourceRole sourceAccount, AccountRole destAccount, 
-			AbstractResult expectedResult,double amount, double sourceExpected, 
+			Result expectedResult,double amount, double sourceExpected, 
 			double destExpected, String testMsg ) {
 		
-		ArrayList<AbstractResult> errors = runContext(new TransferMoneyUseCase(
+		ArrayList<Result> errors = runContext(new TransferMoneyUseCase(
     			sourceAccount, destAccount, amount));
 		
 		assertEquals(sourceAccount.calcBalance(), sourceExpected, 0, testMsg);

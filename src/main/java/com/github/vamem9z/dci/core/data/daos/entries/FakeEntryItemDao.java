@@ -8,7 +8,7 @@ import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
 import com.github.vamem9z.dci.core.domains.entries.DebitEntryItem;
 import com.github.vamem9z.dci.core.domains.entries.EntryItem;
 import com.github.vamem9z.dci.core.domains.entries.TransactionTypes;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.accounts.SavedEntryItem;
 
 public final class FakeEntryItemDao implements EntryItemDao {
@@ -19,7 +19,7 @@ public final class FakeEntryItemDao implements EntryItemDao {
 	}
 	
 	@Override
-	public AbstractResult save(int id, int accountID, String message, ZonedDateTime date, double amount, TransactionTypes transType) {
+	public Result save(int id, int accountID, String message, ZonedDateTime date, double amount, TransactionTypes transType) {
 		if (id == 0) {
 			id = this.randInt(100, 200000);
 		}

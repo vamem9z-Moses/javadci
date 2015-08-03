@@ -2,7 +2,7 @@ package com.github.vamem9z.dci.core.domains;
 
 import com.github.vamem9z.dci.core.data.daos.Dao;
 import com.github.vamem9z.dci.core.data.models.Model;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 
 public interface Persister {
 	/**
@@ -17,7 +17,7 @@ public interface Persister {
 	 * <p>
 	 * @return the Saved Domain Name UseCaseResult, or Failed UseCaseResult if save operation is aborted.
 	 */
-	default AbstractResult save() {
+	default Result save() {
 		Model model = createModel();
 		return model.save();
 	}
@@ -26,7 +26,7 @@ public interface Persister {
 	 * Saves the model (current state) version of the domain object with a specific dao.
 	 * @return the Saved Domain Name UseCaseResult, or Failed UseCaseResult if the save operation is aborted.
 	 */
-	default AbstractResult save(final Dao dao, final Class<Dao> objClassName) {
+	default Result save(final Dao dao, final Class<Dao> objClassName) {
 		Model model = createModel();
 		return model.save(dao, objClassName);
 	}

@@ -9,32 +9,32 @@ import com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
 import com.github.vamem9z.dci.accounts.usecases.PayBillUseCase;
 import com.github.vamem9z.dci.accounts.usecases.TransferMoneyUseCase;
 import com.github.vamem9z.dci.core.domains.accounts.Account;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.roles.Role;
 
 public interface TransferMoneySourceRole extends Role, Account {	
 	
-	default Stream<AbstractResult> transfer(TransferMoneyUseCase ctx) {
+	default Stream<Result> transfer(TransferMoneyUseCase ctx) {
 		
 		AccountWithdrawUseCase accWithCtx = ctx.createWithDrawCtx();
-		Stream<AbstractResult> withResult = accWithCtx.execute();
+		Stream<Result> withResult = accWithCtx.execute();
 		
 		AccountDepositUseCase accDepCtx = ctx.createDepCtx();
-		Stream<AbstractResult> depResult = accDepCtx.execute();
+		Stream<Result> depResult = accDepCtx.execute();
 		
 		return Stream.concat(withResult, depResult);
 	}
 	
-	default Stream<AbstractResult> payBill(TransferMoneySourceRole source, 
+	default Stream<Result> payBill(TransferMoneySourceRole source, 
 			AccountRole creditor) {
 		TransferMoneyUseCase tmctx = new TransferMoneyUseCase(
 				source, creditor, creditor.calcBalance());	
 		return tmctx.execute();
 	}
 	
-	default Stream<AbstractResult> payBills(PayBillUseCase ctx) {
+	default Stream<Result> payBills(PayBillUseCase ctx) {
 		
-		ArrayList<AbstractResult> errors = ctx.creditors().stream()
+		ArrayList<Result> errors = ctx.creditors().stream()
 			.map(creditor ->  payBill(ctx.sourceAccount(), creditor))
 			.flatMap(x ->x).collect(Collectors.toCollection(ArrayList::new));
 		return errors.stream();

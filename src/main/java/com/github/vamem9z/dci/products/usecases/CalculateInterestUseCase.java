@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 import com.github.vamem9z.dci.core.domains.accounts.AccountActions;
 import com.github.vamem9z.dci.core.domains.products.InterestRateTimePeriod;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.usecases.UseCase;
 import com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 
@@ -20,7 +20,7 @@ public final class CalculateInterestUseCase implements UseCase {
 		this.amountOfTime = amountOfTime;
 	}
 	
-	public Stream<AbstractResult> execute() {
+	public Stream<Result> execute() {
 		return this.calc.calculateInterest(this);
 	}
 	

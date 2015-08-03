@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.ResultTypes;
 import com.github.vamem9z.dci.core.domains.results.accounts.AccountResult;
 import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
@@ -30,8 +30,8 @@ import com.github.vamem9z.dci.core.domains.users.User;
 
 public class ResultsTest {
   @Test(dataProvider = "dp", groups={"unit"})
-  public void testContextResults(AbstractResult ucResult, String expectedName, 
-		  ResultTypes expectedType, Class<AbstractResult> ucResultParent, 
+  public void testContextResults(Result ucResult, String expectedName, 
+		  ResultTypes expectedType, Class<Result> ucResultParent, 
 		  boolean expectedFailure) {
 	  
 	  assertEquals(ucResult.name(), expectedName);

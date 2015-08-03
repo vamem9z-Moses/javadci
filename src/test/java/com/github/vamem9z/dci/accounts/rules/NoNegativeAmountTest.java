@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.usecases.AccountDepositUseCase;
 import com.github.vamem9z.dci.accounts.usecases.AccountWithdrawUseCase;
-import com.github.vamem9z.dci.core.domains.results.AbstractResult;
+import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.domains.results.general.WrongContext;
@@ -20,9 +20,9 @@ import com.github.vamem9z.dci.core.usecases.UseCase;
 
 public class NoNegativeAmountTest implements AccountTest {
   @Test(groups = {"unit"}, dataProvider = "dp")
-  public void f(UseCase ctx, AbstractResult expectedResult, String msg) {
+  public void f(UseCase ctx, Result expectedResult, String msg) {
 	  NoNegativeAmountsRule rule = new NoNegativeAmountsRule();
-	  AbstractResult result = rule.action(ctx);
+	  Result result = rule.action(ctx);
 	  assertEquals(result, expectedResult, msg);
   }
 
@@ -41,8 +41,8 @@ public class NoNegativeAmountTest implements AccountTest {
   
  private class EmptyTestContext implements UseCase {
 	  public EmptyTestContext() {}
-	  public Stream<AbstractResult>execute()  {
-		  ArrayList<AbstractResult> result = new ArrayList<AbstractResult>(Arrays.asList(new Successful()));
+	  public Stream<Result>execute()  {
+		  ArrayList<Result> result = new ArrayList<Result>(Arrays.asList(new Successful()));
 		  return result.stream();
 	  }
   }
