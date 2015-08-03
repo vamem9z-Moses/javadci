@@ -15,23 +15,21 @@ import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class PayBillsUseCaseTest implements UseCaseTest, AccountTest {
+public final class PayBillsUseCaseTest implements UseCaseTest, AccountTest {
+	public PayBillsUseCaseTest() {}
 	
-	private ArrayList<AccountRole> creditors = new ArrayList<AccountRole>(
+	private final ArrayList<AccountRole> creditors = new ArrayList<AccountRole>(
 			Arrays.asList(makeVendorAccount(394.30), makeVendorAccount(122.12)));
 	
 	@DataProvider(name="testData")
-	public Object[][] testData() {
+	public final Object[][] testData() {
 		return new Object[][] {
 			new Object[]{makeCheckingAccount(1000.34), creditors, new Successful(), 483.92, 0, 0, "2 liability accounts"},
 		};
 	}
 		
 	@Test(dataProvider="testData", groups={"unit"})
-	public void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, Result expectedResult,
+	public final void test(TransferMoneySourceRole sourceAccount, ArrayList<AccountRole> creditors, Result expectedResult,
 			 double sourceExpected, double vendor1Expected, double vendor2Expected, String testMsg ) {
 		
 		ArrayList<Result> errors = runContext(new PayBillUseCase(

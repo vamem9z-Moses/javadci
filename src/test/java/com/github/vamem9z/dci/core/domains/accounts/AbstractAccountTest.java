@@ -11,10 +11,10 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.core.domains.accounts.types.SavingsAccount;
 
-public class AbstractAccountTest implements AccountTest {
+public final class AbstractAccountTest implements AccountTest {
 	
 	@DataProvider(name="account test data")
-	public Object[][] data(){
+	public final Object[][] data(){
 		return new Object[][] {
 			new Object[] {200.00, AccountActions.DEPOSIT, 300.23, "Credit Test"}, 
 			new Object[] {243.23, AccountActions.WITHDRAWAL, -143.00, "Debit Test"}
@@ -22,14 +22,14 @@ public class AbstractAccountTest implements AccountTest {
 	}
 
 	@Test(groups = {"unit"}, dataProvider="account test data") 
-	public void testGetBalance(double transAmount, AccountActions action, double expectedBalance, String testMessage) {
+	public final void testGetBalance(double transAmount, AccountActions action, double expectedBalance, String testMessage) {
 		SavingsAccount acct = makeSavingsAccount(100.23);
 		acct.recordTransaction(transAmount, testMessage, action);
 		assertEquals(acct.calcBalance(), expectedBalance, 0.00, testMessage);
 	}
 	
 	@DataProvider
-	public Object[][] fieldsDp(){
+	public final Object[][] fieldsDp(){
 		return new Object[][] {
 			new Object[] {200.00, AccountActions.DEPOSIT, 300.23, "Credit Test"}, 
 			new Object[] {243.23, AccountActions.WITHDRAWAL, -143.00, "Debit Test"}
@@ -37,7 +37,7 @@ public class AbstractAccountTest implements AccountTest {
 	}
 	
 	@Test(dataProvider="fieldsDp")
-	public void testFields(double transAmount, AccountActions action, double expectedBalance, String testMessage) {
+	public final void testFields(double transAmount, AccountActions action, double expectedBalance, String testMessage) {
 		SavingsAccount acct1 = makeSavingsAccount(100.23);
 		SavingsAccount acct2 = makeSavingsAccount(100.23);
 		acct1.recordTransaction(transAmount, testMessage, action, ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"));

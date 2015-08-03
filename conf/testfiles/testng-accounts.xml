@@ -7,11 +7,6 @@
                 name="com.github.vamem9z.dci.accounts.usecases" />
         </packages>
     </test>
-    <test name="roles">
-        <packages>
-            <package name="com.github.vamem9z.dci.accounts.roles" />
-        </packages>
-    </test>
     <test name="rules">
         <packages>
             <package name="com.github.vamem9z.dci.accounts.rules" />

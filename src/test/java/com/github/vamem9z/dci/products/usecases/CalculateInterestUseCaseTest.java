@@ -7,20 +7,19 @@ import java.util.ArrayList;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lombok.NoArgsConstructor;
 import com.github.vamem9z.dci.core.domains.products.InterestRateTimePeriod;
 import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.products.CalculatedInterest;
-import com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
-import com.github.vamem9z.dci.products.usecases.CalculateInterestUseCase;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 import com.github.vamem9z.dci.products.ProductTest;
+import com.github.vamem9z.dci.products.roles.InterestCalculatorRole;
 
-@NoArgsConstructor
-public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {
+
+public final class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {
+	public CalculateInterestUseCaseTest() {}
 	
 	@Test(dataProvider="dp", groups={"unit"})
-	public void interestTest(InterestCalculatorRole calc, int amountOfTime,
+	public final void interestTest(InterestCalculatorRole calc, int amountOfTime,
 			InterestRateTimePeriod period, double expectedInterest, 
 			double expectedBalance, Result expectedResult, String testMsg) {
 
@@ -35,7 +34,7 @@ public class CalculateInterestUseCaseTest implements UseCaseTest, ProductTest {
 	}
 	
 	@DataProvider
-	public Object[][] dp() {
+	public final Object[][] dp() {
 		return new Object[][] {
 			new Object[] { makeHighInterestCheckingAccount(100.00, 5.00), 5, InterestRateTimePeriod.DAYS, 0.05, 100.05,  new CalculatedInterest(0.05), "Daily Interest Test" },
 			new Object[] { makeHighInterestCheckingAccount(100.00, 5.00), 25, InterestRateTimePeriod.WEEKS, 2.40, 102.40,  new CalculatedInterest(2.40), "Weekly Interest Test" },

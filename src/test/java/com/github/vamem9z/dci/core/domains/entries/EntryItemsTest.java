@@ -26,7 +26,7 @@ public final class EntryItemsTest implements EntryItemTest {
 	 * @return an array of Object arrays each containing an EntryItem to test and the expected transaction amount.
 	 */
 	@DataProvider
-	public Object[][] amountDp() {
+	public final Object[][] amountDp() {
 		return new Object[][] {
 			{makeCreditEntryItem(100.00), 100.00},
 			{makeDebitEntryItem(200.00), -200.00}
@@ -50,7 +50,7 @@ public final class EntryItemsTest implements EntryItemTest {
 	 * @return an array of Object arrays each containing an EntryItem and an array with the same field values as an EntryItem 
 	 */
 	@DataProvider
-	public Object[][] fieldsDp() {
+	public final Object[][] fieldsDp() {
 		return new Object[][] {
 			{new CreditEntryItem(1, 1, "Credit Test", 
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00), 
@@ -72,7 +72,7 @@ public final class EntryItemsTest implements EntryItemTest {
 	 * @param expectedObj comparison object under test
 	 */
 	@Test(dataProvider="fieldsDp", groups={"unit"})
-	public void testFields(AbstractEntryItem item, ArrayList<Object> expectedObj) {
+	public final void testFields(AbstractEntryItem item, ArrayList<Object> expectedObj) {
 		assertTrue(Objects.deepEquals(item.fields(), expectedObj));
 	} 
 	
@@ -105,7 +105,7 @@ public final class EntryItemsTest implements EntryItemTest {
 	 */
 	
 	@Test(dataProvider="createModelDp", groups={"unit"})
-	public void testCreateModel(AbstractEntryItem item, EntryItemModel model) {
+	public final void testCreateModel(AbstractEntryItem item, EntryItemModel model) {
 		assertTrue(item.createModel().equals(model));
 	}
 }

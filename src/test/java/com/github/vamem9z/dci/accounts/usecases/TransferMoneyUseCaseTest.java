@@ -14,13 +14,11 @@ import com.github.vamem9z.dci.core.domains.results.Result;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {
+public final class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {
+	public TransferMoneyUseCaseTest() {}
 	
 	@DataProvider(name="testData")
-	public Object[][] testData() {
+	public final Object[][] testData() {
 		return new Object[][] {
 			new Object[]{makeCheckingAccount(1000.34), makeSavingsAccount(921.23), new Successful(), 300.00, 700.34, 1221.23, "asset to asset transfer"},
 			new Object[]{makeVendorAccount(394.30), makeVendorAccount(122.21), new Successful(), 300.00, 694.30, -177.79, "reset test"},
@@ -28,7 +26,7 @@ public class TransferMoneyUseCaseTest implements UseCaseTest, AccountTest {
 	}
 		
 	@Test(dataProvider="testData", groups={"unit"})
-	public void test(TransferMoneySourceRole sourceAccount, AccountRole destAccount, 
+	public final void test(TransferMoneySourceRole sourceAccount, AccountRole destAccount, 
 			Result expectedResult,double amount, double sourceExpected, 
 			double destExpected, String testMsg ) {
 		

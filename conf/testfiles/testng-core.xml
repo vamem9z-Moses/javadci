@@ -6,6 +6,7 @@
          	<package name="com.github.vamem9z.dci.core.domains.results" />
             <package name="com.github.vamem9z.dci.core.domains" />
             <package name="com.github.vamem9z.dci.core.domains.entries" />
+            <package name="com.github.vamem9z.dci.core.domains.accounts" />
         </packages>
     </test>
 </suite>

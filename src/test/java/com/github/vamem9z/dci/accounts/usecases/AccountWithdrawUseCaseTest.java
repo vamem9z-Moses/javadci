@@ -14,13 +14,11 @@ import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAll
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
 
-import lombok.NoArgsConstructor;
+public final class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTest {
+	public AccountWithdrawUseCaseTest() {}
 
-@NoArgsConstructor
-public class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTest {
-		
     @DataProvider(name="account test data")
-    public Object[][] data() {
+    public final Object[][] data() {
     	return new Object[][] {
     			new Object[] {makeCheckingAccount(1000.34), new Successful(), 400.00, 600.34, "Credit Account Withdraw Test"},
     			new Object[] {makeVendorAccount(1000.34), new Successful(), 400.00, 1400.34, "Deposit Account Withdraw Test"},
@@ -30,7 +28,7 @@ public class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTest {
     }
 
     @Test(dataProvider="account test data", groups={"unit"})
-	public void test(AccountRole account, Result expectedResult, 
+	public final void test(AccountRole account, Result expectedResult, 
 			double amount, double expected, String msg) {
     	
             ArrayList<Result> errors = runContext(new AccountWithdrawUseCase(
