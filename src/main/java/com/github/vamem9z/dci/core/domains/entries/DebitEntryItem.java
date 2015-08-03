@@ -8,6 +8,10 @@ public final class DebitEntryItem extends AbstractEntryItem {
 		super(id, accountID, message, date, amount, TransactionTypes.DEBIT);
 	}
 	
+	public DebitEntryItem(int accountID, String message, ZonedDateTime date, double amount) {
+		this(DEFAULT_ENTRY_ID, accountID, message, date, amount);
+	}
+	
 	public DebitEntryItem(int accountID, String message, double amount) {
 		this(DEFAULT_ENTRY_ID, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
 	}

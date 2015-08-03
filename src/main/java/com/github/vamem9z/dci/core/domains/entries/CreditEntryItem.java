@@ -8,6 +8,10 @@ public final class CreditEntryItem extends AbstractEntryItem {
 		super(id, accountID, message, date, amount, TransactionTypes.CREDIT);
 	}
 	
+	public CreditEntryItem(int accountID, String message, ZonedDateTime date, double amount) {
+		this(DEFAULT_ENTRY_ID, accountID, message, date, amount);
+	}
+	
 	public CreditEntryItem(int accountID, String message, double amount) {
 		this(DEFAULT_ENTRY_ID, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
 	}

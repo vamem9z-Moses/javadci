@@ -1,16 +1,17 @@
 package com.github.vamem9z.dci.core.domains.accounts;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-import lombok.ToString;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.accounts.roles.TransferMoneySourceRole;
+import com.github.vamem9z.dci.core.domains.AbstractFields;
 import com.github.vamem9z.dci.core.domains.accountinfo.AccountInfo;
 import com.github.vamem9z.dci.core.domains.entries.EntryItem;
 
-@ToString(includeFieldNames=true)
-public abstract class AbstractAccount implements Account, AccountRole, TransferMoneySourceRole {
+public abstract class AbstractAccount extends AbstractFields implements Account, AccountRole, TransferMoneySourceRole {
 	
 	private final AccountInfo accountInfo;
 	private final ArrayList<EntryItem> entries;
@@ -54,4 +55,12 @@ public abstract class AbstractAccount implements Account, AccountRole, TransferM
 	
 	@Override
 	public abstract void recordTransaction(double amount, String msg, AccountActions actions);
+	
+	@Override
+	public abstract void recordTransaction(double amount, String msg, AccountActions actions, ZonedDateTime date);
+	
+	@Override
+	public final ArrayList<Object> fields() {
+		return new ArrayList<Object>(Arrays.asList(this.accountInfo, this.entries));
+	}
 }
