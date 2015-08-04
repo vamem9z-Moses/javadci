@@ -24,7 +24,7 @@ public final class FakeEntryItemDao implements EntryItemDao {
 		}
 		
 		if (transType == TransactionTypes.DEBIT) {
-			EntryItem item = new DebitEntryItem.DebitEntryItemBuilder(accountId, message, amount)
+			DebitEntryItem item = new DebitEntryItem.DebitEntryItemBuilder(accountId, message, amount)
 					.id(id)
 					.date(date)
 					.build();
@@ -33,7 +33,7 @@ public final class FakeEntryItemDao implements EntryItemDao {
 			return new SavedEntryItem(item);
 		}
 		
-		EntryItem item = new CreditEntryItem.CreditEntryItemBuilder(accountId, message, amount)
+		CreditEntryItem item = new CreditEntryItem.CreditEntryItemBuilder(accountId, message, amount)
 				.id(id)
 				.date(date)
 				.build();

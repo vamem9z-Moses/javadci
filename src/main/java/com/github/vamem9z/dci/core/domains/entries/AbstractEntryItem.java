@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-import com.github.vamem9z.dci.core.data.models.Model;
 import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
 import com.github.vamem9z.dci.core.domains.AbstractFields;
 import com.github.vamem9z.dci.core.domains.Persister;
@@ -15,7 +14,7 @@ import com.github.vamem9z.dci.core.domains.Persister;
  * Provides the base implementation of the EntryItem Interface.
  */
 
-public abstract class AbstractEntryItem extends AbstractFields implements Persister, EntryItem {
+public abstract class AbstractEntryItem extends AbstractFields implements Persister<EntryItemModel>, EntryItem {
 	private final int id;
 	private final int accountId;
 	private final String message;
@@ -28,6 +27,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * Constructor
 	 * <p>
 	 * All constructor parameters are required.
+	 * @param <U>
 	 * 
 	 * @param id - unique id in the data store being used. This is pre-filled by the subclass constructor.
 	 * @param accountID - unique id of account the entry item belongs  
@@ -37,7 +37,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @param transType - the type of the transaction either debit or credit
 	 */
 	
-	protected AbstractEntryItem(EntryItemBuilder builder) {
+	protected <U> AbstractEntryItem(EntryItemBuilder<U> builder) {
 		super();
 		this.id  = Objects.requireNonNull(builder.id, "id can't be null");
 		this.accountId = Objects.requireNonNull(builder.accountId, "account id can't be null");
@@ -53,7 +53,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @author mmiles
 	 *
 	 */
-	public static abstract class EntryItemBuilder {
+	public static abstract class EntryItemBuilder<T> {
 		public int id = 0;
 		public int accountId;
 		public String message;
@@ -69,17 +69,17 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 			this.transactionType = type;
 		}
 		
-		public final EntryItemBuilder id(int id) {
+		public final EntryItemBuilder<T> id(int id) {
 			this.id = id;
 			return this;
 		}
 		
-		public final EntryItemBuilder date(ZonedDateTime date) {
+		public final EntryItemBuilder<T> date(ZonedDateTime date) {
 			this.date = date;
 			return this;
 		}
 		
-		public abstract EntryItem build(); 
+		public abstract T build(); 
 	}
 	
 	/**
@@ -109,7 +109,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @see com.github.vamem9z.dci.core.domains.Persister#createModel()
 	 */
 	@Override
-	public final Model createModel() {
+	public final EntryItemModel createModel() {
 		return new EntryItemModel(this.id, this.accountId, this.message, this.date, 
 				this.amount, this.transactionType);
 	}

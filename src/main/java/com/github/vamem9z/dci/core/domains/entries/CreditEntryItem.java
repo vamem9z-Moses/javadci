@@ -12,18 +12,17 @@ public final class CreditEntryItem extends AbstractEntryItem {
 	 * @author mmiles
 	 *
 	 */
-	public static class CreditEntryItemBuilder extends AbstractEntryItem.EntryItemBuilder {
+	public static class CreditEntryItemBuilder extends AbstractEntryItem.EntryItemBuilder<CreditEntryItem> {
 
 		public CreditEntryItemBuilder(int accountId, String message,
 				double amount) {
 			super(accountId, message, amount, TransactionTypes.CREDIT);
 		}
 		
-		public EntryItem build() {
+		public CreditEntryItem build() {
 			return new CreditEntryItem(this);
 		}	
 	}
-	
 	
 	/**
 	 * @return signed transaction amount (positive)

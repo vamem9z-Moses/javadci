@@ -6,14 +6,14 @@ public final class DebitEntryItem extends AbstractEntryItem {
 		super(builder);
 	}
 	
-	public static class DebitEntryItemBuilder extends AbstractEntryItem.EntryItemBuilder {
+	public static class DebitEntryItemBuilder extends AbstractEntryItem.EntryItemBuilder<DebitEntryItem> {
 
 		public DebitEntryItemBuilder(int accountId, String message,
 				double amount) {
 			super(accountId, message, amount, TransactionTypes.DEBIT);
 		}
 		
-		public EntryItem build() {
+		public DebitEntryItem build() {
 			return new DebitEntryItem(this);
 		}	
 	}
