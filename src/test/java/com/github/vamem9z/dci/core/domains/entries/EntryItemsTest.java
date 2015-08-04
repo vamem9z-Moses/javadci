@@ -52,13 +52,17 @@ public final class EntryItemsTest implements EntryItemTest {
 	@DataProvider
 	public final Object[][] fieldsDp() {
 		return new Object[][] {
-			{new CreditEntryItem(1, 1, "Credit Test", 
-					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00), 
+			{new CreditEntryItem.CreditEntryItemBuilder(1, "Credit Test", 100.00)
+				.id(1)
+				.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
+				.build(), 
 			new ArrayList<Object>(Arrays.asList(1, 1, "Credit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
 					TransactionTypes.CREDIT))},
-			{new DebitEntryItem(1, 1, "Debit Test", 
-					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00), 
+			{new DebitEntryItem.DebitEntryItemBuilder(1, "Debit Test",100.00)
+						.id(1)
+						.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
+						.build(), 
 			new ArrayList<Object>(Arrays.asList(1, 1, "Debit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
 					TransactionTypes.DEBIT))},
@@ -84,13 +88,17 @@ public final class EntryItemsTest implements EntryItemTest {
 	@DataProvider
 	public Object[][] createModelDp() {
 		return new Object[][] {
-			{new CreditEntryItem(1, 1, "Credit Test", 
-					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00), 
+			{new CreditEntryItem.CreditEntryItemBuilder(1, "Credit Test", 100.00)
+				.id(1)
+				.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
+				.build(), 
 			new EntryItemModel(1, 1, "Credit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
 					TransactionTypes.CREDIT)},
-			{new DebitEntryItem(1, 1, "Debit Test", 
-					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00), 
+			{new DebitEntryItem.DebitEntryItemBuilder(1, "Debit Test",100.00)
+						.id(1)
+						.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
+						.build(), 
 			new EntryItemModel(1, 1, "Debit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
 					TransactionTypes.DEBIT)},

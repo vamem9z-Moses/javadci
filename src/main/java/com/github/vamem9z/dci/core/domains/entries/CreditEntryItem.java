@@ -1,23 +1,36 @@
 package com.github.vamem9z.dci.core.domains.entries;
 
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-
 public final class CreditEntryItem extends AbstractEntryItem {
-	public CreditEntryItem(int id, int accountID, String message, ZonedDateTime date, double amount) {
-		super(id, accountID, message, date, amount, TransactionTypes.CREDIT);
+	
+	private CreditEntryItem(CreditEntryItemBuilder builder) {
+		super(builder);
 	}
 	
-	public CreditEntryItem(int accountID, String message, ZonedDateTime date, double amount) {
-		this(DEFAULT_ENTRY_ID, accountID, message, date, amount);
+	/**
+	 * Builder for CreditEntryItems
+	 * <p>
+	 * @author mmiles
+	 *
+	 */
+	public static class CreditEntryItemBuilder extends AbstractEntryItem.EntryItemBuilder {
+
+		public CreditEntryItemBuilder(int accountId, String message,
+				double amount) {
+			super(accountId, message, amount, TransactionTypes.CREDIT);
+		}
+		
+		public EntryItem build() {
+			return new CreditEntryItem(this);
+		}	
 	}
 	
-	public CreditEntryItem(int accountID, String message, double amount) {
-		this(DEFAULT_ENTRY_ID, accountID, message, ZonedDateTime.now(ZoneOffset.UTC), amount);
-	}
 	
+	/**
+	 * @return signed transaction amount (positive)
+	 */
 	@Override
 	public final double transactionAmount() {
 		return this.amount();
 	}
+
 }

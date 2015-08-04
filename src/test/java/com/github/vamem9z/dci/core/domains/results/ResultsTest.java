@@ -10,8 +10,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.github.vamem9z.dci.core.domains.entries.CreditEntryItem;
-import com.github.vamem9z.dci.core.domains.results.Result;
-import com.github.vamem9z.dci.core.domains.results.ResultTypes;
 import com.github.vamem9z.dci.core.domains.results.accounts.AccountResult;
 import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
 import com.github.vamem9z.dci.core.domains.results.accounts.SavedEntryItem;
@@ -63,7 +61,7 @@ public class ResultsTest {
   public Object[][] accountContextRulesDp() {
 	  return new Object[][] {
 		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", ResultTypes.FAILURE, AccountResult.class, true},
-		  	new Object[] {new SavedEntryItem(new CreditEntryItem(2, "Test", 100.00)), "Saved Entry Item", ResultTypes.SUCCESS, AccountResult.class, false }
+		  	new Object[] {new SavedEntryItem(new CreditEntryItem.CreditEntryItemBuilder(2, "Test", 100.00).build()), "Saved Entry Item", ResultTypes.SUCCESS, AccountResult.class, false }
 	  };
   }
   

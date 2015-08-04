@@ -12,27 +12,20 @@ public abstract class AbstractAssetAccount extends AbstractAccount {
 	}
 	
 	@Override
-	public final void recordTransaction(double amount, String msg, AccountActions actions) {
-		switch (actions) {
-			case DEPOSIT:
-				this.addEntryItem(new CreditEntryItem(this.accountId(), msg, amount));
-				break;
-			case WITHDRAWAL:
-				this.addEntryItem(new DebitEntryItem(this.accountId(), msg, amount));
-				break;
-		}		
-	}
-	
-	@Override
 	public final void recordTransaction(double amount, String msg, AccountActions actions, ZonedDateTime date) {
 		switch (actions) {
 			case DEPOSIT:
-				this.addEntryItem(new CreditEntryItem(this.accountId(), msg, date, amount));
+				this.addEntryItem(new CreditEntryItem.CreditEntryItemBuilder(
+						this.accountId(), msg, amount)
+						.date(date)
+						.build());
 				break;
 			case WITHDRAWAL:
-				this.addEntryItem(new DebitEntryItem(this.accountId(), msg, date, amount));
+				this.addEntryItem(new DebitEntryItem.DebitEntryItemBuilder(
+						this.accountId(), msg, amount)
+						.date(date)
+						.build());
 				break;
 		}		
 	}
-	
 }

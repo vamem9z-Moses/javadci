@@ -12,7 +12,7 @@ public interface EntryItemTest {
 	 * @return new CreditEntryItem with the amount passed in
 	 */
 	default CreditEntryItem makeCreditEntryItem(double amount) {
-		return new CreditEntryItem(12, "Test Credit Entry Item", amount);
+		return (CreditEntryItem) new CreditEntryItem.CreditEntryItemBuilder(12, "Test Credit Entry Item", amount).build();
 	}
 	
 	/**
@@ -21,7 +21,7 @@ public interface EntryItemTest {
 	 * @return new DebitEntryItem with the amount passed in
 	 */
 	default DebitEntryItem makeDebitEntryItem(double amount) {
-		return new DebitEntryItem(12, "Test Debit Entry Item", amount);
+		return (DebitEntryItem) new DebitEntryItem.DebitEntryItemBuilder(12, "Test Debit Entry Item", amount).build();
 	}
 }
 

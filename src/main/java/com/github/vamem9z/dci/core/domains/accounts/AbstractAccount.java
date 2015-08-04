@@ -1,6 +1,7 @@
 package com.github.vamem9z.dci.core.domains.accounts;
 
 import java.math.BigDecimal;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +55,9 @@ public abstract class AbstractAccount extends AbstractFields implements Account,
 	}
 	
 	@Override
-	public abstract void recordTransaction(double amount, String msg, AccountActions actions);
+	public final void recordTransaction(double amount, String msg, AccountActions actions) {
+		this.recordTransaction(amount, msg, actions, ZonedDateTime.now(ZoneOffset.UTC));
+	}
 	
 	@Override
 	public abstract void recordTransaction(double amount, String msg, AccountActions actions, ZonedDateTime date);

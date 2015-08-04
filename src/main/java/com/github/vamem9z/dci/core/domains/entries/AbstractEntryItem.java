@@ -1,5 +1,6 @@
 package com.github.vamem9z.dci.core.domains.entries;
 
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,7 @@ import com.github.vamem9z.dci.core.domains.Persister;
 
 public abstract class AbstractEntryItem extends AbstractFields implements Persister, EntryItem {
 	private final int id;
-	private final int accountID;
+	private final int accountId;
 	private final String message;
 	private final ZonedDateTime date;
 	private final double amount;
@@ -36,14 +37,49 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @param transType - the type of the transaction either debit or credit
 	 */
 	
-	public AbstractEntryItem(int id, int accountID, String message, ZonedDateTime date, double amount, TransactionTypes transType) {
+	protected AbstractEntryItem(EntryItemBuilder builder) {
 		super();
-		this.id  = Objects.requireNonNull(id, "id can't be null");
-		this.accountID = Objects.requireNonNull(accountID, "account id can't be null");
-		this.message = Objects.requireNonNull(message, "message can't be null");
-		this.date = Objects.requireNonNull(date, "date can't be null");
-		this.amount = Objects.requireNonNull(amount, "amount can't be null");
-		this.transactionType = Objects.requireNonNull(transType, "transacation type can't be null");
+		this.id  = Objects.requireNonNull(builder.id, "id can't be null");
+		this.accountId = Objects.requireNonNull(builder.accountId, "account id can't be null");
+		this.message = Objects.requireNonNull(builder.message, "message can't be null");
+		this.date = Objects.requireNonNull(builder.date, "date can't be null");
+		this.amount = Objects.requireNonNull(builder.amount, "amount can't be null");
+		this.transactionType = Objects.requireNonNull(builder.transactionType, "transacation type can't be null");
+	}
+	
+	/**
+	 * Base EntryItem Builder
+	 * <p>
+	 * @author mmiles
+	 *
+	 */
+	public static abstract class EntryItemBuilder {
+		public int id = 0;
+		public int accountId;
+		public String message;
+		public ZonedDateTime date = ZonedDateTime.now(ZoneOffset.UTC);
+		public double amount;
+		public TransactionTypes transactionType;
+		
+		public EntryItemBuilder(int accountId, String message, double amount, TransactionTypes type) {
+			super();
+			this.accountId = accountId;
+			this.message = message;
+			this.amount = amount;
+			this.transactionType = type;
+		}
+		
+		public final EntryItemBuilder id(int id) {
+			this.id = id;
+			return this;
+		}
+		
+		public final EntryItemBuilder date(ZonedDateTime date) {
+			this.date = date;
+			return this;
+		}
+		
+		public abstract EntryItem build(); 
 	}
 	
 	/**
@@ -63,7 +99,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @see com.github.vamem9z.dci.core.domains.AbstractFields#fields()
 	 */
 	public final ArrayList<Object> fields() {
-		return new ArrayList<Object>(Arrays.asList(this.id, this.accountID, this.message, this.date, this.amount, this.transactionType));
+		return new ArrayList<Object>(Arrays.asList(this.id, this.accountId, this.message, this.date, this.amount, this.transactionType));
 	}
 	
 	/**
@@ -74,7 +110,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 */
 	@Override
 	public final Model createModel() {
-		return new EntryItemModel(this.id, this.accountID, this.message, this.date, 
+		return new EntryItemModel(this.id, this.accountId, this.message, this.date, 
 				this.amount, this.transactionType);
 	}
 
@@ -83,5 +119,6 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * <p>
 	 * @return "real world" transaction amount
 	 */
+	@Override
 	public abstract double transactionAmount();
 }
