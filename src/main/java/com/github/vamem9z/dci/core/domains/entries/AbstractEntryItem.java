@@ -9,13 +9,13 @@ import java.util.Objects;
 import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
 import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel.EntryItemModelBuilder;
 import com.github.vamem9z.dci.core.domains.AbstractFields;
-import com.github.vamem9z.dci.core.domains.Persister;
+import com.github.vamem9z.dci.core.domains.Persistable;
 
 /**
  * Provides the base implementation of the EntryItem Interface.
  */
 
-public abstract class AbstractEntryItem extends AbstractFields implements Persister<EntryItemModelBuilder>, EntryItem {
+public abstract class AbstractEntryItem extends AbstractFields implements Persistable<EntryItemModelBuilder>, EntryItem {
 	private final int id;
 	private final int accountId;
 	private final String message;
@@ -108,7 +108,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * Overrides Persister Interface createModel() method to create an EntryItem value object that can be persisted.
 	 * <p>
 	 * @return EntryItemModel populated with all of this object's data fields.
-	 * @see com.github.vamem9z.dci.core.domains.Persister#createModel()
+	 * @see com.github.vamem9z.dci.core.domains.Persistable#createModel()
 	 */
 	@Override
 	public final EntryItemModelBuilder createModelBuilder() {
