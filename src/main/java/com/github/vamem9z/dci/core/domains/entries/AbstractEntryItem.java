@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel;
+import com.github.vamem9z.dci.core.data.models.entries.EntryItemModel.EntryItemModelBuilder;
 import com.github.vamem9z.dci.core.domains.AbstractFields;
 import com.github.vamem9z.dci.core.domains.Persister;
 
@@ -14,7 +15,7 @@ import com.github.vamem9z.dci.core.domains.Persister;
  * Provides the base implementation of the EntryItem Interface.
  */
 
-public abstract class AbstractEntryItem extends AbstractFields implements Persister<EntryItemModel>, EntryItem {
+public abstract class AbstractEntryItem extends AbstractFields implements Persister<EntryItemModelBuilder>, EntryItem {
 	private final int id;
 	private final int accountId;
 	private final String message;
@@ -98,6 +99,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @return  all the field values in this object
 	 * @see com.github.vamem9z.dci.core.domains.AbstractFields#fields()
 	 */
+	@Override
 	public final ArrayList<Object> fields() {
 		return new ArrayList<Object>(Arrays.asList(this.id, this.accountId, this.message, this.date, this.amount, this.transactionType));
 	}
@@ -109,8 +111,8 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @see com.github.vamem9z.dci.core.domains.Persister#createModel()
 	 */
 	@Override
-	public final EntryItemModel createModel() {
-		return new EntryItemModel(this.id, this.accountId, this.message, this.date, 
+	public final EntryItemModelBuilder createModelBuilder() {
+		return new EntryItemModel.EntryItemModelBuilder(this.id, this.accountId, this.message, this.date, 
 				this.amount, this.transactionType);
 	}
 

@@ -92,21 +92,21 @@ public final class EntryItemsTest implements EntryItemTest {
 				.id(1)
 				.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
 				.build(), 
-			new EntryItemModel(1, 1, "Credit Test",
+			new EntryItemModel.EntryItemModelBuilder(1, 1, "Credit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
-					TransactionTypes.CREDIT)},
+					TransactionTypes.CREDIT).build()},
 			{new DebitEntryItem.DebitEntryItemBuilder(1, "Debit Test",100.00)
 						.id(1)
 						.date(ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"))
 						.build(), 
-			new EntryItemModel(1, 1, "Debit Test",
+			new EntryItemModel.EntryItemModelBuilder(1, 1, "Debit Test",
 					ZonedDateTime.parse("2012-06-30T12:30:40Z[UTC]"), 100.00, 
-					TransactionTypes.DEBIT)},
+					TransactionTypes.DEBIT).build()},
 		};
 	}
 	
 	/**
-	 * Tests the createModel() for EntryItems
+	 * Tests the createModelBuilder() for EntryItems
 	 * <p>
 	 * @param item an AbstractEntryItem under test
 	 * @param model the model created by the item
@@ -114,6 +114,6 @@ public final class EntryItemsTest implements EntryItemTest {
 	
 	@Test(dataProvider="createModelDp", groups={"unit"})
 	public final void testCreateModel(AbstractEntryItem item, EntryItemModel model) {
-		assertTrue(item.createModel().equals(model));
+		assertTrue(item.createModelBuilder().build().equals(model));
 	}
 }
