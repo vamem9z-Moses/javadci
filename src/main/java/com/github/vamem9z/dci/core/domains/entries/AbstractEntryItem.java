@@ -38,7 +38,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @param transType - the type of the transaction either debit or credit
 	 */
 	
-	protected <U> AbstractEntryItem(EntryItemBuilder<U> builder) {
+	protected AbstractEntryItem(EntryItemBuilder<? extends AbstractEntryItem> builder) {
 		super();
 		this.id  = Objects.requireNonNull(builder.id, "id can't be null");
 		this.accountId = Objects.requireNonNull(builder.accountId, "account id can't be null");
@@ -54,7 +54,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * @author mmiles
 	 *
 	 */
-	public static abstract class EntryItemBuilder<T> {
+	public static abstract class EntryItemBuilder<T extends AbstractEntryItem> {
 		public int id = 0;
 		public int accountId;
 		public String message;
@@ -117,9 +117,9 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	}
 
 	/**
-	 * Provides the "real world" amount either -/+ to allow accounts to calculate their balances.
+	 * Provides the signed amount either -/+ to allow accounts to calculate their balances.
 	 * <p>
-	 * @return "real world" transaction amount
+	 * @return signed transaction amount
 	 */
 	@Override
 	public abstract double transactionAmount();
