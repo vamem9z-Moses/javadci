@@ -16,7 +16,6 @@ import com.github.vamem9z.dci.core.domains.results.Result;
  * Model used by EntryItem Domains persist and export data from the system
  * <p>
  * @author mmiles
- *
  */
 public final class EntryItemModel extends AbstractFields implements Model {
 	private final int id;
@@ -30,13 +29,7 @@ public final class EntryItemModel extends AbstractFields implements Model {
 	/**
 	 * Constructor 
 	 * <p>
-	 * @param id unique identifier from the data store
-	 * @param accountID unique identifier for the related account
-	 * @param message describes the transaction
-	 * @param time when the transaction occurred
-	 * @param amount amount of the transaction
-	 * @param transtype type of the transaction
-	 * @param dao default dao to be used with this
+	 * Called from an EntryModelBuilder using the Fluent Builder Pattern
 	 */
 	private EntryItemModel(EntryItemModelBuilder builder) {
 		super();
@@ -92,7 +85,7 @@ public final class EntryItemModel extends AbstractFields implements Model {
 	}
 		
 	/**
-	 * Uses the default dao to persist this to the data store
+	 * Persist this to the data store
 	 */
 	@Override
 	public Result save() {
