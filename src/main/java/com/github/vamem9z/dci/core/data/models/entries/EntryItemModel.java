@@ -41,6 +41,7 @@ public final class EntryItemModel extends AbstractFields implements Model {
 		this.transactionType = builder.transactionType;
 		this.dao = builder.dao;
 	}
+	
 	/**
 	 * Constructor 
 	 * <p>
