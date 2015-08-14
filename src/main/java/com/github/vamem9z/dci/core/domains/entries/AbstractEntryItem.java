@@ -28,9 +28,8 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * Constructor
 	 * <p>
 	 * All constructor parameters are required.
-	 * @param <U>
+	 * @param builder - EntryItemBuilder that is specific to the class
 	 * 
-
 	 */
 	
 	protected AbstractEntryItem(EntryItemBuilder<? extends AbstractEntryItem> builder) {
