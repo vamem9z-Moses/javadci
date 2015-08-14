@@ -30,12 +30,7 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	 * All constructor parameters are required.
 	 * @param <U>
 	 * 
-	 * @param id - unique id in the data store being used. This is pre-filled by the subclass constructor.
-	 * @param accountID - unique id of account the entry item belongs  
-	 * @param message - message regarding this transaction
-	 * @param date - date the transaction was created
-	 * @param amount - amount of the transaction
-	 * @param transType - the type of the transaction either debit or credit
+
 	 */
 	
 	protected AbstractEntryItem(EntryItemBuilder<? extends AbstractEntryItem> builder) {
@@ -62,9 +57,17 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 		public double amount;
 		public TransactionTypes transactionType;
 		
-		public EntryItemBuilder(int accountId, String message, double amount, TransactionTypes type) {
+		/**
+		 * Constructor
+		 * <p>
+		 * @param accountID - unique id of account the entry item belongs  
+		 * @param message - message regarding this transaction
+		 * @param amount - amount of the transaction
+		 * @param type - the type of the transaction either debit or credit
+		 */
+		public EntryItemBuilder(int accountID, String message, double amount, TransactionTypes type) {
 			super();
-			this.accountId = accountId;
+			this.accountId = accountID;
 			this.message = message;
 			this.amount = amount;
 			this.transactionType = type;
@@ -105,10 +108,10 @@ public abstract class AbstractEntryItem extends AbstractFields implements Persis
 	}
 	
 	/**
-	 * Overrides Persister Interface createModel() method to create an EntryItem value object that can be persisted.
+	 * Overrides Persistable Interface createModel() method to create an EntryItem value object that can be persisted.
 	 * <p>
 	 * @return EntryItemModel populated with all of this object's data fields.
-	 * @see com.github.vamem9z.dci.core.domains.Persistable#createModel()
+	 * @see com.github.vamem9z.dci.core.domains.Persistable#createModelBuilder()
 	 */
 	@Override
 	public final EntryItemModelBuilder createModelBuilder() {
