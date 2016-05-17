@@ -10,7 +10,7 @@ public abstract class AbstractAssetAccount extends AbstractAccount {
 	public AbstractAssetAccount(AccountInfo acctInfo) {
 		super(acctInfo);
 	}
-	
+
 	@Override
 	public final void recordTransaction(double amount, String msg, AccountActions actions, ZonedDateTime date) {
 		switch (actions) {
@@ -26,6 +26,6 @@ public abstract class AbstractAssetAccount extends AbstractAccount {
 						.date(date)
 						.build());
 				break;
-		}		
+		}
 	}
 }
