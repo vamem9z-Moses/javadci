@@ -21,7 +21,7 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 	private final double amount;
 	private final String message;
 	private final ArrayList<Rule> rules;
-	
+
 	public AccountWithdrawUseCase(AccountRole account, double amount, String message) {
 		this.account = account;
 		this.amount = amount;
@@ -29,17 +29,17 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 		this.rules = new ArrayList<Rule>(Arrays.asList(
 				new NoNegativeAmountsRule(), new AccountProtectionRule()));
 	}
-	
+
 	@Override
 	public Stream<Result>execute(){
-		return execute(this, ctx -> this.account.withDraw((AccountWithdrawUseCase)ctx), this.rules);
+		return execute(this, ctx -> account.withDraw((AccountWithdrawUseCase)ctx), rules);
 	}
-	
+
 	@Override
 	public void recordTransaction(AccountActions action) {
-		this.account.recordTransaction(this.amount, this.message, action);
+		account.recordTransaction(amount, message, action);
 	}
-	
+
 	@Override
 	public double transactionAmount() {
 		return this.amount;

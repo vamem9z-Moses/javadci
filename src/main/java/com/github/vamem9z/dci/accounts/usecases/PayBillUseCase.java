@@ -12,22 +12,22 @@ public final class PayBillUseCase implements UseCase {
 	private final TransferMoneySourceRole sourceAccount;
 	private final ArrayList<AccountRole> creditors;
 
-	public PayBillUseCase(TransferMoneySourceRole sourceAccount, 
+	public PayBillUseCase(TransferMoneySourceRole sourceAccount,
 			ArrayList<AccountRole> creditors) {
 		this.sourceAccount = sourceAccount;
 		this.creditors = creditors;
 	}
-	
+
 	@Override
 	public Stream<Result> execute() {
-		return this.sourceAccount.payBills(this);
+		return sourceAccount.payBills(this);
 	}
-	
+
 	public TransferMoneySourceRole sourceAccount() {
-		return this.sourceAccount;
+		return sourceAccount;
 	}
-	
+
 	public ArrayList<AccountRole> creditors() {
-		return this.creditors;
+		return creditors;
 	}
 }

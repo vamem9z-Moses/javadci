@@ -16,26 +16,26 @@ public final class AccountDepositUseCase implements UseCase, ChangeBalanceUseCas
 	private final double amount;
 	private final String message;
 	private final ArrayList<Rule> rules;
-	
+
 	public AccountDepositUseCase(AccountRole account, double amount, String message) {
 		this.account = account;
 		this.amount = amount;
 		this.message = message;
 		this.rules = new ArrayList<Rule>(Arrays.asList(new NoNegativeAmountsRule()));
 	}
-	
+
 	@Override
 	public Stream<Result> execute() {
-		return execute(this, (UseCase ctx) -> this.account.deposit((AccountDepositUseCase) ctx), this.rules);
+		return execute(this, (UseCase ctx) -> account.deposit((AccountDepositUseCase) ctx), rules);
 	}
-	
+
 	@Override
 	public void recordTransaction(AccountActions action) {
-		this.account.recordTransaction(this.amount, this.message, action);
+		account.recordTransaction(amount, message, action);
 	}
-	
+
 	@Override
 	public double transactionAmount() {
-		return this.amount;
+		return amount;
 	}
 }
