@@ -30,18 +30,19 @@ public class NoNegativeAmountTest implements AccountTest {
   public Object[][] dp() {
     return new Object[][] {
       new Object[] { new EmptyTestContext(), new WrongContext(), "Test sending wrong context"},
-      new Object[] { new AccountWithdrawUseCase(makeCheckingAccount(100.00), 50.00, "Test withdraw"), 
+      new Object[] { new AccountWithdrawUseCase(makeCheckingAccount(100.00), 50.00, "Test withdraw"),
     		  new Successful(), "Test sending withdraw context"},
-      new Object[] { new AccountDepositUseCase(makeCheckingAccount(100.00), 50.00, "Test deposit"), 
+      new Object[] { new AccountDepositUseCase(makeCheckingAccount(100.00), 50.00, "Test deposit"),
     		  new Successful(), "Test sending deposit context"},
-      new Object[] { new AccountWithdrawUseCase(makeCheckingAccount(100.00), -50.00, "Test withdraw"), 
+      new Object[] { new AccountWithdrawUseCase(makeCheckingAccount(100.00), -50.00, "Test withdraw"),
     		  new NegativeAmountNotAllowed(), "Test sending withdraw context with negative amount"},
       };
     }
-  
+
  private class EmptyTestContext implements UseCase {
 	  public EmptyTestContext() {}
-	  public Stream<Result>execute()  {
+	  @Override
+	public Stream<Result>execute()  {
 		  ArrayList<Result> result = new ArrayList<Result>(Arrays.asList(new Successful()));
 		  return result.stream();
 	  }

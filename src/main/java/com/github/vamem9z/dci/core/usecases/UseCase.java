@@ -6,26 +6,26 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.github.vamem9z.dci.core.domains.results.Result;
-import com.github.vamem9z.dci.core.domains.results.general.Successful;
+import com.github.vamem9z.dci.core.domains.results.ResultTypes;
 import com.github.vamem9z.dci.core.rules.Rule;
 
 public interface UseCase {
-	
+
 	default Stream<Result> applyRules(ArrayList<Rule> rules) {
 		return rules.stream().map(r->r.action(this));
 	}
-	
-	default Stream<Result> execute(UseCase ctx, Function<UseCase, 
+
+	default Stream<Result> execute(UseCase ctx, Function<UseCase,
 			Stream<Result>> roleAction, ArrayList<Rule> rules) {
-		
+
 		ArrayList<Result> rulesResults = this.applyRules(rules)
 				.collect(Collectors.toCollection(ArrayList::new));
 
-		if(rulesResults.stream().allMatch(r -> r instanceof Successful)) {
-			return roleAction.apply(ctx);
+		if(rulesResults.stream().anyMatch(r -> r.resultType() == ResultTypes.FAILURE)) {
+			return rulesResults.stream();
 		}
-		return rulesResults.stream().filter(r -> !(r instanceof Successful));
+		return roleAction.apply(ctx);
 	}
-	
+
 	Stream<Result> execute();
 }
