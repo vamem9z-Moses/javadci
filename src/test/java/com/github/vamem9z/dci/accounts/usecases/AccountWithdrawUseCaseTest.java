@@ -35,6 +35,9 @@ public final class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTes
     					-400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"},
     			new Object[] {makeCheckingAccount(500.00),
     					new ArrayList<Result>(Arrays.asList(new Successful(), new InsufficientBalance())),
+    					600.00, 500.00, "Credit Account Insufficent Balance Withdraw Test"},
+				new Object[] {makeVendorAccount(500.00),
+    					new ArrayList<Result>(Arrays.asList(new Successful(), new InsufficientBalance())),
     					600.00, 500.00, "Credit Account Insufficent Balance Withdraw Test"
     			}
     	};
