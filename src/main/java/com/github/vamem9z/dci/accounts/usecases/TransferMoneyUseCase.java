@@ -25,7 +25,7 @@ public final class TransferMoneyUseCase implements UseCase {
 	}
 
 	public AccountWithdrawUseCase createWithDrawCtx() {
-		return new AccountWithdrawUseCase((AccountRole)sourceAccount,
+		return new AccountWithdrawUseCase(sourceAccount,
 				amount, createMsg());
 	}
 
