@@ -44,5 +44,10 @@ public final class AccountWithdrawUseCase implements UseCase, ChangeBalanceUseCa
 	public double transactionAmount() {
 		return this.amount;
 	}
+
+	@Override
+	public double currentBalance() {
+		return account.calcBalance();
+	}
 }
 

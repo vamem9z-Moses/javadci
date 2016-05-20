@@ -38,4 +38,9 @@ public final class AccountDepositUseCase implements UseCase, ChangeBalanceUseCas
 	public double transactionAmount() {
 		return amount;
 	}
+
+	@Override
+	public double currentBalance() {
+		return account.calcBalance();
+	}
 }

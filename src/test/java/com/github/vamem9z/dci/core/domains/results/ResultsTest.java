@@ -28,17 +28,15 @@ import com.github.vamem9z.dci.core.domains.users.User;
 
 public class ResultsTest {
   @Test(dataProvider = "dp", groups={"unit"})
-  public void testContextResults(Result ucResult, String expectedName, 
-		  ResultTypes expectedType, Class<Result> ucResultParent, 
+  public void testContextResults(Result ucResult,
+		  String expectedName, Class<Result> ucResultParent,
 		  boolean expectedFailure) {
-	  
+
 	  assertEquals(ucResult.name(), expectedName);
-	  assertEquals(ucResult.resultType(), expectedType);
 	  assertTrue(ucResultParent.isInstance(ucResult));
 	  assertEquals(ucResult.isFailure(), expectedFailure);
-	  
   }
-  
+
   @DataProvider
   public Object[][] dp() {
 	  ArrayList<Object[]> results = new ArrayList<Object[]>();
@@ -51,31 +49,32 @@ public class ResultsTest {
 
   public Object[][] generalContextRulesDp() {
     return new Object[][] {
-    	new Object[] {new Successful(), "Successful", ResultTypes.SUCCESS, GeneralResult.class, false},
-    	new Object[] {new Failed(), "Failed", ResultTypes.FAILURE, GeneralResult.class, true},
-    	new Object[] {new WrongContext(), "Wrong Context", ResultTypes.FAILURE, GeneralResult.class, true},
-    	new Object[] {new WrongDao(), "Wrong Dao", ResultTypes.FAILURE, GeneralResult.class, true}
+    	new Object[] {new Successful(), "Successful", GeneralResult.class, false},
+    	new Object[] {new Failed(), "Failed", GeneralResult.class, true},
+    	new Object[] {new WrongContext(), "Wrong Context", GeneralResult.class, true},
+    	new Object[] {new WrongDao(), "Wrong Dao", GeneralResult.class, true}
     };
   }
-  
+
   public Object[][] accountContextRulesDp() {
 	  return new Object[][] {
-		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", ResultTypes.FAILURE, AccountResult.class, true},
-		  	new Object[] {new SavedEntryItem(new CreditEntryItem.CreditEntryItemBuilder(2, "Test", 100.00).build()), "Saved Entry Item", ResultTypes.SUCCESS, AccountResult.class, false }
+		  	new Object[] {new NegativeAmountNotAllowed(), "Negative Amount Not Allowed", AccountResult.class, true},
+		  	new Object[] {new SavedEntryItem(new CreditEntryItem.CreditEntryItemBuilder(2, "Test", 100.00).build()),
+		  			"Saved Entry Item", AccountResult.class, false }
 	  };
   }
-  
+
   public Object[][] userContextResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new UserNotFound(), "User Not Found", ResultTypes.FAILURE, UserResult.class, true},
-		  new Object[] { new TooManyUsers(), "Too Many Users", ResultTypes.FAILURE, UserResult.class, true},
-		  new Object[] { new FoundUser(new User(2, "Test")), "Found User", ResultTypes.SUCCESS, UserResult.class, false}
+		  new Object[] { new UserNotFound(), "User Not Found", UserResult.class, true},
+		  new Object[] { new TooManyUsers(), "Too Many Users", UserResult.class, true},
+		  new Object[] { new FoundUser(new User(2, "Test")), "Found User", UserResult.class, false}
 	  };
   }
-  
+
   public Object[][] productUseCaseResultsDp() {
 	  return new Object[][] {
-		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest",ResultTypes.SUCCESS, ProductResult.class, false}
+		  new Object[] { new CalculatedInterest(345.00), "Calculated Interest", ProductResult.class, false}
 	  };
   }
 }

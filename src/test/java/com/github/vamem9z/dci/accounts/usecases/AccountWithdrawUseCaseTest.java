@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.github.vamem9z.dci.accounts.AccountTest;
 import com.github.vamem9z.dci.accounts.roles.AccountRole;
 import com.github.vamem9z.dci.core.domains.results.Result;
+import com.github.vamem9z.dci.core.domains.results.accounts.InsufficientBalance;
 import com.github.vamem9z.dci.core.domains.results.accounts.NegativeAmountNotAllowed;
 import com.github.vamem9z.dci.core.domains.results.general.Successful;
 import com.github.vamem9z.dci.core.usecases.UseCaseTest;
@@ -31,7 +32,11 @@ public final class AccountWithdrawUseCaseTest implements UseCaseTest, AccountTes
     					-400.00, 1000.34, "Negative Amount Credit Account Withdraw Test"},
     			new Object[] {makeVendorAccount(1000.34),
     					new ArrayList<Result>(Arrays.asList(new NegativeAmountNotAllowed(), new Successful())),
-    					-400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"}
+    					-400.00, 1000.34, "Negative Amount Deposit Account Withdraw Test"},
+    			new Object[] {makeCheckingAccount(500.00),
+    					new ArrayList<Result>(Arrays.asList(new Successful(), new InsufficientBalance())),
+    					600.00, 500.00, "Credit Account Insufficent Balance Withdraw Test"
+    			}
     	};
     }
 
