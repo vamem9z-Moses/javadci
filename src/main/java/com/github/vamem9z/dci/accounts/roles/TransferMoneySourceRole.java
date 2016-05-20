@@ -40,9 +40,9 @@ public interface TransferMoneySourceRole extends Role, Account, AccountRole {
 
 	default Stream<Result> payBills(PayBillUseCase ctx) {
 
-		ArrayList<Result> errors = ctx.creditors().stream()
+		Stream<Result> errors = ctx.creditors().stream()
 			.map(creditor ->  payBill(ctx.sourceAccount(), creditor))
-			.flatMap(x ->x).collect(Collectors.toCollection(ArrayList::new));
-		return errors.stream();
+			.flatMap(x -> x);
+		return errors;
 	}
 }
