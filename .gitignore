@@ -11,3 +11,5 @@ nb-configuration.xml
 dci.iml
 .idea/
 .DS_Store
+*.log
+*.log.lck
